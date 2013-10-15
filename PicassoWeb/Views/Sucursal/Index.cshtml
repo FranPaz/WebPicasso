@@ -1,0 +1,59 @@
+@model IEnumerable<PicassoWeb.Models.Sucursal>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            nombre
+        </th>
+        <th>
+            dir
+        </th>
+        <th>
+            tel
+        </th>
+        <th>
+            mail
+        </th>
+        <th>
+            horarios
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+        <td>
+			@item.nombre
+        </td>
+        <td>
+			@item.dir
+        </td>
+        <td>
+			@item.tel
+        </td>
+        <td>
+			@item.mail
+        </td>
+        <td>
+			@item.horarios
+        </td>
+    </tr>
+}
+
+</table>
+
+
