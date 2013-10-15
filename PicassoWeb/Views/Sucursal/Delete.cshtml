@@ -1,0 +1,35 @@
+@model PicassoWeb.Models.Sucursal
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Sucursal</legend>
+
+    <div class="display-label">nombre</div>
+    <div class="display-field">@Model.nombre</div>
+
+    <div class="display-label">dir</div>
+    <div class="display-field">@Model.dir</div>
+
+    <div class="display-label">tel</div>
+    <div class="display-field">@Model.tel</div>
+
+    <div class="display-label">mail</div>
+    <div class="display-field">@Model.mail</div>
+
+    <div class="display-label">horarios</div>
+    <div class="display-field">@Model.horarios</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+
