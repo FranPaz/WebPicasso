@@ -1,16 +1,51 @@
-﻿<div class="row">
-<div class="large-3 columns">
-<h1><img src="http://placehold.it/400x100&text=Logo" /></h1>
-</div>
-<div class="large-9 columns">
-<ul class="right button-group">
-    <li class="button">@Html.ActionLink("Home", "Index", "Home")</li>
-    <li class="button">@Html.ActionLink("La Empresa", "Empresa", "Home")</li>
-    <li class="button">@Html.ActionLink("About", "About", "Home")</li>
-    <li class="button">@Html.ActionLink("Contacto", "Contacto", "Home")</li>
-    <li class="button">@Html.ActionLink("Sucursales", "Index", "Sucursal")</li>
-    
-</ul>
-</div>
-</div>
-<!-- End Header and Nav -->
+﻿
+<header>
+        <!-- fpaz:seccion para completar con la estructura y elementos del header -->
+        <!-- Header--> 
+            <div class="row">
+                <div class="large-3 columns left">
+                    <h1><img src="../../Content/themes/base/images/Logo.jpg" alt="Picasso Pinturerias Logo"></h1>
+                </div>
+
+                <!--fpaz: parte de botones de redes sociales -->
+                <div class="large-9 columns hide-for-medium hide-for-small">                
+                    <ul class="button-group right ">
+                        <li><span><a href="https://www.facebook.com/picassopintureria" target="_blank" class="social-network facebook" title="Seguinos en Facebook"></a></span></li>
+                        
+                        <li><span><a href="#" class="social-network twitter"></a></span></li>
+                        
+                        <li><span><a href="#" class="social-network gplus"></a></span></li>
+                    </ul>
+                </div>                
+
+                <div class="large-9 columns hide-for-medium hide-for-small">                
+                    <ul class="button-group right ">                                               
+                        <li><a href="http://www.imaginandocolores.com.ar/" target="_blank" ><img src="http://www.imaginandocolores.com.ar/img/marca_home.png" alt="Simulador de Ambientes"></a></li>
+                    </ul>
+                </div>                
+            </div> 
+        <!-- End Header-->
+
+        <!--fpaz: Barra de  Navegacion -->        
+            <div class="large-12 columns rigth">
+                <div class="main clearfix">
+	                <nav id="menu" class="nav">					
+		                <ul>
+                            <li >@Html.ActionLink("Inicio", "Index", "Home")</li>                             
+                            <li >@Html.ActionLink("La Empresa", "Empresa", "Home")</li>           
+                            <li >@Html.ActionLink("Productos", "Index", "Home")</li>  
+                            <li >@Html.ActionLink("Sucursales", "Sucursales", "Sucursal")</li>			
+                            <li >@Html.ActionLink("Promociones", "Index", "Home")</li>  
+                            <li >@Html.ActionLink("Contacto", "Contacto", "Home")</li>            
+                            @*<li >@Html.ActionLink("Sucursales", "Index", "Sucursal")</li>	*@		
+		                </ul>
+	                </nav>
+                </div>
+            </div>
+            <!--Fin barra navegacion -->
+
+        
+        
+</header>    
+<!-- End Header  -->
+
