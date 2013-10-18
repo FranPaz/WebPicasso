@@ -18,7 +18,12 @@ namespace PicassoWeb.Controllers
 
         public ViewResult Index()
         {
-            
+            return View(context.Sucursal.ToList());
+        }
+
+        //fpaz: Agrego la accion sucursales que es la que voy a usar para mostrar el listado de sucursales al cliente
+        public ViewResult Sucursales()
+        {
             return View(context.Sucursal.ToList());
         }
 

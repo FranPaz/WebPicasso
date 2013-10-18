@@ -10,7 +10,7 @@
     @*Set the viewport width to device width for mobile *@
     <meta name="viewport" content="width=device-width" />
 
-    <title>@ViewBag.Title - Welcome to Foundation</title>
+    <title>@ViewBag.Title - Picasso Pinturerias</title> <!--fpaz: puse el titulo "Picasso Pinturerias" -->
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     @Styles.Render("~/Content/foundation/css")
@@ -19,9 +19,8 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @Html.Partial("_Header")
+    @Html.Partial("_Header") @*fpaz: agrego el Header*@
     @RenderBody()
-    @Html.Partial("_Footer")
     @* Zepto polyfill: If you need to support Internet Explorer, you can fall back on jQuery. http://zeptojs.com/ *@
     <script>
         document.write('<script src=' +
@@ -35,7 +34,40 @@
     </script>
     @*Use the Scripts section to define page specific scripts*@
     @RenderSection("scripts", required: false)
-    
-</body>
 
+    <!-- fpaz: Script que usa el menu para hacerse responsive y mostrar el menu desplegable para tablets y phones -->
+    <script>
+        //  The function to change the class
+        var changeClass = function (r, className1, className2) {
+            var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
+            if (regex.test(r.className)) {
+                r.className = r.className.replace(regex, ' ' + className2 + ' ');
+            }
+            else {
+                r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"), ' ' + className1 + ' ');
+            }
+            return r.className;
+        };
+
+        //  Creating our button in JS for smaller screens
+        var menuElements = document.getElementById('menu');
+        menuElements.insertAdjacentHTML('afterBegin', '<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
+
+        //  Toggle the class on click to show / hide the menu
+        document.getElementById('menutoggle').onclick = function () {
+            changeClass(this, 'navtoogle active', 'navtoogle');
+        }
+
+        // http://tympanus.net/codrops/2013/05/08/responsive-retina-ready-menu/comment-page-2/#comment-438918
+        document.onclick = function (e) {
+            var mobileButton = document.getElementById('menutoggle'),
+					buttonStyle = mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
+
+            if (buttonStyle === 'block' && e.target !== mobileButton && new RegExp(' ' + 'active' + ' ').test(' ' + mobileButton.className + ' ')) {
+                changeClass(mobileButton, 'navtoogle active', 'navtoogle');
+            }
+        }
+		</script>
+        <!-- Fin -->
+</body>
 </html>
