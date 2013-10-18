@@ -48,7 +48,8 @@ namespace PicassoWeb
             "~/Content/foundation/foundation.mvc.css",
             "~/Content/foundation/app.css",
             "~/Content/foundation/component.css",
-            "~/Content/foundation/default.css")); //fpaz: agrego component.css y default.css que tienen el css de la barra de navegacion
+            "~/Content/foundation/default.css",
+            "~/Content/foundation/redesSociales.css")); //fpaz: agrego component.css, default.css y redesSociales.css que tienen el css de la barra de navegacion y del header
 
             bundles.Add(new ScriptBundle("~/bundles/foundation").Include(
             "~/Scripts/foundation/foundation.js",

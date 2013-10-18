@@ -16,7 +16,7 @@ namespace PicassoWeb.Models
         // Note: this will destroy and re-create your database with every model change.
         // 
         // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<PicassoWeb.Models.PicassoWebContext>());
-
+                
         public DbSet<PicassoWeb.Models.Sucursal> Sucursal { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace PicassoWeb.Models
         public string tel { get; set; }
         public string mail { get; set; }
         public string horarios { get; set; }
+        public string foto { get; set; }
         
     }
 
