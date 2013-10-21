@@ -1,11 +1,18 @@
-﻿ <!-- Content Slider -->
+﻿<!-- rsanch: Slider Principal -->
+<div class="large-12 columns">
+    @Html.Partial("Slider")
+</div>
+<!-- rsanch: Simulador y Promos abajo del slider -->
 <div class="row">
-<div class="large-12 hide-for-small">
-<div id="featured" data-orbit>
-<img src="https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-frc3/1379528_566014556797183_795537620_n.jpg" alt="slide image">
-<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-prn2/1374751_569666039765368_356295405_n.jpg" alt="slide image">
-<img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-frc1/1240530_558231804242125_699094820_n.jpg" alt="slide image">
+    <div class="large-4 columns">
+        @Html.Partial("Simulador")
+    </div>
+    <div class="large-8 columns">
+        @Html.Partial("SliderPromos")
+    </div>
 </div>
+<!-- rsanch: Fila de abajo antes del footer -->
+<div class="row">
+    <div class="large-12 columns">
+    </div>
 </div>
-</div>
-<!-- End Content Slider -->

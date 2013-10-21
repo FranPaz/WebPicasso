@@ -11,12 +11,14 @@
     <meta name="viewport" content="width=device-width" />
 
     <title>@ViewBag.Title - Picasso Pinturerias</title> <!--fpaz: puse el titulo "Picasso Pinturerias" -->
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/picassoIcon.ico" rel="shortcut icon" type="image/x-icon" /><!--rsanch: Cambie el favicon -->
 
     @Styles.Render("~/Content/foundation/css")
 
     @RenderSection("head", required: false)
     @Scripts.Render("~/bundles/modernizr")
+
+    <script src=@Url.Content("~/Scripts/jquery.js") type="text/javascript"></script><!--rsanch: jQuery -->
 </head>
 <body>
     @Html.Partial("_Header") @*fpaz: agrego el Header*@

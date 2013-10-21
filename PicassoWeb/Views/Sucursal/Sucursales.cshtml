@@ -1,51 +1,123 @@
 ﻿@model IEnumerable<PicassoWeb.Models.Sucursal>
-
 @{
     Layout = "~/Views/Shared/_Foundation.cshtml";
 }
-
 @{
     ViewBag.Title = "Sucursales";
 }
-
 <!-- Three-up Content Blocks -->
- 
 <div class="row">
-    <h2>Sursales</h2>
+<!-- Popup Sucursal -->
+<div id="test-popup" class="white-popup mfp-hide">
+  Popup content
+</div>
+    <h2>
+        Sursales</h2>
     <!-- fpaz: parte para los datos de la sucursal -->
     <div class="large-4 columns">
-        
         @foreach (var item in Model) {
             <table>
                 <tr>
-			        <td>@item.nombre</td>
+                    <td>@item.nombre
+                    </td>
                 </tr>
                 <tr>
-                    <td><img src="@item.foto" alt="sucursal" /></td>        
-                </tr>                        
-                <tr>
-			        <td>@item.dir</td>
+                    <td>
+                        <img src="@item.foto" alt="sucursal" />
+                    </td>
                 </tr>
                 <tr>
-			        <td>@item.tel</td>
-                </tr>                
+                    <td>@item.dir
+                    </td>
+                </tr>
                 <tr>
-			        <td>@item.horarios</td>
+                    <td>@item.tel
+                    </td>
                 </tr>
-                <tr>            
-                    <td>@Html.ActionLink("Details", "Details", new { id = item.id })</td>
+                <tr>
+                    <td>@item.horarios
+                    </td>
                 </tr>
-            </table>            
-        }    
-    
-    <!-- fpaz: parte para el google maps -->
+                <tr>
+                    <td>
+                    <!-- Popup Sucursal -->
+                    @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "ajax-popup-link" })
+                    </td>
+                </tr>
+            </table>          
+        }
+        <!-- fpaz: parte para el google maps -->
     </div>
-    <div class="large-4 columns">
-        <img src="http://placehold.it/400x300&text=[Soy el Google Maps]" />        
+    <div class="large-8 columns">
+        @Html.Partial("SucursalesMapa")
+        <!-- rsanch: Partial del mapa -->
     </div>
-
 </div>
 
+<link href="../../Content/popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<script src="../../Scripts/popup/popup.js" type="text/javascript"></script>
+<script src="../../Scripts/zepto.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $('.ajax-popup-link').magnificPopup({
+        type: 'ajax'
+    });
+    //// Inline popups
+    //$('#inline-popups').magnificPopup({
+    //  delegate: 'a',
+    //  removalDelay: 500, //delay removal by X to allow out-animation
+    //  callbacks: {
+    //    beforeOpen: function() {
+    //       this.st.mainClass = this.st.el.attr('data-effect');
+    //    }
+    //  },
+    //  midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+    //});
+</script>
+<style>
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width: auto;
+  max-width: 500px;
+  margin: 20px auto;
+}
+    /* 
 
+====== Move-horizontal effect ======
 
-
+*/
+    .mfp-move-horizontal
+    {
+        /* start state */ /* animate in */ /* animate out */
+    }
+    .mfp-move-horizontal .mfp-with-anim
+    {
+        opacity: 0;
+        transition: all 0.3s;
+        transform: translateX(-50px);
+    }
+    .mfp-move-horizontal.mfp-bg
+    {
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    .mfp-move-horizontal.mfp-ready .mfp-with-anim
+    {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .mfp-move-horizontal.mfp-ready.mfp-bg
+    {
+        opacity: 0.8;
+    }
+    .mfp-move-horizontal.mfp-removing .mfp-with-anim
+    {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    .mfp-move-horizontal.mfp-removing.mfp-bg
+    {
+        opacity: 0;
+    }
+</style>

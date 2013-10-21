@@ -13,7 +13,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 	@font-face {
 		font-family: 'icomoon';
-		src: url('../fonts/icomoon.svg#icomoon') ;
+		src: url('/Content/foundation/fonts/icomoon.svg#icomoon') ;
 	};
 }
 
@@ -123,7 +123,7 @@ a, button {
 }
 
 .nav li:nth-child(6n+3) {
-	background: rgb(22, 145, 190);
+	background: rgb(185, 234, 58);/* rsanch: Cambiado a verde para seguir el estilo del logo. Este es mas obscuro */
 }
 
 .nav li:nth-child(6n+4) {
@@ -296,7 +296,7 @@ a, button {
 	.no-touch .nav li:nth-child(6n+3) a:hover,
 	.no-touch .nav li:nth-child(6n+3) a:active,
 	.no-touch .nav li:nth-child(6n+3) a:focus {
-		background: rgb(44, 168, 219);
+		background: rgb(207, 257, 87);/* rsanch: Cambiado a verde para seguir el estilo del logo */
 	}
 
 	.no-touch .nav li:nth-child(6n+4) a:hover,
@@ -407,7 +407,7 @@ a, button {
 	text-align: left;
 	color: rgb(7, 16, 15);
 	font-size: 1.2em;
-	background: none;	
+	background: none;/*rsanch: cambiar aqui si el menu se confunde con el fondo cuando es movil */
 	border: none;
 	border-bottom: 4px solid rgb(221, 221, 221);
 	cursor: pointer;
@@ -483,7 +483,7 @@ a, button {
 	}
 
 	.nav li:nth-child(6n+3) {
-		border-left: 8px solid rgb(13, 111, 150);
+		border-left: 8px solid rgb(176, 200, 18);/* rsanch: Cambiado a verde para seguir el estilo del logo */
 	}
 
 	.nav li:nth-child(6n+4) {

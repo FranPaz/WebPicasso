@@ -1,0 +1,115 @@
+﻿<!-- Responsive slider - START -->
+<div class="responsive-slider-parallax" data-spy="responsive-slider" data-parallax="true"
+    data-parallax-direction="1">
+    <div class="slides-container" data-group="slides">
+        <ul>
+            tersuave_logo.png
+            <li>
+                <div class="slide-body" data-group="slide">
+                    <div class="container">
+                        <div class="wrapper">
+                            <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500"
+                                data-length="300">
+                                <h2>
+                                    Picasso Pinturerias</h2>
+                                <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300">
+                                    Picasso Pinturerias!</div>
+                            </div>
+                            <div class="caption img-tersuave" data-animate="slideAppearLeftToRight" data-delay="200">
+                                <img src="/Images/Slider/tersuave_logo.png">
+                            </div>
+                            <div class="caption img-gotas_picasso" data-animate="slideAppearLeftToRight">
+                                <img src="/Images/Slider/gotas_picasso.png" >
+                            </div>
+                            <div class="caption img-gotas_picasso" data-animate="slideAppearRightToLeft">
+                                <img src="/Images/Slider/gotas_picasso.png" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide-body" data-group="slide">
+                    <div class="container">
+                        <div class="wrapper">
+                            <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500"
+                                data-length="300">
+                                <h2>
+                                    Picasso Pinturerias</h2>
+                                <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300">
+                                    Picasso Pinturerias!</div>
+                            </div>
+                            <div class="caption img-bootstrap" data-animate="slideAppearDownToUp" data-delay="200">
+                                <img src="/Images/Slider/tersuave_logo.png">
+                            </div>
+                            <div class="caption img-twitter" data-animate="slideAppearUpToDown">
+                                <img src="/Images/Slider/tersuave_logo.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide-body" data-group="slide">
+                    <div class="container">
+                        <div class="wrapper">
+                            <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500"
+                                data-length="300">
+                                <h2>
+                                    Picasso Pinturerias</h2>
+                                <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300">
+                                    Picasso Pinturerias!</div>
+                            </div>
+                            <div class="caption img-jquery" data-animate="slideAppearDownToUp" data-delay="200">
+                                <img src="/Images/Slider/tersuave_logo.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <a class="slider-control left" href="#" data-jump="prev"><i class="icon-angle-left">
+    </i></a><a class="slider-control right" href="#" data-jump="next"><i class="icon-angle-right">
+    </i></a>
+    <div class="pages">
+        <a class="page" href="#" data-jump-to="1">1</a> <a class="page" href="#" data-jump-to="2">
+            2</a> <a class="page" href="#" data-jump-to="3">3</a>
+    </div>
+</div>
+
+
+<!-- Respomsive slider -->
+<link href="@Url.Content("~/Content/Slider/responsive-slider-paralax.css")" rel="stylesheet" />
+
+
+
+<script src="@Url.Content("~/Scripts/Slider/jquery.event.move.js")"></script>
+<script src="@Url.Content("~/Scripts/Slider/bootstrap.js")"></script>
+<script src="@Url.Content("~/Scripts/Slider/responsive-slider.js")"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('.responsive-slider-parallax').responsiveSlider({
+            autoplay: true,
+            interval: 5000,
+            transitionTime: 300
+        });
+    });
+</script>
+
+@*<!-- Content Slider -->
+<div class="row">
+    <div class="large-12 hide-for-small">
+        <div id="featured" data-orbit>
+            <img src="https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-frc3/1379528_566014556797183_795537620_n.jpg"
+                alt="slide image">
+            <img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-prn2/1374751_569666039765368_356295405_n.jpg"
+                alt="slide image">
+            <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-frc1/1240530_558231804242125_699094820_n.jpg"
+                alt="slide image">
+        </div>
+    </div>
+</div>
+<!-- End Content Slider -->*@ 

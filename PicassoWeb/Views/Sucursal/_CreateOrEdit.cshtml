@@ -1,52 +1,118 @@
 @model PicassoWeb.Models.Sucursal
-
 @* This partial view defines form fields that will appear when creating and editing entities *@
-
 <div class="editor-label">
     @Html.LabelFor(model => model.nombre)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.nombre)
-    @Html.ValidationMessageFor(model => model.nombre)
+    @Html.EditorFor(model => model.nombre) @Html.ValidationMessageFor(model => model.nombre)
 </div>
-
 <div class="editor-label">
     @Html.LabelFor(model => model.dir)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.dir)
-    @Html.ValidationMessageFor(model => model.dir)
+    @Html.EditorFor(model => model.dir) @Html.ValidationMessageFor(model => model.dir)
 </div>
-
 <div class="editor-label">
     @Html.LabelFor(model => model.tel)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.tel)
-    @Html.ValidationMessageFor(model => model.tel)
+    @Html.EditorFor(model => model.tel) @Html.ValidationMessageFor(model => model.tel)
 </div>
-
 <div class="editor-label">
     @Html.LabelFor(model => model.mail)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.mail)
-    @Html.ValidationMessageFor(model => model.mail)
+    @Html.EditorFor(model => model.mail) @Html.ValidationMessageFor(model => model.mail)
 </div>
-
 <div class="editor-label">
     @Html.LabelFor(model => model.horarios)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.horarios)
-    @Html.ValidationMessageFor(model => model.horarios)
+    @Html.EditorFor(model => model.horarios) @Html.ValidationMessageFor(model => model.horarios)
 </div>
-
 <div class="editor-label">
     @Html.LabelFor(model => model.foto)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.foto)
-    @Html.ValidationMessageFor(model => model.foto)
+    @Html.EditorFor(model => model.foto) @Html.ValidationMessageFor(model => model.foto)
 </div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.lat)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.lat) @Html.ValidationMessageFor(model => model.lat)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.lon)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.lon) @Html.ValidationMessageFor(model => model.lon)
+</div>
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+<script type="text/javascript">
+    var map = null;
 
+    function getMap() {
+        map = new Microsoft.Maps.Map(document.getElementById('myMap'), { credentials: 'AvaJ6DR6XoP_iwtIaLxnAFhi4HdRQkM-D37FFbalJsOLE83qJI0Bkf23HmXXVK76' });
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(locateSuccess, locateFail);
+        }
+        else {
+            alert('Su browser no soporta GeoPosicionamiento.');
+        }
+    }
+
+    function locateSuccess(loc) {
+        // Set the user's location
+        var userLocation = new Microsoft.Maps.Location(loc.coords.latitude, loc.coords.longitude);
+        // Zoom in on user's location on map
+        map.setView({ center: userLocation, zoom: 40 });
+    }
+
+    // Unsuccessful geolocation
+    function locateFail(geoPositionError) {
+        switch (geoPositionError.code) {
+            case 0: // UNKNOWN_ERROR
+                alert('Error desconocido.');
+                break;
+            case 1: // PERMISSION_DENIED
+                alert('Permiso para obtener posicion denegado.');
+                break;
+            case 2: // POSITION_UNAVAILABLE
+                alert('No se pudo encontrar su posicion');
+                var upaLocation = new Microsoft.Maps.Location(-27.7884, -64.2622);
+                var pin = new Microsoft.Maps.Pushpin(upaLocation, { text: 'CLINICA YUNES SRL', draggable: true });
+                // Add a handler to the pushpin drag
+                Microsoft.Maps.Events.addHandler(pin, 'mouseup', DisplayLoc);
+
+                map.entities.push(pin);
+                map.setView({ center: upaLocation, zoom: 17 });
+                break;
+            case 3: // TIMEOUT
+                alert('Tiempo agotado de espera.');
+                break;
+            default:
+        }
+    }
+    function attachPushpinDragEndEvent() {
+        var pushpinOptions = { draggable: true };
+        var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), pushpinOptions);
+        var pushpindragend = Microsoft.Maps.Events.addHandler(pushpin, 'dragend', endDragDetails);
+        map.entities.push(pushpin);
+        //alert('stop dragging newly added pushpin to raise event');
+    }
+
+    endDragDetails = function (e) {
+        //alert("Event Info - start drag \n" + "Start Latitude/Longitude: " + e.entity.getLocation());
+        document.getElementById('lat').value = e.entity.getLocation().latitude.toFixed(5).replace(".", ",");
+        document.getElementById('lon').value = e.entity.getLocation().longitude.toFixed(5).replace(".", ",");
+    }
+      
+
+</script>
+<div id='myMap' style="position: relative; height: 300px;">
+</div>
+<div>
+    <input type="button" value="mostrar Mapa" onclick="getMap();" />
+    <input type="button" value="Agregar Pin" onclick="attachPushpinDragEndEvent();" />
+</div>

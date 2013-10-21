@@ -161,9 +161,9 @@
     <Compile Include="Migrations\201310142359218_InitialCreate.Designer.cs">
       <DependentUpon>201310142359218_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201310172025259_AddSucursal.foto.cs" />
-    <Compile Include="Migrations\201310172025259_AddSucursal.foto.Designer.cs">
-      <DependentUpon>201310172025259_AddSucursal.foto.cs</DependentUpon>
+    <Compile Include="Migrations\201310201448022_lat-long.cs" />
+    <Compile Include="Migrations\201310201448022_lat-long.Designer.cs">
+      <DependentUpon>201310201448022_lat-long.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -175,10 +175,14 @@
     <Content Include="Content\foundation\app.css" />
     <Content Include="Content\foundation\component.css" />
     <Content Include="Content\foundation\default.css" />
+    <Content Include="Content\foundation\fonts\icomoon.svg" />
     <Content Include="Content\foundation\foundation.css" />
     <Content Include="Content\foundation\foundation.mvc.css" />
     <Content Include="Content\foundation\normalize.css" />
     <Content Include="Content\foundation\redesSociales.css" />
+    <Content Include="Content\popup\magnific-popup.css" />
+    <Content Include="Content\Slider\jquery.bxslider.css" />
+    <Content Include="Content\Slider\responsive-slider-paralax.css" />
     <Content Include="Content\themes\base\images\Logo.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -237,6 +241,17 @@
     <Content Include="favicon.ico" />
     <Content Include="Foundation_readme.txt" />
     <Content Include="Global.asax" />
+    <Content Include="Images\SliderPromos\bx_loader.gif" />
+    <Content Include="Images\SliderPromos\controls.png" />
+    <Content Include="Images\Slider\background-paralax.jpg" />
+    <Content Include="Images\Slider\closedhand.cur.bmp" />
+    <Content Include="Images\Slider\glyphicons-halflings-white.png" />
+    <Content Include="Images\Slider\glyphicons-halflings.png" />
+    <Content Include="Images\Slider\gotas_picasso.png" />
+    <Content Include="Images\Slider\openhand.cur.bmp" />
+    <Content Include="Images\Slider\openhand.cur.gif" />
+    <Content Include="Images\Slider\tersuave_logo.png" />
+    <Content Include="picassoIcon.ico" />
     <Content Include="Scripts\foundation\foundation.abide.js" />
     <Content Include="Scripts\foundation\foundation.alerts.js" />
     <Content Include="Scripts\foundation\foundation.clearing.js" />
@@ -269,8 +284,17 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\popup\popup.js" />
+    <Content Include="Scripts\Slider\bootstrap.js" />
+    <Content Include="Scripts\Slider\jquery.bxslider.js" />
+    <Content Include="Scripts\Slider\jquery.event.move.js" />
+    <Content Include="Scripts\Slider\responsive-slider.js" />
+    <None Include="Scripts\Sucursales\demo.json" />
+    <Content Include="Scripts\Sucursales\jquery.ui.map.js" />
     <Content Include="Scripts\zepto.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -309,6 +333,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Sucursal\SucursalDetalless.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -362,9 +387,26 @@
     <EmbeddedResource Include="Migrations\201310142359218_InitialCreate.resx">
       <DependentUpon>201310142359218_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201310172025259_AddSucursal.foto.resx">
-      <DependentUpon>201310172025259_AddSucursal.foto.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201310201448022_lat-long.resx">
+      <DependentUpon>201310201448022_lat-long.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sucursal\SucursalesMapa.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Slider.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\SliderPromos.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Simulador.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\foundation\fonts\icomoon.eot" />
+    <None Include="Content\foundation\fonts\icomoon.ttf" />
+    <None Include="Content\foundation\fonts\icomoon.woff" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

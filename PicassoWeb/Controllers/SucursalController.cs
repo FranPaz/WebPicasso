@@ -112,5 +112,16 @@ namespace PicassoWeb.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult mapasjson() {
+            List<Sucursal> sucursalesmap = new List<Sucursal>();
+            foreach (var item in context.Sucursal) {
+                sucursalesmap.Add(item);
+            }
+
+            //var sucursalmap = ejemplo();
+            return Json(sucursalesmap, JsonRequestBehavior.AllowGet);
+        }
     }
 }
