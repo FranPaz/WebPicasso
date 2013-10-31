@@ -1,0 +1,43 @@
+@model PicassoWeb.Models.Sucursal
+@{
+    ViewBag.Title = "Detalles";
+    Layout = null;
+}
+<style>
+    fieldset
+    {
+        position: relative;
+        background: #FFF;
+        padding: 20px;
+        width: auto;
+        max-width: 500px;
+        margin: 20px auto;
+    }
+</style>
+<h2>@Model.nombre</h2>
+<fieldset>
+    <legend>Detalles</legend>
+    <div class="display-label">
+        nombre</div>
+    <div class="display-field">@Model.nombre</div>
+    <div class="display-label">
+        dir</div>
+    <div class="display-field">@Model.dir</div>
+    <div class="display-label">
+        tel</div>
+    <div class="display-field">@Model.tel</div>
+    <div class="display-label">
+        mail</div>
+    <div class="display-field">@Model.mail</div>
+    <div class="display-label">
+        horarios</div>
+    <div class="display-field">@Model.horarios</div>
+    <div class="display-label">
+        foto</div>
+    <div class="display-field">
+        <img src="@Model.foto" alt="sucursal" /></div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

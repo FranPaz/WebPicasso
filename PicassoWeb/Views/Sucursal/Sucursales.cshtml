@@ -27,21 +27,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>@item.dir
-                    </td>
-                </tr>
-                <tr>
-                    <td>@item.tel
-                    </td>
-                </tr>
-                <tr>
-                    <td>@item.horarios
-                    </td>
-                </tr>
-                <tr>
                     <td>
                     <!-- Popup Sucursal -->
-                    @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "ajax-popup-link" })
+                    @Html.ActionLink("Detalles", "SucursalDetalles", new { id = item.id }, new { @class = "ajax-popup-link" })
+                    @Html.ActionLink("Abrir Mapa", null, new { id = "mapa" + item.id }, new { href = "http://maps.apple.com/?q=" + item.lat.ToString().Replace(",", ".") + "," + item.lon.ToString().Replace(",", "."), @target = "_blank" })
+                    
                     </td>
                 </tr>
             </table>          
@@ -61,63 +51,4 @@
     $('.ajax-popup-link').magnificPopup({
         type: 'ajax'
     });
-    //// Inline popups
-    //$('#inline-popups').magnificPopup({
-    //  delegate: 'a',
-    //  removalDelay: 500, //delay removal by X to allow out-animation
-    //  callbacks: {
-    //    beforeOpen: function() {
-    //       this.st.mainClass = this.st.el.attr('data-effect');
-    //    }
-    //  },
-    //  midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
-    //});
 </script>
-<style>
-.white-popup {
-  position: relative;
-  background: #FFF;
-  padding: 20px;
-  width: auto;
-  max-width: 500px;
-  margin: 20px auto;
-}
-    /* 
-
-====== Move-horizontal effect ======
-
-*/
-    .mfp-move-horizontal
-    {
-        /* start state */ /* animate in */ /* animate out */
-    }
-    .mfp-move-horizontal .mfp-with-anim
-    {
-        opacity: 0;
-        transition: all 0.3s;
-        transform: translateX(-50px);
-    }
-    .mfp-move-horizontal.mfp-bg
-    {
-        opacity: 0;
-        transition: all 0.3s;
-    }
-    .mfp-move-horizontal.mfp-ready .mfp-with-anim
-    {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    .mfp-move-horizontal.mfp-ready.mfp-bg
-    {
-        opacity: 0.8;
-    }
-    .mfp-move-horizontal.mfp-removing .mfp-with-anim
-    {
-        transform: translateX(50px);
-        opacity: 0;
-    }
-    .mfp-move-horizontal.mfp-removing.mfp-bg
-    {
-        opacity: 0;
-    }
-</style>

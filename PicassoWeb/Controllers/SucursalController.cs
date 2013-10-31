@@ -15,7 +15,7 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /Sucursal/
-
+        [Authorize(Roles = "Admin, Super User")]
         public ViewResult Index()
         {
             return View(context.Sucursal.ToList());
@@ -35,6 +35,15 @@ namespace PicassoWeb.Controllers
             Sucursal sucursal = context.Sucursal.Single(x => x.id == id);
             return View(sucursal);
         }
+
+
+        // rsanch detalles de la sucursal que se muestra en el popup
+        // GET: /Sucursal/SucursalDetalles/5
+        public ViewResult SucursalDetalles(int id) {
+            Sucursal sucursal = context.Sucursal.Single(x => x.id == id);
+            return View(sucursal);
+        }
+
 
         //
         // GET: /Sucursal/Create
