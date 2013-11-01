@@ -2,7 +2,6 @@
 #widget-wrap{
 	margin:0px;
 	padding: 0px 0;
-	/*background:url('/Content/foundation/Footer Picasso.png') repeat center center fixed;*/
 	color: rgba(234, 102, 30, 0.8);
 	-webkit-border-radius: 15px;
 	border-radius: 15px;	
@@ -19,6 +18,11 @@
 	margin-right: 75px;
 }
 
+#links ul{
+  list-style-image: url(images/links.png);
+  margin-left: 15px;
+ }
+ 
 #links ul li a{
 	color: #cccccc;
 	font-size: 13px;
@@ -80,7 +84,6 @@ footer{
 	margin: 0 auto;
 	padding: 30px 0 60px 0;
 	position: relative;
-	/*background:url('/Content/foundation/Footer Picasso.png') repeat center center fixed;*/
 }
 
 #footer-left{

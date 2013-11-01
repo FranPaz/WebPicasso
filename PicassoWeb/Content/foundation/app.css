@@ -1,9 +1,13 @@
 body {
-    background-color: #fff;
-    border-top: solid 10px #000;
+    background:url('../foundation/Header Picasso.png') no-repeat 50% 0 ;  
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
+}
+
+.foto{
+    height:350px;
+    width:500px;
 }

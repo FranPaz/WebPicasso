@@ -358,8 +358,8 @@
 
     settings: {
       animation: 'slide',
-      timer_speed: 10000,
-      pause_on_hover: true,
+      timer_speed: 4000,
+      pause_on_hover: false,
       resume_on_mouseout: false,
       animation_speed: 500,
       stack_on_small: false,
@@ -379,7 +379,7 @@
       caption_class: 'orbit-caption',
       active_slide_class: 'active',
       orbit_transition_class: 'orbit-transitioning',
-      bullets: true,
+      bullets:false,// true,
       timer: true,
       variable_height: false,
       before_slide_change: noop,

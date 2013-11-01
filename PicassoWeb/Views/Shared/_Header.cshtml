@@ -1,10 +1,11 @@
-﻿
-<header>
+﻿<header>
         <!-- fpaz:seccion para completar con la estructura y elementos del header -->
         <!-- Header--> 
             <div class="row">
                 <div class="large-3 columns left">
-                    <h1><img src="@Url.Content("~/Images/LogoPicasso.png")"" alt="Picasso Pinturerias Logo"></h1><!-- rsanch: cambio para usar url.content -->
+                    <ul class="button-group right ">                                               
+                        <li><img src="@Url.Content("~/Images/LogoPicasso.png")" alt="Picasso Pinturerias Logo"></li><!-- rsanch: cambio para usar url.content -->
+                    </ul>
                 </div>
 
                 <!--fpaz: parte de botones de redes sociales -->
@@ -24,19 +25,17 @@
             <div class="large-12 columns rigth">
                 <div class="main clearfix">
 	                <nav id="menu" class="nav">					
-		                <ul>
-                            <li >@Html.ActionLink("Inicio", "Index", "Home")</li>                             
+		                  <ul>
+                            <li >@Html.ActionLink("Inicio", "Index", "Home")</li>
                             <li >@Html.ActionLink("La Empresa", "Empresa", "Home")</li>           
                             <li >@Html.ActionLink("Productos", "Index", "Home")</li>  
-                            <li >@Html.ActionLink("Sucursales", "Sucursales", "Sucursal")</li>			
-                            <li >@Html.ActionLink("Promociones", "Index", "Home")</li>  
-                            <li >@Html.ActionLink("Contacto", "Contacto", "Home")</li>            
-                            @*<li >@Html.ActionLink("Sucursales", "Index", "Sucursal")</li>	*@		
-		                </ul>
+                            <li >@Html.ActionLink("Sucursales", "Sucursales", "Sucursal")</li>                        
+                            <li >@Html.ActionLink("Promociones", "PromocionesDeBancos", "PromoBanco")</li>  
+                            <li >@Html.ActionLink("Contacto", "Contacto", "Home")</li>                                             
+                          </ul>
 	                </nav>
                 </div>
             </div>
             <!--Fin barra navegacion -->
-</header>    
+</header>
 <!-- End Header  -->
-

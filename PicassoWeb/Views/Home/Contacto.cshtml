@@ -2,5 +2,54 @@
     ViewBag.Title = "Contacto";
     Layout = "~/Views/Shared/_Foundation.cshtml";
 }
-
-<h2>Pagina de prueba contacto</h2>
+<div class="row" style="padding: 20px 0 0 0;">
+    <!-- Form -->
+    <form id="contact-form" action="/" method="post">
+    <h3>
+        Estamos en Contacto</h3>
+    <h4>
+        Complete los campos a continuacion, a la brevedad responderemos sus consultas y sugerencias</h4>
+    <div>
+        <label>
+            <span>Nombre: (requerido)</span>
+            <input placeholder="Ingrese su nombre y Apellido" type="text" tabindex="1" required=""
+                autofocus="">
+        </label>
+    </div>
+    <div>
+        <label>
+            <span>Email: (requerido)</span>
+            <input placeholder="Ingrese su direccion de correo electronico" type="email" tabindex="2" required="">
+        </label>
+    </div>
+    <div>
+        <label>
+            <span>Telefono:</span>
+            <input placeholder="Ingrese su numero telefonico" type="tel" tabindex="3" required="">
+        </label>
+    </div>
+    <div>
+        <label>
+            <span>Localidad: (requerido)</span>
+            <input placeholder="Ingrese su Provincia y localidad" type="url" tabindex="4" required="">
+        </label>
+    </div>
+    <div>
+        <label>
+            <span>Asunto: (requerido)</span>
+            <input placeholder="Cual es la razon de su eMail" type="url" tabindex="4" required="">
+        </label>
+    </div>
+    <div>
+        <label>
+            <span>Comentario: (required)</span>
+            <textarea placeholder="Complete con su comentario" tabindex="5" required=""></textarea>
+        </label>
+    </div>
+    <div>
+        <button name="submit" type="submit" id="contact-submit">
+            Enviar Mail</button>
+    </div>
+    </form>
+    <!-- /Form -->
+</div>

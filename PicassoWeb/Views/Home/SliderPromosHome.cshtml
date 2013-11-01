@@ -1,8 +1,10 @@
 ﻿
 
-<div class="sliderPromos" id="promos" >
-<!--fpaz: dentro de este div se van a traer los datos del mapa del json de promociones de bancos -->       
-</div>
+
+<!--fpaz: dentro de este div se van a traer los datos del mapa del json de promociones de bancos --> 
+<ul class="bxslider" id="promos" >
+</ul>
+
 
 <link href="@Url.Content("~/Content/Slider/jquery.bxslider.css")" rel="stylesheet" />
 <script src="@Url.Content("~/Scripts/Slider/jquery.bxslider.js")"></script>
@@ -13,7 +15,7 @@
     // fpaz: script que me recibe los datos del controlador y los muestra en los tags img y <p> de la barrita de promociones
     $.getJSON('@Url.Content("~/Home/jsonPromo")', function (data) {
             $.each(data, function (i, marker) {
-                $("#promos").append("<img src='" + marker.imagen + "'\/> </img> <p>'" + marker.descripcion + "'</p> <a href='~/PromoBanco/Details/" + marker.id + "' >Detalles</a>")                        
+                $("#promos").append(" <li><a href='/PromoBanco/Details/" + marker.id +"'><img src='" + marker.imagen + "' ' title='" + marker.descripcion + "' \/></a><\/li> ")                        
             });
         });
 </script>
@@ -21,13 +23,15 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.sliderPromos').bxSlider({
+        $('.bxslider').bxSlider({
             auto: true,
             mode: 'vertical',
-            slideWidth: 300,
-            slideHeigth:200,
-            minSlides: 2,
-            slideMargin: 10
+            minSlides: 3,
+            maxSlides: 3,
+            slideMargin: 10,
+            captions: true,
+            pager:false,
+            speed:1200
         });
     });
 </script>

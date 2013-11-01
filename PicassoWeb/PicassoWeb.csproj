@@ -189,20 +189,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\50-modelos-de-casas-24grande.jpg" />
     <Content Include="Content\Footer.css" />
     <Content Include="Content\foundation\app.css" />
     <Content Include="Content\foundation\component.css" />
     <Content Include="Content\foundation\default.css" />
     <Content Include="Content\foundation\fonts\icomoon.svg" />
+    <Content Include="Content\foundation\Footer Picasso.png" />
     <Content Include="Content\foundation\foundation.css" />
     <Content Include="Content\foundation\foundation.mvc.css" />
+    <Content Include="Content\foundation\Header Picasso.png" />
     <Content Include="Content\foundation\normalize.css" />
     <Content Include="Content\foundation\redesSociales.css" />
+    <Content Include="Content\foundation\Web Picasso 1024x768.png" />
     <Content Include="Content\loader.gif" />
     <Content Include="Content\OrgStyle.css" />
     <Content Include="Content\popup\magnific-popup.css" />
     <Content Include="Content\Slider\jquery.bxslider.css" />
-    <Content Include="Content\Slider\responsive-slider-paralax.css" />
     <Content Include="Content\Slider\responsive-slider.css" />
     <Content Include="Content\themes\base\images\Logo Picasso.png" />
     <Content Include="Content\themes\base\images\Logo.jpg" />
@@ -270,6 +273,7 @@
     <Content Include="Images\face.png" />
     <Content Include="Images\LogoPicasso.png" />
     <Content Include="Images\mapa.png" />
+    <Content Include="Images\plugin_face.png" />
     <Content Include="Images\SliderPromos\bx_loader.gif" />
     <Content Include="Images\SliderPromos\controls.png" />
     <Content Include="Images\Slider\background-paralax.jpg" />
