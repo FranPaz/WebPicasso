@@ -151,7 +151,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BancoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PromoBancoController.cs" />
+    <Compile Include="Controllers\PromoIntersitioController.cs" />
     <Compile Include="Controllers\SucursalController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -165,13 +168,28 @@
     <Compile Include="Migrations\201310201448022_lat-long.Designer.cs">
       <DependentUpon>201310201448022_lat-long.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310211949110_AddSucursal.lon.cs" />
+    <Compile Include="Migrations\201310211949110_AddSucursal.lon.designer.cs">
+      <DependentUpon>201310211949110_AddSucursal.lon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310212130595_AddBanco.cs" />
+    <Compile Include="Migrations\201310212130595_AddBanco.designer.cs">
+      <DependentUpon>201310212130595_AddBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310212132596_AddPromocion.cs" />
+    <Compile Include="Migrations\201310212132596_AddPromocion.designer.cs">
+      <DependentUpon>201310212132596_AddPromocion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Banco.cs" />
     <Compile Include="Models\PicassoWebContext.cs" />
+    <Compile Include="Models\Promocion.cs" />
     <Compile Include="Models\Sucursal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Footer.css" />
     <Content Include="Content\foundation\app.css" />
     <Content Include="Content\foundation\component.css" />
     <Content Include="Content\foundation\default.css" />
@@ -180,9 +198,13 @@
     <Content Include="Content\foundation\foundation.mvc.css" />
     <Content Include="Content\foundation\normalize.css" />
     <Content Include="Content\foundation\redesSociales.css" />
+    <Content Include="Content\loader.gif" />
+    <Content Include="Content\OrgStyle.css" />
     <Content Include="Content\popup\magnific-popup.css" />
     <Content Include="Content\Slider\jquery.bxslider.css" />
     <Content Include="Content\Slider\responsive-slider-paralax.css" />
+    <Content Include="Content\Slider\responsive-slider.css" />
+    <Content Include="Content\themes\base\images\Logo Picasso.png" />
     <Content Include="Content\themes\base\images\Logo.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -241,6 +263,13 @@
     <Content Include="favicon.ico" />
     <Content Include="Foundation_readme.txt" />
     <Content Include="Global.asax" />
+    <Content Include="Images\bote pintura.png" />
+    <Content Include="Images\bote pintura2.png" />
+    <Content Include="Images\bote pintura3.png" />
+    <Content Include="Images\empresa.jpg" />
+    <Content Include="Images\face.png" />
+    <Content Include="Images\LogoPicasso.png" />
+    <Content Include="Images\mapa.png" />
     <Content Include="Images\SliderPromos\bx_loader.gif" />
     <Content Include="Images\SliderPromos\controls.png" />
     <Content Include="Images\Slider\background-paralax.jpg" />
@@ -251,6 +280,7 @@
     <Content Include="Images\Slider\openhand.cur.bmp" />
     <Content Include="Images\Slider\openhand.cur.gif" />
     <Content Include="Images\Slider\tersuave_logo.png" />
+    <Content Include="Images\volverArriba.png" />
     <Content Include="picassoIcon.ico" />
     <Content Include="Scripts\foundation\foundation.abide.js" />
     <Content Include="Scripts\foundation\foundation.alerts.js" />
@@ -333,6 +363,29 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Sucursal\SucursalDetalles.cshtml" />
+    <Content Include="Views\PromoIntersitio\Create.cshtml" />
+    <Content Include="Views\PromoIntersitio\Delete.cshtml" />
+    <Content Include="Views\PromoIntersitio\Details.cshtml" />
+    <Content Include="Views\PromoIntersitio\Edit.cshtml" />
+    <Content Include="Views\PromoIntersitio\Index.cshtml" />
+    <Content Include="Views\PromoIntersitio\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Banco\Create.cshtml" />
+    <Content Include="Views\Banco\Delete.cshtml" />
+    <Content Include="Views\Banco\Details.cshtml" />
+    <Content Include="Views\Banco\Edit.cshtml" />
+    <Content Include="Views\Banco\Index.cshtml" />
+    <Content Include="Views\Banco\_CreateOrEdit.cshtml" />
+    <Content Include="Views\PromoBanco\Create.cshtml" />
+    <Content Include="Views\PromoBanco\Delete.cshtml" />
+    <Content Include="Views\PromoBanco\Details.cshtml" />
+    <Content Include="Views\PromoBanco\Edit.cshtml" />
+    <Content Include="Views\PromoBanco\Index.cshtml" />
+    <Content Include="Views\PromoBanco\PromocionesDeBancos.cshtml" />
+    <Content Include="Views\PromoBanco\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Home\SliderPromosHome.cshtml" />
+    <Content Include="Views\Home\PopUpIntersitio.cshtml" />
+    <Content Include="Views\Home\Administrador.cshtml" />
+    <Content Include="Views\Home\InfoBoxes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -389,15 +442,21 @@
     <EmbeddedResource Include="Migrations\201310201448022_lat-long.resx">
       <DependentUpon>201310201448022_lat-long.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310211949110_AddSucursal.lon.resx">
+      <DependentUpon>201310211949110_AddSucursal.lon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310212130595_AddBanco.resx">
+      <DependentUpon>201310212130595_AddBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310212132596_AddPromocion.resx">
+      <DependentUpon>201310212132596_AddPromocion.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Sucursal\SucursalesMapa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Slider.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\SliderPromos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Simulador.cshtml" />

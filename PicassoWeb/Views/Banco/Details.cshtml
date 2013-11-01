@@ -1,0 +1,26 @@
+@model PicassoWeb.Models.Banco
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Banco</legend>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">@Model.Nombre</div>
+
+    <div class="display-label">Imagen</div>
+    <div class="display-field">@Model.Imagen</div>
+
+    <div class="display-label">PromosBanco</div>
+    <div class="display-field">@(Model.PromosBanco == null ? "None" : Model.PromosBanco.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

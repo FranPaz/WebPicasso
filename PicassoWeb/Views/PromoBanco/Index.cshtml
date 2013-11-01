@@ -1,0 +1,71 @@
+@model IEnumerable<PicassoWeb.Models.PromoBanco>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Descripcion
+        </th>
+        <th>
+            Descuento
+        </th>
+        <th>
+            Cuotas
+        </th>
+        <th>
+            Dias
+        </th>
+        <th>
+            CondicionesLegales
+        </th>
+        <th>
+            Banco
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        <td>
+			@item.Nombre
+        </td>
+        <td>
+			@item.Descripcion
+        </td>
+        <td>
+			@item.Descuento
+        </td>
+        <td>
+			@item.Cuotas
+        </td>
+        <td>
+			@item.Dias
+        </td>
+        <td>
+			@item.CondicionesLegales
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.Banco).ToString()
+        </td>
+    </tr>
+}
+
+</table>
+
+

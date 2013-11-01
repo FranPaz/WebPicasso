@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PicassoWeb.Models.PromoBanco>
+@{
+    Layout = "~/Views/Shared/_Foundation.cshtml";
+}
+
+@{
+    ViewBag.Title = "Aliansas Bancarias";
+}
+
+<h2>Alianzas Bancarias</h2>
+
+
+@foreach (var item in Model) {
+    <table>
+    <tr> 
+        <td>
+            <img src="@item.Banco.Imagen" alt="Banco" />
+        </td>
+        <td>
+			@item.Descripcion
+        </td>
+    </tr>
+    <tr>
+        <td>
+           <p>Hasta @item.Cuotas sin intereses @item.Dias</p>			
+        </td>
+    </tr>
+    <tr>
+        <td>
+			<p>
+                @item.CondicionesLegales
+            </p>
+        </td>
+    </tr>
+    </table>
+}
+
+
+
+
+

@@ -3,12 +3,17 @@
     @Html.Partial("Slider")
 </div>
 <!-- rsanch: Simulador y Promos abajo del slider -->
-<div class="row">
-    <div class="large-4 columns">
+<div class="large-12 columns rigth">
+    <!-- ifarhat: Seccion informativa en el home -->
+    <div class="large-6 columns left">
+        @Html.Partial("InfoBoxes")
+    </div>
+    <div class="large-2 columns center">
         @Html.Partial("Simulador")
     </div>
-    <div class="large-8 columns">
-        @Html.Partial("SliderPromos")
+    <div class="large-4 columns right">
+        <!--fpaz: dentro de este div se van a traer los datos del mapa del json de promociones de bancos -->
+        @Html.Partial("SliderPromosHome")
     </div>
 </div>
 <!-- rsanch: Fila de abajo antes del footer -->
@@ -16,3 +21,36 @@
     <div class="large-12 columns">
     </div>
 </div>
+<!-- fpaz:PopUp PromoIntersitio -->
+@{
+    <!-- fpaz:Esta parte sirve para ver si hay alguna promo de intersitio con el estado activado asi la muestre, sino no hace nada -->
+    using (PicassoWeb.Models.PicassoWebContext context = new PicassoWeb.Models.PicassoWebContext()) {
+        var promo = (from p in context.PromoIntersitio
+                     where p.Activo == true
+                     select p).Count();
+        if (promo > 0) {            
+
+                        
+    <div id="popup" class="reveal-modal">
+        <a href="#" class="close-reveal-modal">X</a>
+    </div>
+
+                 
+    <script type="text/javascript">
+        // fpaz: script que me recibe los datos del controlador y los muestra en los tags img y <p> del popup de promociones del intersitio
+        $.getJSON('@Url.Content("~/Home/jsonPromoIntersitio")', function (data) {
+            $.each(data, function (i, marker) {
+                $("#popup").append("<img src='" + marker.imagen + "'\/> </img>")
+            });
+        });
+
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#popup").foundation('reveal', 'open');
+            }, 50);
+        });
+    </script>
+        }
+    }
+}
+<!-- fpaz: Fin PopUp PromoIntersitio -->
