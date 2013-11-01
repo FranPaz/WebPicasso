@@ -14,7 +14,7 @@
 	@font-face {
 		font-family: 'icomoon';
 		src: url('../foundation/fonts/icomoon.svg#icomoon') ;
-	};
+	}
 }
 
 .icon-team, .icon-blog, .icon-home, .icon-portfolio, .icon-services, .icon-contact, .icon-menu {

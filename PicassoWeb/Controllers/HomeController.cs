@@ -66,6 +66,7 @@ namespace PicassoWeb.Controllers
         }
 
         //fpaz: agrego el controlador para ir a la pagina del administrador
+        [Authorize(Roles = "Admin")]
         public ActionResult Administrador()
         {
             return View();

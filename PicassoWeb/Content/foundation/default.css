@@ -19,11 +19,6 @@
 .clearfix:before, .clearfix:after { content: " "; display: table; }
 .clearfix:after { clear: both; }
 
-/*body {
-        font-family: 'Lato', Calibri, Arial, sans-serif;
-        color: #89867e;
-        background: #f9f9f9;*/
-}
 
 a {
         color: #333;

@@ -15,7 +15,7 @@
     // fpaz: script que me recibe los datos del controlador y los muestra en los tags img y <p> de la barrita de promociones
     $.getJSON('@Url.Content("~/Home/jsonPromo")', function (data) {
             $.each(data, function (i, marker) {
-                $("#promos").append(" <li><a href='/PromoBanco/Details/" + marker.id +"'><img src='" + marker.imagen + "' ' title='" + marker.descripcion + "' \/></a><\/li> ")                        
+                $("#promos").append(" <li><a href='~/PromoBanco/Details/" + marker.id +"'><img src='" + marker.imagen + "' ' title='" + marker.descripcion + "' \/></a><\/li> ")                        
             });
         });
 </script>
@@ -31,7 +31,9 @@
             slideMargin: 10,
             captions: true,
             pager:false,
-            speed:1200
+            speed:1200,
+            //controls: true,
+            //autoControls:true
         });
     });
 </script>
