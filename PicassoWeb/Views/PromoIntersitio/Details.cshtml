@@ -1,0 +1,29 @@
+@model PicassoWeb.Models.PromoIntersitio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PromoIntersitio</legend>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">@Model.Nombre</div>
+
+    <div class="display-label">Descripcion</div>
+    <div class="display-field">@Model.Descripcion</div>
+
+    <div class="display-label">DirImagen</div>
+    <div class="display-field"><img src="@Model.DirImagen" alt="@Model.Descripcion"/></div>
+
+    <div class="display-label">Activo</div>
+    <div class="display-field">@Model.Activo</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

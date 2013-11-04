@@ -1,0 +1,42 @@
+﻿
+
+
+<!--fpaz: dentro de este div se van a traer los datos del mapa del json de promociones de bancos --> 
+<ul class="bxslider" id="promos" >
+</ul>
+
+
+<link href="@Url.Content("~/Content/Slider/jquery.bxslider.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/Slider/jquery.bxslider.js")"></script>
+
+
+<script type="text/javascript">
+
+    // fpaz: script que me recibe los datos del controlador y los muestra en los tags img y <p> de la barrita de promociones
+    $.getJSON('@Url.Content("~/Home/jsonPromo")', function (data) {
+            $.each(data, function (i, marker) {
+                $("#promos").append(" <li><a href='~/PromoBanco/Details/" + marker.id +"'><img src='" + marker.imagen + "' ' title='" + marker.descripcion + "' \/></a><\/li> ")                        
+            });
+        });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.bxslider').bxSlider({
+            auto: true,
+            mode: 'vertical',
+            minSlides: 3,
+            maxSlides: 3,
+            slideMargin: 10,
+            captions: true,
+            pager:false,
+            speed:1200,
+            //controls: true,
+            //autoControls:true
+        });
+    });
+</script>
+
+
+

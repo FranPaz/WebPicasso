@@ -19,6 +19,9 @@ namespace PicassoWeb.Models
         public string mail { get; set; }
         public string horarios { get; set; }
         public string foto { get; set; }
+
+        public double lat { get; set; } //rsanch: lat y lon agregado para mostrar sucursal en el mapa
+        public double lon { get; set; }
         
     }
 

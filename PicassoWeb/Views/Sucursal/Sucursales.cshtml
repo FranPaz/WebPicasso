@@ -1,51 +1,41 @@
 ﻿@model IEnumerable<PicassoWeb.Models.Sucursal>
-
 @{
     Layout = "~/Views/Shared/_Foundation.cshtml";
 }
-
 @{
     ViewBag.Title = "Sucursales";
 }
-
 <!-- Three-up Content Blocks -->
- 
 <div class="row">
-    <h2>Sursales</h2>
+    <!-- Popup Sucursal -->
+    <div id="test-popup" class="white-popup mfp-hide">
+        Popup content
+    </div>
+    <h2>
+        Sursales</h2>
     <!-- fpaz: parte para los datos de la sucursal -->
-    <div class="large-4 columns">
-        
-        @foreach (var item in Model) {
-            <table>
-                <tr>
-			        <td>@item.nombre</td>
-                </tr>
-                <tr>
-                    <td><img src="@item.foto" alt="sucursal" /></td>        
-                </tr>                        
-                <tr>
-			        <td>@item.dir</td>
-                </tr>
-                <tr>
-			        <td>@item.tel</td>
-                </tr>                
-                <tr>
-			        <td>@item.horarios</td>
-                </tr>
-                <tr>            
-                    <td>@Html.ActionLink("Details", "Details", new { id = item.id })</td>
-                </tr>
-            </table>            
-        }    
-    
-    <!-- fpaz: parte para el google maps -->
+    <div class="large-4 columns left">
+        @foreach (var item in Model) {  
+            <p>
+            @item.nombre
+            <img src="@item.foto" alt="sucursal" />
+            <!-- Popup Sucursal -->
+            @Html.ActionLink("Detalles", "SucursalDetalles", new { id = item.id }, new { @class = "ajax-popup-link" })
+            @Html.ActionLink("Abrir Mapa", null, new { id = "mapa" + item.id }, new { href = "http://maps.apple.com/?q=" + item.lat.ToString().Replace(",", ".") + "," + item.lon.ToString().Replace(",", "."), @target = "_blank" })
+            </p>          
+        }
+        <!-- fpaz: parte para el google maps -->
     </div>
-    <div class="large-4 columns">
-        <img src="http://placehold.it/400x300&text=[Soy el Google Maps]" />        
+    <div class="large-8 columns right">
+        @Html.Partial("SucursalesMapa")
+        <!-- rsanch: Partial del mapa -->
     </div>
-
 </div>
-
-
-
-
+<link href="@Url.Content("~/Content/popup/magnific-popup.css")" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/popup/popup.js" type="text/javascript"></script>
+<script src="~/Scripts/zepto.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $('.ajax-popup-link').magnificPopup({
+        type: 'ajax'
+    });
+</script>

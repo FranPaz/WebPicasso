@@ -1,0 +1,63 @@
+@model PicassoWeb.Models.PromoBanco
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Nombre)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Nombre)
+    @Html.ValidationMessageFor(model => model.Nombre)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Descripcion)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Descripcion)
+    @Html.ValidationMessageFor(model => model.Descripcion)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Descuento)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Descuento)
+    @Html.ValidationMessageFor(model => model.Descuento)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Cuotas)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Cuotas)
+    @Html.ValidationMessageFor(model => model.Cuotas)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Dias)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Dias)
+    @Html.ValidationMessageFor(model => model.Dias)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.CondicionesLegales)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.CondicionesLegales)
+    @Html.ValidationMessageFor(model => model.CondicionesLegales)
+</div>
+
+<div class="editor-label">
+    Banco
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.BancoID, ((IEnumerable<PicassoWeb.Models.Banco>)ViewBag.PossibleBanco).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.BancoID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.BancoID)
+</div>

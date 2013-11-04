@@ -1,0 +1,38 @@
+@model PicassoWeb.Models.PromoBanco
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PromoBanco</legend>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">@Model.Nombre</div>
+
+    <div class="display-label">Descripcion</div>
+    <div class="display-field">@Model.Descripcion</div>
+
+    <div class="display-label">Descuento</div>
+    <div class="display-field">@Model.Descuento</div>
+
+    <div class="display-label">Cuotas</div>
+    <div class="display-field">@Model.Cuotas</div>
+
+    <div class="display-label">Dias</div>
+    <div class="display-field">@Model.Dias</div>
+
+    <div class="display-label">CondicionesLegales</div>
+    <div class="display-field">@Model.CondicionesLegales</div>
+
+    <div class="display-label">Banco</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Banco).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

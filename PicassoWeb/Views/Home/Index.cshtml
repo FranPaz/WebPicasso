@@ -1,11 +1,56 @@
-﻿ <!-- Content Slider -->
+﻿<!-- rsanch: Slider Principal -->
+<div class="large-12 columns">
+    @Html.Partial("Slider")
+</div>
+<!-- rsanch: Simulador y Promos abajo del slider -->
+<div class="large-12 columns rigth">
+    <!-- ifarhat: Seccion informativa en el home -->
+    <div class="large-6 columns left">
+        @Html.Partial("InfoBoxes")
+    </div>
+    <div class="large-2 columns center">
+        @Html.Partial("Simulador")
+    </div>
+    <div class="large-4 columns right">
+        <!--fpaz: dentro de este div se van a traer los datos del mapa del json de promociones de bancos -->
+        @Html.Partial("SliderPromosHome")
+    </div>
+</div>
+<!-- rsanch: Fila de abajo antes del footer -->
 <div class="row">
-<div class="large-12 hide-for-small">
-<div id="featured" data-orbit>
-<img src="https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-frc3/1379528_566014556797183_795537620_n.jpg" alt="slide image">
-<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-prn2/1374751_569666039765368_356295405_n.jpg" alt="slide image">
-<img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-frc1/1240530_558231804242125_699094820_n.jpg" alt="slide image">
+    <div class="large-12 columns">
+    </div>
 </div>
-</div>
-</div>
-<!-- End Content Slider -->
+<!-- fpaz:PopUp PromoIntersitio -->
+@{
+    <!-- fpaz:Esta parte sirve para ver si hay alguna promo de intersitio con el estado activado asi la muestre, sino no hace nada -->
+    using (PicassoWeb.Models.PicassoWebContext context = new PicassoWeb.Models.PicassoWebContext()) {
+        var promo = (from p in context.PromoIntersitio
+                     where p.Activo == true
+                     select p).Count();
+        if (promo > 0) {            
+
+                        
+    <div id="popup" class="reveal-modal">
+        <a href="#" class="close-reveal-modal">X</a>
+    </div>
+
+                 
+    <script type="text/javascript">
+        // fpaz: script que me recibe los datos del controlador y los muestra en los tags img y <p> del popup de promociones del intersitio
+        $.getJSON('@Url.Content("~/Home/jsonPromoIntersitio")', function (data) {
+            $.each(data, function (i, marker) {
+                $("#popup").append("<img src='" + marker.imagen + "'\/> </img>")
+            });
+        });
+
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#popup").foundation('reveal', 'open');
+            }, 50);
+        });
+    </script>
+        }
+    }
+}
+<!-- fpaz: Fin PopUp PromoIntersitio -->

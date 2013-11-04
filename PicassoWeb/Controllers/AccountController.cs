@@ -80,8 +80,12 @@ namespace PicassoWeb.Controllers
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    if (!Roles.RoleExists("Admin")) {
+                        Roles.CreateRole("Admin");
+                    }
+                    Roles.AddUserToRole(model.UserName, "Admin");
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Administrador", "Home");
                 }
                 catch (MembershipCreateUserException e)
                 {

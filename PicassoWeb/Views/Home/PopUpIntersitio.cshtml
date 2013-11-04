@@ -1,0 +1,34 @@
+﻿
+<!-- fpaz:PopUp PromoIntersitio -->
+@{
+    <!-- fpaz:Esta parte sirve para ver si hay alguna promo de intersitio con el estado activado asi la muestre, sino no hace nada -->
+    using (PicassoWeb.Models.PicassoWebContext context = new PicassoWeb.Models.PicassoWebContext()) {
+        var promo = (from p in context.PromoIntersitio
+                     where p.Activo == true
+                     select p).Count();
+        if (promo > 0) {            
+@*<div>
+                @Html.Partial("PopUpIntersitio")                
+            </div>              *@
+            
+    <div id="popup" class="reveal-modal">
+        <div>
+            <a href="#" class="close-reveal-modal">X</a>
+        </div>
+    </div>
+            
+                
+            
+@*<a href="#" class="button" data-reveal-id="popup">hace click</a>*@
+                 
+    <script type="text/javascript">
+        // fpaz: script que me recibe los datos del controlador y los muestra en los tags img y <p> del popup de promociones del intersitio
+        setTimeout(function () {
+            $("#popup").foundation('reveal', 'open');
+        }, 10);
+    </script>
+        }
+    }
+}
+<!-- fpaz: Fin PopUp PromoIntersitio -->
+
