@@ -2,25 +2,32 @@
 <div class="large-12 columns">
     @Html.Partial("Slider")
 </div>
+
+<!-- fpaz: Fila antes de la seccion informativa, simulador y promociones de bancos -->
+ <div class="large-12 columns">
+    <p></p>
+    </div>
+
 <!-- rsanch: Simulador y Promos abajo del slider -->
-<div class="large-12 columns rigth">
-    <!-- ifarhat: Seccion informativa en el home -->
-    <div class="large-6 columns left">
-        @Html.Partial("InfoBoxes")
-    </div>
-    <div class="large-2 columns center">
-        @Html.Partial("Simulador")
-    </div>
-    <div class="large-4 columns right">
-        <!--fpaz: dentro de este div se van a traer los datos del mapa del json de promociones de bancos -->
-        @Html.Partial("SliderPromosHome")
-    </div>
-</div>
-<!-- rsanch: Fila de abajo antes del footer -->
 <div class="row">
-    <div class="large-12 columns">
-    </div>
+                <!-- ifarhat: Seccion informativa en el home -->
+                 <div class="large-8 columns left">      
+                       @Html.Partial("InfoBoxes")
+                 </div>                                  
+                <div class="large-4 columns rigth">  
+                        @Html.Partial("Simulador")
+                </div>
+                <div class="large-3 columns right">   
+                <!--fpaz: dentro de este div se van a traer los datos del mapa del json de promociones de bancos -->   
+                        @Html.Partial("SliderPromosHome")
+                </div>             
+</div> 
+
+<div class="row">
+<div class="large-12 columns">
 </div>
+</div>
+
 <!-- fpaz:PopUp PromoIntersitio -->
 @{
     <!-- fpaz:Esta parte sirve para ver si hay alguna promo de intersitio con el estado activado asi la muestre, sino no hace nada -->
