@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_ErrorLayout.cshtml";
+    }
+<div class="row">
+<div id="FailImage" class="large-12 columns center">
+Error 404
+No encontramos lo que buscas..:(
+</div>
+</div>
+<div class="row">
+<a href="../Home/Index"> Volver</a>
+</div>
+
+<script type="text/javascript">
+    $.getJSON('http://api.giphy.com/v1/gifs/search?q=fail&api_key=dc6zaTOxFJmzC&limit=100', function (data) {
+        var randInt = Math.round(Math.abs((Math.random() * (1 - 100) + 1))).toString();
+        $("#FailImage").append("<img src='" + data.data[randInt].images.fixed_width.url + "'\/> </img>")
+    });
+</script>

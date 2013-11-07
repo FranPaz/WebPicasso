@@ -7,7 +7,8 @@ namespace PicassoWeb
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            //rsanch: comentado para manejar errores personalizados
+            //filters.Add(new HandleErrorAttribute());
         }
     }
 }
