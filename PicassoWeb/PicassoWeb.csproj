@@ -152,6 +152,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BancoController.cs" />
+    <Compile Include="Controllers\ErroresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PromoBancoController.cs" />
     <Compile Include="Controllers\PromoIntersitioController.cs" />
@@ -318,6 +319,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\popup\jquery.cookie.js" />
     <Content Include="Scripts\popup\popup.js" />
     <Content Include="Scripts\Slider\bootstrap.js" />
     <Content Include="Scripts\Slider\jquery.bxslider.js" />
@@ -326,6 +328,9 @@
     <None Include="Scripts\Sucursales\demo.json" />
     <Content Include="Scripts\Sucursales\jquery.ui.map.js" />
     <Content Include="Scripts\zepto.js" />
+    <Content Include="Views\Errores\Error403.cshtml" />
+    <Content Include="Views\Errores\Error500.cshtml" />
+    <None Include="Views\Errores\Error404.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -390,6 +395,7 @@
     <Content Include="Views\Home\PopUpIntersitio.cshtml" />
     <Content Include="Views\Home\Administrador.cshtml" />
     <Content Include="Views\Home\InfoBoxes.cshtml" />
+    <Content Include="Views\Shared\_ErrorLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

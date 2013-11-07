@@ -1,41 +1,53 @@
 ﻿<link rel="stylesheet" href="~/Content/footer.css" type="text/css" />
- <div class="large-12 columns">
-    <p></p>
-  </div>
- <div class="large-12 columns">
+<div class="large-12 columns">
+    <p>
+    </p>
+</div>
+<!-- rsanch: agrego row para alinearlo con el header. -->
+<div class="row">
+    <div class="large-12 columns">
         <div class="large-4 columns rigth">
-            <h4 class="white">
-                Other <strong>Links</strong></h4>
+        <!-- rsanch: Limpieza. -->
+            <h4 class="white">Links</h4>
             <ul>
-                <li><a href="#">www.example.com</a></li>
-                <li><a href="http://www.1stwebdesigner.com">www.1stwebdesigner.com</a></li>
-                <li><a href="http://www.labzip.com">www.labzip.com</a></li>
-                <li><a href="#">www.samplelink.com</a></li>
-                <li><a href="#">www.outgoinglink.com</a></li>
-                <li><a href="#">www.link.com</a></li>
+                <li><a href="#">Link1</a></li>
+                <li><a href="#">Link2</a></li>
+                <li><a href="#">Link3</a></li>
+                <li><a href="#">Link4</a></li>
+                <li><a href="#">Link5</a></li>
+                <li><a href="#">Link6</a></li>
             </ul>
         </div>
         <!-- end Links -->
+        <!-- rsanch: cambiando el icono por un prod destacado q puede venir de la bd. -->
         <div class="large-4 columns center">
             <h4 class="footer-header white">
-                Latest From The <strong>Blog</strong></h4>
-            <img src="~/images/face.png" alt="blog" height="150" width="150" />
-            <p class="title">
-                Maecenas iaculis lorem vel dui vulputate non consequat mi congue.</p>
-            <p class="date">
-                05.30.2012</p>
-            <p>
-                <a href="#" class="readmore">read more</a></p>
+                Producto Destacado</h4>
+            <img src="~/images/bote pintura.png" alt="blog" height="150" width="150" />
+            <p class="title">Pintura</p>
+            <p><a href="#" class="readmore">ver</a></p>
         </div>
-        <!-- end blog -->
-       <div class="large-4 columns left">
+        <!-- end prod -->
+        <!-- rsanch: Agrego fb likebox. -->
+        <div class="large-4 columns left">
             <h4 class="footer-header white">
-                Our <strong>Location</strong></h4>
-            <img src="../../Images/plugin_face.png" alt="face">
-            <p class="address">
-                123 unknown street, address
-                <br>
-                8600 Philippnes</p>
+            </h4>
+            <div class="fb-like-box" data-href="http://www.facebook.com/picassopintureria" data-colorscheme="light"
+                data-show-faces="true" data-header="true" data-stream="false" data-show-border="true">
+            </div>
         </div>
-        <!-- end location -->
+        <!-- end face -->
+    </div>
 </div>
+<div id="fb-root">
+</div>
+<!-- rsanch: scripts para fb likebox. -->
+<script type="text/jscript">    
+(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=126094964099484";
+        fjs.parentNode.insertBefore(js, fjs);
+    } (document, 'script', 'facebook-jssdk'));
+</script>
