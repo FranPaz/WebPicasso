@@ -24,5 +24,12 @@ namespace PicassoWeb.Models
         public DbSet<PicassoWeb.Models.PromoIntersitio> PromoIntersitio { get; set; }
 
         public DbSet<PicassoWeb.Models.PromoBanco> PromoBanco { get; set; }
+
+        public DbSet<PicassoWeb.Models.Producto> Producto { get; set; }
+
+        public DbSet<PicassoWeb.Models.Atributo> Atributo { get; set; }
+
+        public DbSet<PicassoWeb.Models.AtributosProducto> AtributosProducto { get; set; }
+
     }
 }

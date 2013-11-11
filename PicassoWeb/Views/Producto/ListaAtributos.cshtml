@@ -1,0 +1,29 @@
+@model IEnumerable<PicassoWeb.Models.AtributosProducto>
+@{
+    Layout = null; ViewBag.Title = "Create"; 
+}
+<table>
+    <thead>
+        <tr>
+            <th>
+                Atributo
+            </th>
+            <th>
+                Valor
+            </th>
+        </tr>
+    </thead>
+    <tbody id="atributosTbl">
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.atributo.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.valor)
+                </td>
+            </tr>
+          
+        }
+    </tbody>
+</table>

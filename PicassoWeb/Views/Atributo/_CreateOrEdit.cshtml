@@ -1,0 +1,12 @@
+@model PicassoWeb.Models.Atributo
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.nombre)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.nombre)
+    @Html.ValidationMessageFor(model => model.nombre)
+</div>
+
