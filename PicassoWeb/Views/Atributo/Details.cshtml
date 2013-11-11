@@ -1,0 +1,23 @@
+@model PicassoWeb.Models.Atributo
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Atributo</legend>
+
+    <div class="display-label">nombre</div>
+    <div class="display-field">@Model.nombre</div>
+
+    <div class="display-label">productos</div>
+    <div class="display-field">@(Model.productos == null ? "None" : Model.productos.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

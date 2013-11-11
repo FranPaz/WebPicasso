@@ -56,8 +56,12 @@
     <Reference Include="DotNetOpenAuth.OpenId.RelyingParty">
       <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.0.4.12182\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -72,7 +76,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
@@ -151,9 +154,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AtributoController.cs" />
+    <Compile Include="Controllers\AtributosProductoController.cs" />
     <Compile Include="Controllers\BancoController.cs" />
     <Compile Include="Controllers\ErroresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\PromoBancoController.cs" />
     <Compile Include="Controllers\PromoIntersitioController.cs" />
     <Compile Include="Controllers\SucursalController.cs" />
@@ -181,10 +187,19 @@
     <Compile Include="Migrations\201310212132596_AddPromocion.designer.cs">
       <DependentUpon>201310212132596_AddPromocion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201311071533347_productos.cs" />
+    <Compile Include="Migrations\201311071533347_productos.Designer.cs">
+      <DependentUpon>201311071533347_productos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311071916591_atributos.cs" />
+    <Compile Include="Migrations\201311071916591_atributos.Designer.cs">
+      <DependentUpon>201311071916591_atributos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Banco.cs" />
     <Compile Include="Models\PicassoWebContext.cs" />
+    <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\Promocion.cs" />
     <Compile Include="Models\Sucursal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -330,6 +345,12 @@
     <Content Include="Scripts\zepto.js" />
     <Content Include="Views\Errores\Error403.cshtml" />
     <Content Include="Views\Errores\Error500.cshtml" />
+    <Content Include="Views\Atributo\Create.cshtml" />
+    <Content Include="Views\Atributo\Edit.cshtml" />
+    <Content Include="Views\Atributo\Delete.cshtml" />
+    <Content Include="Views\Atributo\Details.cshtml" />
+    <Content Include="Views\Atributo\Index.cshtml" />
+    <Content Include="Views\Atributo\_CreateOrEdit.cshtml" />
     <None Include="Views\Errores\Error404.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -365,9 +386,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index_Original.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Web.config" />
@@ -396,6 +414,16 @@
     <Content Include="Views\Home\Administrador.cshtml" />
     <Content Include="Views\Home\InfoBoxes.cshtml" />
     <Content Include="Views\Shared\_ErrorLayout.cshtml" />
+    <Content Include="Views\Producto\Create.cshtml" />
+    <Content Include="Views\Producto\Edit.cshtml" />
+    <Content Include="Views\Producto\Delete.cshtml" />
+    <Content Include="Views\Producto\Details.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Producto\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Producto\Atributos.cshtml" />
+    <Content Include="Views\Producto\ListaAtributos.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_LogoHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -440,9 +468,6 @@
     <Content Include="Views\Sucursal\_CreateOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Foundation_Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Sucursal\Sucursales.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -460,6 +485,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310212132596_AddPromocion.resx">
       <DependentUpon>201310212132596_AddPromocion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311071533347_productos.resx">
+      <DependentUpon>201311071533347_productos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311071916591_atributos.resx">
+      <DependentUpon>201311071916591_atributos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -492,7 +523,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>7089</DevelopmentServerPort>
+          <DevelopmentServerPort>13555</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

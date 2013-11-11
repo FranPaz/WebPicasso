@@ -23,9 +23,7 @@
         <div class="large-4 columns center">
             <h4 class="footer-header white">
                 Producto Destacado</h4>
-            <img src="~/images/bote pintura.png" alt="blog" height="150" width="150" />
-            <p class="title">Pintura</p>
-            <p><a href="#" class="readmore">ver</a></p>
+                <div id="productoDestacado"></div>
         </div>
         <!-- end prod -->
         <!-- rsanch: Agrego fb likebox. -->
@@ -50,4 +48,8 @@
         js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=126094964099484";
         fjs.parentNode.insertBefore(js, fjs);
     } (document, 'script', 'facebook-jssdk'));
+
+    $.getJSON('@Url.Content("~/Home/getProductoDestacado")', function (data) {
+        $("#productoDestacado").append("<img src='" + data.imagen + "'\/> </img><p class='title'>" + data.nombre + "</p><p><a href='/Producto/Details/1' class='readmore'>ver mas</a></p>");
+    });
 </script>

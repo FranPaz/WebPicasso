@@ -1,4 +1,4 @@
-@model PicassoWeb.Models.PromoBanco
+@model PicassoWeb.Models.Atributo
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,9 +9,9 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>PromoBanco</legend>
+        <legend>Atributo</legend>
 
-        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.id)
 		@Html.Partial("_CreateOrEdit", Model)
 
         <p>

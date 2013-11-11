@@ -1,4 +1,4 @@
-@model IEnumerable<PicassoWeb.Models.Sucursal>
+@model IEnumerable<PicassoWeb.Models.Atributo>
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -16,19 +16,7 @@
             nombre
         </th>
         <th>
-            dir
-        </th>
-        <th>
-            tel
-        </th>
-        <th>
-            mail
-        </th>
-        <th>
-            horarios
-        </th>
-        <th>
-            foto
+            productos
         </th>
     </tr>
 
@@ -43,19 +31,7 @@
 			@item.nombre
         </td>
         <td>
-			@item.dir
-        </td>
-        <td>
-			@item.tel
-        </td>
-        <td>
-			@item.mail
-        </td>
-        <td>
-			@item.horarios
-        </td>
-        <td>
-			@item.foto
+			@(item.productos == null ? "None" : item.productos.Count.ToString())
         </td>
     </tr>
 }

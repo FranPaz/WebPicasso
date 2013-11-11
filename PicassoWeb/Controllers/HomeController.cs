@@ -44,7 +44,16 @@ namespace PicassoWeb.Controllers
 
             return View();
         }
+        
+        //rasanch: producto destacado en el HOME
+        public ActionResult getProductoDestacado()
+        {
+            int i = 0;
+            var p = context.Producto.Find(1);
+            object producto = new { imagen = p.imagen, nombre = p.descripcion};
 
+            return Json(producto, JsonRequestBehavior.AllowGet);
+        }
         //fpaz: action method para mostrar los datos de las promo bancos en la barra de promos del home
         public ActionResult jsonPromo()
         {

@@ -24,26 +24,7 @@
     <!--rsanch: jQuery -->
 </head>
 <body>
-        <!-- Header--> 
-            <div class="row">
-                <div class="large-3 columns left">
-                    <ul class="button-group right ">                                               
-                        <li><img src="@Url.Content("~/Images/LogoPicasso.png")" alt="Picasso Pinturerias Logo"></li><!-- rsanch: cambio para usar url.content -->
-                    </ul>
-                </div>
-
-                <!--fpaz: parte de botones de redes sociales -->
-                <div class="large-9 columns hide-for-medium hide-for-small">                
-                    <ul class="button-group right ">
-                        <li><span><a href="https://www.facebook.com/picassopintureria" target="_blank" class="social-network facebook" title="Seguinos en Facebook"></a></span></li>
-                        
-                        <li><span><a href="#" class="social-network twitter"></a></span></li>
-                        
-                        <li><span><a href="#" class="social-network gplus"></a></span></li>
-                    </ul>
-                </div>                              
-            </div> 
-        <!-- End Header-->
+    @Html.Partial("_LogoHeader")
     @RenderBody()
 </body>
 </html>
