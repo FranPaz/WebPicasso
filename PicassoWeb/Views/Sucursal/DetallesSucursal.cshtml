@@ -1,0 +1,31 @@
+@model PicassoWeb.Models.Sucursal
+@{
+    ViewBag.Title = "Detalles de Sucursal";
+    Layout = null;
+}
+<div class="row listadoProductos">
+    <div class="large-8 columns left ">
+        <h2>
+            <span class="subtitulosDetalleProductos">@Model.Nombre</span></h2>
+        <h3>
+            Direccion: @Model.Direccion</h3>
+        <p>@Html.ActionLink("Abrir Mapa", null, new { Id = "mapa" + Model.Id }, new { href = "http://maps.apple.com/?q=" + Model.Lat.ToString().Replace(",", ".") + "," + Model.Lon.ToString().Replace(",", "."), @target = "_blank" })</p>
+        <h3>
+            <span class="subtitulosDetalleProductos">Detalles </span>
+        </h3>
+        <div id="atributos">
+            <h5>
+                Telefono: <a href="tel:@Model.Telefono">@Model.Telefono</a></h5>
+            <h5>
+                Email: <a target="_blank" href="mailto:@Model.Mail">@Model.Mail</a></h5>
+            <h5>
+                Horarios</h5>
+            <p>@Model.Horarios</p>
+        </div>
+    </div>
+    <div class="large-4 columns">
+        <button title="Cerrar (Esc)" type="button" class="mfp-close">
+            ×</button>
+        <img src="@Model.Foto" alt="@Model.Nombre">
+    </div>
+</div>

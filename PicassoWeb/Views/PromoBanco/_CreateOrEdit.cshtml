@@ -55,7 +55,7 @@
 </div>
 <div class="editor-field">
     @Html.DropDownListFor(model => model.BancoID, ((IEnumerable<PicassoWeb.Models.Banco>)ViewBag.PossibleBanco).Select(option => new SelectListItem {
-        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Text = Html.DisplayTextFor(_ => option.Nombre).ToString(), 
         Value = option.Id.ToString(),
         Selected = (Model != null) && (option.Id == Model.BancoID)
     }), "Choose...")

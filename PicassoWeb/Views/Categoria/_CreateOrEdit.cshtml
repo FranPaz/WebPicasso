@@ -1,0 +1,28 @@
+@model PicassoWeb.Models.Categoria
+
+<div class="row">
+    <div class="small-10 columns">
+        @Html.LabelFor(model => model.Nombre)
+        @Html.EditorFor(model => model.Nombre)
+        @Html.ValidationMessageFor(model => model.Nombre)
+    </div>
+    <div class="small-2 columns">
+        @Html.LabelFor(model => model.Activo)
+        @Html.EditorFor(model => model.Activo)
+        @Html.ValidationMessageFor(model => model.Activo)
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Imagen)
+        @Html.EditorFor(model => model.Imagen)
+        @Html.ValidationMessageFor(model => model.Imagen)
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Descripcion)
+        @Html.TextAreaFor(model => model.Descripcion)
+        @Html.ValidationMessageFor(model => model.Descripcion)
+    </div>
+</div>

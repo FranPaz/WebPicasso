@@ -15,24 +15,24 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /Atributo/
-
+        [Authorize(Roles = "Admin")]
         public ViewResult Index()
         {
-            return View(context.Atributo.Include(atributo => atributo.productos).ToList());
+            return View(context.Atributo.Include(atributo => atributo.Productos).ToList());
         }
 
         //
         // GET: /Atributo/Details/5
-
-        public ViewResult Details(int id)
+        [Authorize(Roles = "Admin")]
+        public ViewResult Details(int Id)
         {
-            Atributo atributo = context.Atributo.Single(x => x.id == id);
+            Atributo atributo = context.Atributo.Single(x => x.Id == Id);
             return View(atributo);
         }
 
         //
         // GET: /Atributo/Create
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -40,7 +40,7 @@ namespace PicassoWeb.Controllers
 
         //
         // POST: /Atributo/Create
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(Atributo atributo)
         {
@@ -56,16 +56,16 @@ namespace PicassoWeb.Controllers
         
         //
         // GET: /Atributo/Edit/5
- 
-        public ActionResult Edit(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(int Id)
         {
-            Atributo atributo = context.Atributo.Single(x => x.id == id);
+            Atributo atributo = context.Atributo.Single(x => x.Id == Id);
             return View(atributo);
         }
 
         //
         // POST: /Atributo/Edit/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(Atributo atributo)
         {
@@ -80,20 +80,20 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /Atributo/Delete/5
- 
-        public ActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(int Id)
         {
-            Atributo atributo = context.Atributo.Single(x => x.id == id);
+            Atributo atributo = context.Atributo.Single(x => x.Id == Id);
             return View(atributo);
         }
 
         //
         // POST: /Atributo/Delete/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int Id)
         {
-            Atributo atributo = context.Atributo.Single(x => x.id == id);
+            Atributo atributo = context.Atributo.Single(x => x.Id == Id);
             context.Atributo.Remove(atributo);
             context.SaveChanges();
             return RedirectToAction("Index");

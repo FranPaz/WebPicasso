@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <fieldset>
     <legend>PromoIntersitio</legend>
@@ -16,14 +16,14 @@
     <div class="display-field">@Model.Descripcion</div>
 
     <div class="display-label">DirImagen</div>
-    <div class="display-field"><img src="@Model.DirImagen" alt="@Model.Descripcion"/></div>
+    <div class="display-field"><img src="@Model.Imagen" alt="@Model.Descripcion"/></div>
 
     <div class="display-label">Activo</div>
     <div class="display-field">@Model.Activo</div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Volver", "Index")
 </p>
 
 

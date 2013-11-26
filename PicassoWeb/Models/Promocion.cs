@@ -10,15 +10,22 @@ namespace PicassoWeb.Models
 {
     public abstract class Promocion
     {
+        public Promocion() {
+            this.Activo = true;
+        }
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
+        public bool Activo { get; set; }
     }
 
     public class PromoIntersitio:Promocion
     {
-        public string DirImagen { get; set; }
-        public bool Activo { get; set; }
+        public PromoIntersitio() {
+            this.Imagen = "/Images/noPhoto.jpg";
+        }
+
+        public string Imagen { get; set; }
     }
 
     public class PromoBanco:Promocion

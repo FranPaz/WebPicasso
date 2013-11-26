@@ -4,34 +4,34 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 
-<h2>Index</h2>
+<h2>Atributos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table>
     <tr>
         <th></th>
         <th>
-            nombre
+            Nombre
         </th>
         <th>
-            productos
+            Productos
         </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Editar", "Edit", new { Id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { Id=item.Id }) |
+            @Html.ActionLink("Borrar", "Delete", new { Id=item.Id })
         </td>
         <td>
-			@item.nombre
+			@item.Nombre
         </td>
         <td>
-			@(item.productos == null ? "None" : item.productos.Count.ToString())
+			@(item.Productos == null ? "None" : item.Productos.Count.ToString())
         </td>
     </tr>
 }

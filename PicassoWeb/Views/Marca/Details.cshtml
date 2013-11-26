@@ -1,0 +1,32 @@
+@model PicassoWeb.Models.Marca
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+
+<h2>Detalles</h2>
+
+<fieldset>
+    <legend>Marca</legend>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">@Model.Nombre</div>
+
+    <div class="display-label">Descripcion</div>
+    <div class="display-field">@Model.Descripcion</div>
+
+    <div class="display-label">Imagen</div>
+    <div class="display-field">@Model.Imagen</div>
+
+    <div class="display-label">Activo</div>
+    <div class="display-field">@Model.Activo</div>
+
+    <div class="display-label">Productos</div>
+    <div class="display-field">@(Model.Productos == null ? "None" : Model.Productos.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Volver", "Index")
+</p>
+
+

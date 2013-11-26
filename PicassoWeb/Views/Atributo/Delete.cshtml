@@ -4,22 +4,22 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 
-<h2>Delete</h2>
+<h2>Borrar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Seguro que desea borrar este registro?</h3>
 <fieldset>
     <legend>Atributo</legend>
 
-    <div class="display-label">nombre</div>
-    <div class="display-field">@Model.nombre</div>
+    <div class="display-label">Nombre</div>
+    <div class="display-field">@Model.Nombre</div>
 
-    <div class="display-label">productos</div>
-    <div class="display-field">@(Model.productos == null ? "None" : Model.productos.Count.ToString())</div>
+    <div class="display-label">Productos</div>
+    <div class="display-field">@(Model.Productos == null ? "None" : Model.Productos.Count.ToString())</div>
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Borrar" class="button" /> |
+        @Html.ActionLink("Volver", "Index")
     </p>
 }
 

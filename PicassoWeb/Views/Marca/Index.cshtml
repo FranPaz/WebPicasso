@@ -1,0 +1,59 @@
+@model IEnumerable<PicassoWeb.Models.Marca>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+
+<h2>Marcas</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Descripcion
+        </th>
+        <th>
+            Imagen
+        </th>
+        <th>
+            Activo
+        </th>
+        <th>
+            Productos
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.Id })
+        </td>
+        <td>
+			@item.Nombre
+        </td>
+        <td>
+			@item.Descripcion
+        </td>
+        <td>
+			@item.Imagen
+        </td>
+        <td>
+			@item.Activo
+        </td>
+        <td>
+			@(item.Productos == null ? "None" : item.Productos.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

@@ -1,0 +1,48 @@
+﻿@model PagedList.IPagedList<PicassoWeb.Models.Producto>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<h4>@(ViewBag.categoriaId)</h4>
+@foreach (var item in Model) {
+    if (item.Activo) { 
+    <div class="large-4 columns left">
+        <img src="@item.Imagen">
+        <div class="panel">
+            <h5>@item.Nombre</h5>
+            <h6 class="subheader">
+                <!-- Popup Sucursal -->
+                @Html.ActionLink("Ver Mas...", "DetalleProducto", new { prmId = item.Id }, new { @class = "ajax-popup-link" })
+            </h6>
+        </div>
+    </div>   
+    }
+}
+<br />
+<div id="myPager">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("_ListadoProductos",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, prmCategoria = ViewBag.categoriaId }))
+</div>
+<link href="../../Content/popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<script src="../../Scripts/popup/popup.js" type="text/javascript"></script>
+<script src="../../Scripts/zepto.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $('.ajax-popup-link').magnificPopup({
+        type: 'ajax'
+    });    
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#myPager').on('click', 'a', function () {
+            $.ajax({
+                url: this.href,
+                type: 'GET',
+                cache: false,
+                success: function (result) {
+                    $('#Productos').html(result);
+                }
+            });
+            return false;
+        });
+    });
+</script>

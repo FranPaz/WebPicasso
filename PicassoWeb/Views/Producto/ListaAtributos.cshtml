@@ -3,24 +3,14 @@
     Layout = null; ViewBag.Title = "Create"; 
 }
 <table>
-    <thead>
-        <tr>
-            <th>
-                Atributo
-            </th>
-            <th>
-                Valor
-            </th>
-        </tr>
-    </thead>
     <tbody id="atributosTbl">
         @foreach (var item in Model) {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.atributo.nombre)
+                    @Html.DisplayFor(modelItem => item.Atributo.Nombre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.valor)
+                    @Html.DisplayFor(modelItem => item.Valor)
                 </td>
             </tr>
           

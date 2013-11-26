@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     @*Set the viewport width to device width for mobile *@
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - Picasso Pinturerias</title>
+    <title>@ViewBag.Title Administrador</title>
     <!--fpaz: puse el titulo "Picasso Pinturerias" -->
     <link href="~/picassoIcon.ico" rel="shortcut icon" type="image/x-icon" />
     <!--rsanch: Cambie el favicon -->
@@ -22,6 +22,32 @@
     @Scripts.Render("~/bundles/modernizr")
     <script src="@Url.Content("~/Scripts/jquery.js")" type="text/javascript"></script>
     <!--rsanch: jQuery -->
+    <style type="text/css">
+        div.shadow
+        {
+            background-color: White;
+            -moz-box-shadow: 3px 3px 4px #444;
+            -webkit-box-shadow: 3px 3px 4px #444;
+            box-shadow: 3px 3px 4px #444;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#444444')";
+            filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#444444');
+        }
+        tbody tr:nth-child(odd)
+        {
+            background-color: #EEE;
+        }
+        tbody tr:hover td
+        {
+            background: rgb(180,227,145); /* Old browsers */
+            background: -moz-linear-gradient(top,  rgba(180,227,145,1) 0%, rgba(97,196,25,1) 50%, rgba(180,227,145,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(180,227,145,1)), color-stop(50%,rgba(97,196,25,1)), color-stop(100%,rgba(180,227,145,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=0 ); /* IE6-9 */
+        }
+    </style>
 </head>
 <body>
     <nav class="top-bar">
@@ -36,16 +62,31 @@
         </ul>
 
         <ul class="right">
+            <li>@Html.ActionLink("Slider", "Index", "Slider")</li>
           <li>@Html.ActionLink("Sucursales", "Index", "Sucursal")</li>
-          <li>@Html.ActionLink("Promociones de Bancos", "Index", "PromoBanco")</li>
+          <li class="has-dropdown" >@Html.ActionLink("Promociones de Bancos", "Index", "PromoBanco")
+            <ul class="dropdown">
+            <li>@Html.ActionLink("Promociones de Bancos", "Index", "PromoBanco")</li>
+            <li>@Html.ActionLink("Bancos", "Index", "Banco")</li>
+            </ul>
+          </li>
           <li>@Html.ActionLink("Promo Intersitio", "Index", "PromoIntersitio")</li>
-          <li>@Html.ActionLink("Banco", "Index", "Banco")</li>
-          <li>@Html.ActionLink("Producto", "Index", "Producto")</li>
+          <li class="has-dropdown" >@Html.ActionLink("Productos", "Index", "Producto")
+            <ul class="dropdown">
+            <li>@Html.ActionLink("Productos", "Index", "Producto")</li>
+            <li>@Html.ActionLink("Categorias", "Index", "Categoria")</li>
+            <li>@Html.ActionLink("Atributos", "Index", "Atributo")</li>
+            <li>@Html.ActionLink("Marcas", "Index", "Marca")</li>
+            </ul>
+          </li>
         </ul>
       </section>
-
     </nav>
-    @RenderBody()
+    <div class="row shadow">
+        <div class="large-12 columns">
+            @RenderBody()
+        </div>
+    </div>
     <script type="text/javascript" src="~/Scripts/foundation/foundation.js"></script>
     <script type="text/javascript" src="~/Scripts/foundation/foundation.abide.js"></script>
     <script type="text/javascript" src="~/Scripts/foundation/foundation.alerts.js"></script>

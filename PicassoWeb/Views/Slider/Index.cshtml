@@ -1,0 +1,44 @@
+@model IEnumerable<PicassoWeb.Models.Slider>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>
+    Slides</h2>
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table>
+    <tr>
+        <th width="30%">
+        </th>
+        <th width="40%" >
+            Nombre
+        </th>
+        <th width="30%" >
+            Url
+        </th>
+    </tr>
+    @foreach (var item in Model) {
+        <tr>
+            <td width="30%">
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.Id })
+            </td>
+            <td width="40%" >
+                <div class="small-9">
+                    @item.Nombre
+                </div>
+            </td>
+            <td width="30%" >
+                <div class="row">
+                    <div class="small-3 center">
+                        <a class="th [radius]" href="@item.Url">
+                            <img src="@item.Url" alt="@item.Id" />
+                        </a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+</table>

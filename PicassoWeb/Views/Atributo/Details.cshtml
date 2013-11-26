@@ -4,20 +4,20 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <fieldset>
     <legend>Atributo</legend>
 
-    <div class="display-label">nombre</div>
-    <div class="display-field">@Model.nombre</div>
+    <div class="display-label">Nombre</div>
+    <div class="display-field">@Model.Nombre</div>
 
-    <div class="display-label">productos</div>
-    <div class="display-field">@(Model.productos == null ? "None" : Model.productos.Count.ToString())</div>
+    <div class="display-label">Productos</div>
+    <div class="display-field">@(Model.Productos == null ? "None" : Model.Productos.Count.ToString())</div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { Id=Model.Id }) |
+    @Html.ActionLink("Volver", "Index")
 </p>
 
 

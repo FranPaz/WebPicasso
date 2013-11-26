@@ -1,0 +1,26 @@
+@model PicassoWeb.Models.Marca
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+
+<h2>Crear</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Marca</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input type="submit" value="Crear" class="button" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver", "Index")
+</div>
+
+

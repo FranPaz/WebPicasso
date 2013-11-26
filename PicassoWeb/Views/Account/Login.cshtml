@@ -1,6 +1,6 @@
 ﻿@model PicassoWeb.Models.LoginModel
 @{
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_ErrorLayout.cshtml";
 }
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
@@ -22,7 +22,7 @@
     <div class="row">
         <div class="small-12 columns">
             @Html.CheckBoxFor(m => m.RememberMe)
-            @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            @Html.LabelFor(m => m.RememberMe, "Recordar",new { @class = "checkbox" })
         </div>
         <input type="submit" value="Iniciar Sesion" class="button postfix" />
     </div>

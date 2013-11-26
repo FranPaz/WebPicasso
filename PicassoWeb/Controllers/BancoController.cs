@@ -15,7 +15,7 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /Banco/
-
+        [Authorize(Roles = "Admin")]
         public ViewResult Index()
         {
             return View(context.Banco.Include(banco => banco.PromosBanco).ToList());
@@ -23,7 +23,7 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /Banco/Details/5
-
+        [Authorize(Roles = "Admin")]
         public ViewResult Details(int id)
         {
             Banco banco = context.Banco.Single(x => x.Id == id);
@@ -32,18 +32,19 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /Banco/Create
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            return View();
+            return View(new Banco());
         } 
 
         //
         // POST: /Banco/Create
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(Banco banco)
         {
+            banco.Imagen = UploadHandler.subir(Request.Files[0], "Bancos", (context.Banco.Count() + 1) + "-" + banco.Nombre.Trim().Replace(" ", String.Empty));
             if (ModelState.IsValid)
             {
                 context.Banco.Add(banco);
@@ -56,7 +57,7 @@ namespace PicassoWeb.Controllers
         
         //
         // GET: /Banco/Edit/5
- 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             Banco banco = context.Banco.Single(x => x.Id == id);
@@ -65,10 +66,11 @@ namespace PicassoWeb.Controllers
 
         //
         // POST: /Banco/Edit/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(Banco banco)
         {
+            banco.Imagen = UploadHandler.subir(Request.Files[0], "Bancos", banco.Id + "-" + banco.Nombre.Trim().Replace(" ", String.Empty));
             if (ModelState.IsValid)
             {
                 context.Entry(banco).State = EntityState.Modified;
@@ -80,7 +82,7 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /Banco/Delete/5
- 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             Banco banco = context.Banco.Single(x => x.Id == id);
@@ -89,7 +91,7 @@ namespace PicassoWeb.Controllers
 
         //
         // POST: /Banco/Delete/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {

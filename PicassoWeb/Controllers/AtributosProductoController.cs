@@ -15,7 +15,7 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /AtributosProducto/
-
+        [Authorize(Roles = "Admin")]
         public ViewResult Index()
         {
             return View(context.AtributosProducto.ToList());
@@ -23,16 +23,16 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /AtributosProducto/Details/5
-
-        public ViewResult Details(int id)
+        [Authorize(Roles = "Admin")]
+        public ViewResult Details(int Id)
         {
-            AtributosProducto atributosproducto = context.AtributosProducto.Single(x => x.id == id);
+            AtributosProducto atributosproducto = context.AtributosProducto.Single(x => x.Id == Id);
             return View(atributosproducto);
         }
 
         //
         // GET: /AtributosProducto/Create
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.PossibleProducto = context.Producto;
@@ -42,7 +42,7 @@ namespace PicassoWeb.Controllers
 
         //
         // POST: /AtributosProducto/Create
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(AtributosProducto atributosproducto)
         {
@@ -60,10 +60,10 @@ namespace PicassoWeb.Controllers
         
         //
         // GET: /AtributosProducto/Edit/5
- 
-        public ActionResult Edit(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(int Id)
         {
-            AtributosProducto atributosproducto = context.AtributosProducto.Single(x => x.id == id);
+            AtributosProducto atributosproducto = context.AtributosProducto.Single(x => x.Id == Id);
             ViewBag.PossibleProducto = context.Producto;
             ViewBag.PossibleAtributo = context.Atributo;
             return View(atributosproducto);
@@ -71,7 +71,7 @@ namespace PicassoWeb.Controllers
 
         //
         // POST: /AtributosProducto/Edit/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(AtributosProducto atributosproducto)
         {
@@ -88,20 +88,20 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /AtributosProducto/Delete/5
- 
-        public ActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(int Id)
         {
-            AtributosProducto atributosproducto = context.AtributosProducto.Single(x => x.id == id);
+            AtributosProducto atributosproducto = context.AtributosProducto.Single(x => x.Id == Id);
             return View(atributosproducto);
         }
 
         //
         // POST: /AtributosProducto/Delete/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int Id)
         {
-            AtributosProducto atributosproducto = context.AtributosProducto.Single(x => x.id == id);
+            AtributosProducto atributosproducto = context.AtributosProducto.Single(x => x.Id == Id);
             context.AtributosProducto.Remove(atributosproducto);
             context.SaveChanges();
             return RedirectToAction("Index");

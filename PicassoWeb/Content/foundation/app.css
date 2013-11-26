@@ -1,8 +1,12 @@
-body {
-    background:url('../foundation/Header Picasso.png') no-repeat 50% 0 ;  
+#fondo
+{
+	/* fpaz: modificado 16/11/2013 para encajar la imagen de fondo completa de cada seccion*/    
+	/*background:url('/Images/fondoinicio.jpg');
+	background-size: 100% 100%;*/
+	/* fpaz: Fin*/
     color: #333;
     font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-family: "Calibri", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
 }
@@ -10,4 +14,50 @@ body {
 .foto{
     height:350px;
     width:500px;
+}
+
+/*fpaz: clases para el catalogo de productos*/
+.contenido
+{
+	border: none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 0px;
+	-webkit-box-shadow: 0px 0px 25px #505050;
+	-moz-box-shadow: 0px 0px 25px #505050;
+	background-color: white;
+	}
+
+.listadoProductos
+{
+	border: none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 0px;
+	-webkit-box-shadow: 0px 0px 25px #505050;	
+	-moz-box-shadow: 0px 0px 25px #505050;
+	background-color: white;
+	}
+	
+	
+ .subtitulosDetalleProductos {
+color: #008ECC;
+font-family: Calibri, Arial, "Arial Narrow", sans-serif;
+font-weight: bold;
+}
+
+.titulosInfoPagina {
+color:Black;
+font-family: Calibri, Arial, "Arial Narrow", sans-serif;
+font-weight: bold;
+}
+
+#atributos h5 {
+color: #666666;
+font-weight: bold;
+font-family: "Calibri", Arial, "Arial Narrow", sans-serif;
+}
+
+ .lema {
+color:White;
+font-family: Calibri, Arial, "Arial Narrow", sans-serif;
+font-weight: bold;
 }

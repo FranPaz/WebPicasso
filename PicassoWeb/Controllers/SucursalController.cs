@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using PicassoWeb.Models;
 
+
 namespace PicassoWeb.Controllers
 {   
     public class SucursalController : Controller
@@ -15,7 +16,7 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /Sucursal/
-        [Authorize(Roles = "Admin, Super User")]
+        [Authorize(Roles = "Admin")]
         public ViewResult Index()
         {
             return View(context.Sucursal.ToList());
@@ -24,41 +25,47 @@ namespace PicassoWeb.Controllers
         //fpaz: Agrego la accion sucursales que es la que voy a usar para mostrar el listado de sucursales al cliente
         public ViewResult Sucursales()
         {
+            ViewBag.fondoBody = "/Images/fondosucursales.jpg";            
+            ViewBag.imagenFooter = "/Images/imagenproductos.png";    
             return View(context.Sucursal.ToList());
         }
 
         //
         // GET: /Sucursal/Details/5
-
-        public ViewResult Details(int id)
+        [Authorize(Roles = "Admin")]
+        public ViewResult Details(int Id)
         {
-            Sucursal sucursal = context.Sucursal.Single(x => x.id == id);
+            Sucursal sucursal = context.Sucursal.Single(x => x.Id == Id);
             return View(sucursal);
         }
 
 
         // rsanch detalles de la sucursal que se muestra en el popup
         // GET: /Sucursal/SucursalDetalles/5
-        public ViewResult SucursalDetalles(int id) {
-            Sucursal sucursal = context.Sucursal.Single(x => x.id == id);
+        public ViewResult DetallesSucursal(int Id) {
+            Sucursal sucursal = context.Sucursal.Single(x => x.Id == Id);
             return View(sucursal);
         }
 
 
         //
         // GET: /Sucursal/Create
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            return View();
+            return View(new Sucursal());
         } 
+
+        
 
         //
         // POST: /Sucursal/Create
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(Sucursal sucursal)
         {
+            sucursal.Foto = UploadHandler.subir(Request.Files[0], "Sucursales", (context.Sucursal.Count() + 1) + "-" + sucursal.Nombre.Trim().Replace(" ", String.Empty));
+
             if (ModelState.IsValid)
             {
                 context.Sucursal.Add(sucursal);
@@ -71,19 +78,21 @@ namespace PicassoWeb.Controllers
         
         //
         // GET: /Sucursal/Edit/5
- 
-        public ActionResult Edit(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(int Id)
         {
-            Sucursal sucursal = context.Sucursal.Single(x => x.id == id);
+            Sucursal sucursal = context.Sucursal.Single(x => x.Id == Id);
             return View(sucursal);
         }
 
         //
         // POST: /Sucursal/Edit/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(Sucursal sucursal)
         {
+            sucursal.Foto = UploadHandler.subir(Request.Files[0], "Sucursales", sucursal.Id + "-" + sucursal.Nombre.Trim().Replace(" ", String.Empty));
+
             if (ModelState.IsValid)
             {
                 context.Entry(sucursal).State = EntityState.Modified;
@@ -95,20 +104,20 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /Sucursal/Delete/5
- 
-        public ActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(int Id)
         {
-            Sucursal sucursal = context.Sucursal.Single(x => x.id == id);
+            Sucursal sucursal = context.Sucursal.Single(x => x.Id == Id);
             return View(sucursal);
         }
 
         //
         // POST: /Sucursal/Delete/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int Id)
         {
-            Sucursal sucursal = context.Sucursal.Single(x => x.id == id);
+            Sucursal sucursal = context.Sucursal.Single(x => x.Id == Id);
             context.Sucursal.Remove(sucursal);
             context.SaveChanges();
             return RedirectToAction("Index");

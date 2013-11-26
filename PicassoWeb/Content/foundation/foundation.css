@@ -91,7 +91,8 @@ select {
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 0;
-  max-width: 62.5em;
+  max-width: 83em; /*fpaz: modificado el 16/11/2013 para que el ancho de la seccion de contenidos de la pagina sea del mismo ancho que el menu de navegacion*/
+  padding:0.5em; /*fpaz: modificado el 19/11/2013 para que el ancho de la seccion de contenidos de la pagina tenga un espacio*/
   *zoom: 1; }
   .row:before, .row:after {
     content: " ";
@@ -106,8 +107,8 @@ select {
     float: left; }
   .row .row {
     width: auto;
-    margin-left: -0.9375em;
-    margin-right: -0.9375em;
+    margin-left: 1em;
+    margin-right: 1em;
     margin-top: 0;
     margin-bottom: 0;
     max-width: none;
@@ -1476,7 +1477,7 @@ button, .button {
     display: inline-block; } }
 /* Standard Forms */
 form {
-  margin: 0 0 1em; }
+  margin: 1em; }
 
 /* Using forms within rows, we need to set some defaults */
 form .row .row {

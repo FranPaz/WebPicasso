@@ -1,100 +1,10 @@
-﻿<!-- Content Slider -->
-    
-            <div id="featured" data-orbit>                
-                    <img src="http://www.mundo-casas.com/wp-content/uploads/2012/10/50-modelos-de-casas-24.jpg" class="foto"  />
-                    <img src="https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-prn2/q71/s720x720/1380304_575948899137082_1507877062_n.jpg" class="foto" />
-                    <img src="https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-frc3/1379528_566014556797183_795537620_n.jpg" class="foto" />
-                    
-            </div>    
-
-@*<!-- RESPONSIVE SLIDER - START -->
-<div class="responsive-slider" data-spy="responsive-slider" data-autoplay="true"
-    data-interval="5000" data-transitiontime="300">
-    <div class="slides" data-group="slides">
-        <ul>
-            <li>
-                <div class="slide-body" data-group="slide">
-                    <img src="http://placehold.it/2048x640">
-                    <div class="wrapper">
-                        <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500"
-                            data-length="300">
-                            <h2>
-                                Picasso Pinturerias</h2>
-                            <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300">
-                                Picasso Pinturerias!</div>
-                        </div>
-                        <div class="caption img-tersuave" data-animate="slideAppearLeftToRight" data-delay="200">
-                            <img src="~/Images/Slider/tersuave_logo.png">
-                        </div>
-                        <div class="caption img-gotas_picasso" data-animate="slideAppearLeftToRight">
-                            <img src="~/Images/Slider/gotas_picasso.png">
-                        </div>
-                        <div class="caption img-gotas_picasso" data-animate="slideAppearRightToLeft">
-                            <img src="~/Images/Slider/gotas_picasso.png">
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="slide-body" data-group="slide">
-                    <img src="http://placehold.it/2048x640">
-                    <div class="wrapper">
-                        <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500"
-                            data-length="300">
-                            <h2>
-                                Picasso Pinturerias</h2>
-                            <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300">
-                                Picasso Pinturerias!</div>
-                        </div>
-                        <div class="caption img-bootstrap" data-animate="slideAppearDownToUp" data-delay="200">
-                            <img src="~/Images/Slider/tersuave_logo.png">
-                        </div>
-                        <div class="caption img-twitter" data-animate="slideAppearUpToDown">
-                            <img src="~/Images/Slider/tersuave_logo.png">
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="slide-body" data-group="slide">
-                    <img src="http://placehold.it/2048x640">
-                    <div class="wrapper">
-                        <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500"
-                            data-length="300">
-                            <h2>
-                                Picasso Pinturerias</h2>
-                            <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300">
-                                Picasso Pinturerias!</div>
-                        </div>
-                        <div class="caption img-jquery" data-animate="slideAppearDownToUp" data-delay="200">
-                            <img src="~/Images/Slider/tersuave_logo.png">
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <a class="slider-control left" href="#" data-jump="prev"><i class="icon-angle-left">
-    </i></a><a class="slider-control right" href="#" data-jump="next"><i class="icon-angle-right">
-    </i></a>
-    <div class="pages">
-        <a class="page" href="#" data-jump-to="1">1</a> <a class="page" href="#" data-jump-to="2">
-            2</a> <a class="page" href="#" data-jump-to="3">3</a>
+﻿@model IEnumerable<PicassoWeb.Models.Slider>
+<!--iafar: comienza el cuerpo de Slider -->
+<div class="large-10 large-centered columns">
+    <div class="orbit-container" data-orbit>
+        <!-- Content Slider -->
+        @foreach (var item in Model) {
+            <img src='@item.Url' class='foto'  alt="@item.Id" />
+        }
     </div>
 </div>
-<!-- RESPONSIVE SLIDER - END -->
-
-<!-- Respomsive slider js -->
-<link href="@Url.Content("~/Content/Slider/responsive-slider.css")" rel="stylesheet" media="screen" />
-<script src="@Url.Content("~/Scripts/Slider/jquery.event.move.js")"></script>
-<script src="@Url.Content("~/Scripts/Slider/bootstrap.js")"></script>
-<script src="@Url.Content("~/Scripts/Slider/responsive-slider.js")"></script>
-<script>
-    $(document).ready(function () {
-        $('.responsive-slider').responsiveSlider({
-            autoplay: true,
-            interval: 5000,
-            transitionTime: 300
-        });
-    });
-</script>*@

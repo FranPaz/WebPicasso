@@ -1,6 +1,6 @@
 ﻿<!-- rsanch: Slider Principal -->
 <div class="large-12 columns">
-    @Html.Partial("Slider")
+    @Html.Partial("Slider", new PicassoWeb.Models.PicassoWebContext().Slider )
 </div>
 
 <!-- fpaz: Fila antes de la seccion informativa, simulador y promociones de bancos -->
@@ -11,17 +11,20 @@
 <!-- rsanch: Simulador y Promos abajo del slider -->
 <div class="row">
                 <!-- ifarhat: Seccion informativa en el home -->
-                 <div class="large-8 columns left">      
+                 <div class="large-8 columns left">              
                        @Html.Partial("InfoBoxes")
                  </div>                                  
                 <div class="large-4 columns rigth">  
                         @Html.Partial("Simulador")
+                        <br />
                 </div>
                 <div class="large-3 columns right">   
                 <!--fpaz: dentro de este div se van a traer los datos del mapa del json de promociones de bancos -->   
-                        @Html.Partial("SliderPromosHome")
+                        @Html.Partial("SliderPromosHome", new PicassoWeb.Models.PicassoWebContext().PromoBanco)
+                        <br />
                 </div>             
 </div> 
+                
 
 <div class="row">
 <div class="large-12 columns">
@@ -52,14 +55,17 @@
         });
 
         $(document).ready(function () {
-        // rsanch: cookie para mostrar el popup una sola vez por sesion de browser.
-            if (!$.cookie('noMostrarPopupIntersitio')){
+
+            // rsanch: cookie para mostrar el popup una sola vez por sesion de browser.
+            if (!$.cookie('noMostrarPopupIntersitio')) {
                 setTimeout(function () {
                     $("#popup").foundation('reveal', 'open');
                     $.cookie('noMostrarPopupIntersitio', true);
                 }, 50);
             }
         });
+
+
     </script>
     <script src="../../Scripts/popup/popup.js" type="text/javascript"></script>
         }
@@ -67,3 +73,4 @@
 }
 
 <!-- fpaz: Fin PopUp PromoIntersitio -->
+

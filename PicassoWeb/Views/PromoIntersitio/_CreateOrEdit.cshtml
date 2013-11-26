@@ -1,36 +1,59 @@
 @model PicassoWeb.Models.PromoIntersitio
-
+@using PicassoWeb.Helpers
 @* This partial view defines form fields that will appear when creating and editing entities *@
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Nombre)
+        @Html.EditorFor(model => model.Nombre)
+        @Html.ValidationMessageFor(model => model.Nombre)
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Descripcion)
+        @Html.EditorFor(model => model.Descripcion)
+        @Html.ValidationMessageFor(model => model.Descripcion)
+    </div>
+</div>
+<div class="row">
+        <div class="row">
+            Imagen:
+            <input id="Imagen" name="Imagen" type="file" accept="image/gif, image/jpeg" />
+        </div>
+        <div class="row">
+            <div class="large-8 columns">
+                <a class="th radius" href="#">
+                    @Html.Image(Model.Imagen, "preview", "preview")
+                </a>
+            </div>
+        </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Activo)
+        @Html.EditorFor(model => model.Activo)
+        @Html.ValidationMessageFor(model => model.Activo)
+    </div>
+</div>
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.Nombre)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Nombre)
-    @Html.ValidationMessageFor(model => model.Nombre)
-</div>
+<script type="text/javascript">
+    $('input[type="file"]').change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+                if ($('#preview')[0].naturalHeight <= 400) {
+                    alert('El alto de la imagen tiene que ser mayor de 400px');
+                    reset_form_element($('#Imagen'));
+                    $('#preview').attr('src', '/Images/noPhoto.jpg');
+                }
+            }
+        }
+    });
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.Descripcion)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Descripcion)
-    @Html.ValidationMessageFor(model => model.Descripcion)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.DirImagen)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.DirImagen)
-    @Html.ValidationMessageFor(model => model.DirImagen)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.Activo)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Activo)
-    @Html.ValidationMessageFor(model => model.Activo)
-</div>
-
+    function reset_form_element(e) {
+        e.wrap('<form>').parent('form').trigger('reset');
+        e.unwrap();
+    }
+ </script> 
