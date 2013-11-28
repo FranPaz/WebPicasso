@@ -12,6 +12,9 @@
         <th>
         </th>
         <th>
+            activo
+        </th>
+        <th>
             descripcion
         </th>
         <th>
@@ -27,6 +30,9 @@
                 @Html.ActionLink("Editar", "Edit", new { Id = item.Id }) |
                 @Html.ActionLink("Detalles", "Details", new { Id = item.Id }) |
                 @Html.ActionLink("Borrar", "Delete", new { Id = item.Id })
+            </td>
+            <td>
+                @Html.DisplayFor(_ => item.Activo)
             </td>
             <td>
                 @item.Nombre

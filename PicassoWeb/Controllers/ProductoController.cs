@@ -60,30 +60,11 @@ namespace PicassoWeb.Controllers
 
         //
         // POST: /Producto/Create
-        private string StorageRoot {
-            get { return Path.Combine(Server.MapPath("~/Uploads/Productos")); }
-        }
-
-        private string UploadWholeFile(HttpPostedFileBase file, string nombreProducto) {
-            var archivoCortado = file.FileName.Split('.');
-            string extensionArchivo = archivoCortado.Last();
-            string nombreArchivo = nombreProducto + "." + extensionArchivo;
-            var fullPath = Path.Combine(StorageRoot, Path.GetFileName(nombreArchivo));
-
-            if (!System.IO.File.Exists(fullPath)) {
-                file.SaveAs(fullPath);
-            }
-            return "/Uploads/Productos/" + nombreArchivo;
-            //return "/Images/noPhoto.jpg";
-        }
-
-
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(Producto producto, List<AtributosProducto> atribs)
         {
-
-            producto.Imagen = UploadHandler.subir(Request.Files[0], "Productos", (context.Producto.Count() + 1) + "-" + producto.Nombre.Trim().Replace(" ", String.Empty));
+            producto.Imagen = UploadHandler.subir(Request.Files[0], "Productos", (context.Producto.Count() + 1) + "-" + producto.Nombre.Trim().Replace(" ", String.Empty),"");
 
             if (atribs != null) {
                 foreach (var a in atribs) {
@@ -130,7 +111,7 @@ namespace PicassoWeb.Controllers
         public ActionResult Edit(Producto producto, List<AtributosProducto> atribs) {
             Producto prodOriginal = context.Producto.Find(producto.Id);
 
-            producto.Imagen = UploadHandler.subir(Request.Files[0], "Productos", (context.Producto.Count() + 1) + "-" + producto.Nombre.Trim().Replace(" ", String.Empty));
+            producto.Imagen = UploadHandler.subir(Request.Files[0], "Productos", (context.Producto.Count() + 1) + "-" + producto.Nombre.Trim().Replace(" ", String.Empty), prodOriginal.Imagen);
 
             var atribList = prodOriginal.Atributos;
             context.AtributosProducto.RemoveRange(atribList);

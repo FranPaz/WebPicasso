@@ -44,7 +44,7 @@ namespace PicassoWeb.Controllers
         [HttpPost]
         public ActionResult Create(Banco banco)
         {
-            banco.Imagen = UploadHandler.subir(Request.Files[0], "Bancos", (context.Banco.Count() + 1) + "-" + banco.Nombre.Trim().Replace(" ", String.Empty));
+            banco.Imagen = UploadHandler.subir(Request.Files[0], "Bancos", (context.Banco.Count() + 1) + "-" + banco.Nombre.Trim().Replace(" ", String.Empty), "");
             if (ModelState.IsValid)
             {
                 context.Banco.Add(banco);
@@ -70,10 +70,11 @@ namespace PicassoWeb.Controllers
         [HttpPost]
         public ActionResult Edit(Banco banco)
         {
-            banco.Imagen = UploadHandler.subir(Request.Files[0], "Bancos", banco.Id + "-" + banco.Nombre.Trim().Replace(" ", String.Empty));
-            if (ModelState.IsValid)
-            {
-                context.Entry(banco).State = EntityState.Modified;
+            Banco bancoOriginal = context.Banco.Single(x => x.Id == banco.Id);
+            banco.Imagen = UploadHandler.subir(Request.Files[0], "Banco", banco.Id + "-" + banco.Nombre.Trim().Replace(" ", String.Empty), bancoOriginal.Imagen);
+
+            if (ModelState.IsValid) {
+                context.Entry(bancoOriginal).CurrentValues.SetValues(banco);
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }

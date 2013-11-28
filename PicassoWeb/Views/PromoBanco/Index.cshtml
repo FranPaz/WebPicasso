@@ -13,6 +13,9 @@
     <tr>
         <th></th>
         <th>
+            Activo
+        </th>
+        <th>
             Nombre
         </th>
         <th>
@@ -41,6 +44,9 @@
             @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
             @Html.ActionLink("Borrar", "Delete", new { id=item.Id })
+        </td>
+         <td>
+			@Html.DisplayFor(_ => item.Activo)
         </td>
         <td>
 			@item.Nombre

@@ -33,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime">
@@ -349,7 +350,7 @@
     <Content Include="Views\Categoria\Details.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
     <Content Include="Views\Categoria\_CreateOrEdit.cshtml" />
-    <None Include="Views\Errores\Error404.cshtml" />
+    <Content Include="Views\Errores\Error404.cshtml" />
     <Content Include="Content\Site_Original.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Images\accent.png" />

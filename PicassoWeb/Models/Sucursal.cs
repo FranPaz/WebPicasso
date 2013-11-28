@@ -12,6 +12,7 @@ namespace PicassoWeb.Models
     {
         public Sucursal() {
             this.Foto = "/Images/noPhoto.jpg";
+            this.Activo = true;
         }
         [Required]
         public int Id { get; set; }

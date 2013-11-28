@@ -4,7 +4,9 @@
     <div class="orbit-container" data-orbit>
         <!-- Content Slider -->
         @foreach (var item in Model) {
+            if (item.Activo) { 
             <img src='@item.Url' class='foto'  alt="@item.Id" />
+            }
         }
     </div>
 </div>

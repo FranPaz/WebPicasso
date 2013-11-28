@@ -44,7 +44,7 @@ namespace PicassoWeb.Controllers
         [HttpPost]
         public ActionResult Create(PromoIntersitio promointersitio)
         {
-            promointersitio.Imagen = UploadHandler.subir(Request.Files[0], "PromoIntersitio", (context.PromoIntersitio.Count() + 1) + "-" + promointersitio.Nombre.Trim().Replace(" ", String.Empty));
+            promointersitio.Imagen = UploadHandler.subir(Request.Files[0], "PromoIntersitio", (context.PromoIntersitio.Count() + 1) + "-" + promointersitio.Nombre.Trim().Replace(" ", String.Empty),"");
 
             if (ModelState.IsValid)
             {
@@ -71,11 +71,12 @@ namespace PicassoWeb.Controllers
         [HttpPost]
         public ActionResult Edit(PromoIntersitio promointersitio)
         {
-            promointersitio.Imagen = UploadHandler.subir(Request.Files[0], "PromoIntersitio", promointersitio.Id + "-" + promointersitio.Nombre.Trim().Replace(" ", String.Empty));
+            PromoIntersitio promointersitioOriginal = context.PromoIntersitio.Single(x => x.Id == promointersitio.Id);
+            promointersitio.Imagen = UploadHandler.subir(Request.Files[0], "PromoIntersitio", promointersitio.Id + "-" + promointersitio.Nombre.Trim().Replace(" ", String.Empty), promointersitioOriginal.Imagen);
 
             if (ModelState.IsValid)
             {
-                context.Entry(promointersitio).State = EntityState.Modified;
+                context.Entry(promointersitioOriginal).CurrentValues.SetValues(promointersitio);
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }

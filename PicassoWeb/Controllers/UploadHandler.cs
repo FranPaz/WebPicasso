@@ -28,13 +28,17 @@ namespace PicassoWeb.Controllers {
             return "/Uploads/" + carpeta + "/" + nombreArchivo;
         }
 
-        public static string subir(HttpPostedFileBase archivo, string carpeta, string nombre) {
+        public static string subir(HttpPostedFileBase archivo, string carpeta, string nombre, string imgOriginal) {
             string imagenURL = "";
             if (archivo.FileName != "") {
                 imagenURL = UploadWholeFile(archivo, carpeta, nombre);
                 }
             else {
-                imagenURL = "/Images/noPhoto.jpg";
+                if (imgOriginal == "") {
+                    imagenURL = "/Images/noPhoto.jpg";
+                } else {
+                    imagenURL = imgOriginal;
+                }
             }
             return imagenURL;
         }

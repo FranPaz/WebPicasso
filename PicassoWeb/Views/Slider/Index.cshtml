@@ -11,10 +11,13 @@
     <tr>
         <th width="30%">
         </th>
+        <th width="4%" >
+            Activo
+        </th>
         <th width="40%" >
             Nombre
         </th>
-        <th width="30%" >
+        <th width="26%" >
             Url
         </th>
     </tr>
@@ -25,12 +28,17 @@
                 @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Borrar", "Delete", new { id = item.Id })
             </td>
+            <td width="4%" >
+                <div class="small-9">
+                   @Html.DisplayFor(_ => item.Activo)
+                </div>
+            </td>
             <td width="40%" >
                 <div class="small-9">
                     @item.Nombre
                 </div>
             </td>
-            <td width="30%" >
+            <td width="26%" >
                 <div class="row">
                     <div class="small-3 center">
                         <a class="th [radius]" href="@item.Url">

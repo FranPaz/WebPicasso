@@ -64,7 +64,7 @@ namespace PicassoWeb.Controllers
         [HttpPost]
         public ActionResult Create(Sucursal sucursal)
         {
-            sucursal.Foto = UploadHandler.subir(Request.Files[0], "Sucursales", (context.Sucursal.Count() + 1) + "-" + sucursal.Nombre.Trim().Replace(" ", String.Empty));
+            sucursal.Foto = UploadHandler.subir(Request.Files[0], "Sucursales", (context.Sucursal.Count() + 1) + "-" + sucursal.Nombre.Trim().Replace(" ", String.Empty),"");
 
             if (ModelState.IsValid)
             {
@@ -91,11 +91,12 @@ namespace PicassoWeb.Controllers
         [HttpPost]
         public ActionResult Edit(Sucursal sucursal)
         {
-            sucursal.Foto = UploadHandler.subir(Request.Files[0], "Sucursales", sucursal.Id + "-" + sucursal.Nombre.Trim().Replace(" ", String.Empty));
+            Sucursal sucursalOriginal = context.Sucursal.Single(x => x.Id == sucursal.Id);
+            sucursal.Foto = UploadHandler.subir(Request.Files[0], "Sucursal", sucursal.Id + "-" + sucursal.Nombre.Trim().Replace(" ", String.Empty), sucursalOriginal.Foto);
 
             if (ModelState.IsValid)
             {
-                context.Entry(sucursal).State = EntityState.Modified;
+                context.Entry(sucursalOriginal).CurrentValues.SetValues(sucursal);
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }

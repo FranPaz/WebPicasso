@@ -11,10 +11,13 @@
     <tr>
         <th width="20%">
         </th>
+        <th width="5%">
+            Activo
+        </th>
         <th width="20%">
             Nombre
         </th>
-        <th width="20%">
+        <th width="15%">
             Direccion
         </th>
         <th width="10%">
@@ -34,10 +37,13 @@
                 @Html.ActionLink("Detalles", "Details", new { Id = item.Id }) |
                 @Html.ActionLink("Borrar", "Delete", new { Id = item.Id })
             </td>
+            <td width="5%">
+               @Html.DisplayFor(_ => item.Activo)
+            </td>
             <td width="20%">
                 @item.Nombre
             </td>
-            <td width="20%">
+            <td width="15%">
                 @item.Direccion
             </td>
             <td width="10%">

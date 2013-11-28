@@ -123,7 +123,7 @@ a, button {
 }
 
 .nav li:nth-child(6n+3) {
-	background: rgb(185, 234, 58);/* rsanch: Cambiado a verde para seguir el estilo del logo. Este es mas obscuro */
+	background: rgb(175,201,18);/* rsanch: Cambiado a verde para seguir el estilo del logo. Este es mas obscuro */
 }
 
 .nav li:nth-child(6n+4) {

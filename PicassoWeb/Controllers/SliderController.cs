@@ -40,30 +40,13 @@ namespace PicassoWeb.Controllers
         }
 
 
-        private string StorageRoot {
-            get { return Path.Combine(Server.MapPath("~/Uploads/Slider")); }
-        }
-
-        private string UploadWholeFile(HttpPostedFileBase file, string nombre) {
-            var archivoCortado = file.FileName.Split('.');
-            string extensionArchivo = archivoCortado.Last();
-            string nombreArchivo = nombre + "." + extensionArchivo;
-            var fullPath = Path.Combine(StorageRoot, Path.GetFileName(nombreArchivo));
-
-            if (!System.IO.File.Exists(fullPath)) {
-                file.SaveAs(fullPath);
-            }
-            return "/Uploads/Slider/" + nombreArchivo;
-        }
-
-
         //
         // POST: /Slider/Create
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(Slider slider)
         {
-            slider.Url = UploadHandler.subir(Request.Files[0], "Slider", (context.Slider.Count() + 1) + "-" + slider.Nombre.Trim().Replace(" ", String.Empty));
+            slider.Url = UploadHandler.subir(Request.Files[0], "Slider", (context.Slider.Count() + 1) + "-" + slider.Nombre.Trim().Replace(" ", String.Empty),"");
 
             if (ModelState.IsValid)
             {    
@@ -90,11 +73,13 @@ namespace PicassoWeb.Controllers
         [HttpPost]
         public ActionResult Edit(Slider slider)
         {
-            slider.Url = UploadHandler.subir(Request.Files[0], "Slider", slider.Id + "-" + slider.Nombre.Trim().Replace(" ", String.Empty));
+            Slider sliderOriginal = context.Slider.Single(x => x.Id == slider.Id);
+            slider.Url = UploadHandler.subir(Request.Files[0], "Slider", slider.Id + "-" + slider.Nombre.Trim().Replace(" ", String.Empty), sliderOriginal.Url);
+
 
             if (ModelState.IsValid)
             {
-                context.Entry(slider).State = EntityState.Modified;
+                context.Entry(sliderOriginal).CurrentValues.SetValues(slider);
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
