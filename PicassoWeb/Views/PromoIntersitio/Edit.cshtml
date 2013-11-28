@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 
-<h2>Edit</h2>
+<h2>Editar</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Edit", "PromoIntersitio", FormMethod.Post, new { @class = "custom", @enctype = "multipart/form-data" })) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>PromoIntersitio</legend>
@@ -15,11 +15,11 @@
 		@Html.Partial("_CreateOrEdit", Model)
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Guardar" class ="button"/>
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver", "Index")
 </div>

@@ -1,47 +1,59 @@
-﻿<link rel="stylesheet" href="~/Content/footer.css" type="text/css" />
-<div class="large-12 columns">
-    <p>
-    </p>
+﻿<!-- rsanch: Imagen del footer movida una row mas arriba para que no se muevan los links y agrego opacity -->
+<div class="row">
+    <hr width="100%" />
 </div>
 <!-- rsanch: agrego row para alinearlo con el header. -->
-<div class="row">
+<div class="row footer" >
+<!-- rsanch: Imagen del footer movida una row mas arriba para que no se muevan los links y agrego opacity y una linea de division -->
     <div class="large-12 columns">
-        <div class="large-4 columns rigth">
-        <!-- rsanch: Limpieza. -->
-            <h4 class="white">Links</h4>
-            <ul>
-                <li><a href="#">Link1</a></li>
-                <li><a href="#">Link2</a></li>
-                <li><a href="#">Link3</a></li>
-                <li><a href="#">Link4</a></li>
-                <li><a href="#">Link5</a></li>
-                <li><a href="#">Link6</a></li>
-            </ul>
-        </div>
-        <!-- end Links -->
-        <!-- rsanch: cambiando el icono por un prod destacado q puede venir de la bd. -->
-        <div class="large-4 columns center">
-            <h4 class="footer-header white">
-                Producto Destacado</h4>
-                <div id="productoDestacado"></div>
-        </div>
-        <!-- end prod -->
-        <!-- rsanch: Agrego fb likebox. -->
-        <div class="large-4 columns left">
-            <h4 class="footer-header white">
-            </h4>
-            <div class="fb-like-box" data-href="http://www.facebook.com/picassopintureria" data-colorscheme="light"
-                data-show-faces="true" data-header="true" data-stream="false" data-show-border="true">
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="large-4 columns">
+            @if (ViewBag.imagenFooter != null) { <img src="@ViewBag.imagenFooter" alt="footer img" style="opacity:0.4;" /> }
             </div>
         </div>
-        <!-- end face -->
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="large-4 columns rigth">
+                <h4 class="white">
+                    Links</h4>
+                <ul>
+                    <li><a href="#">Link1</a></li>
+                    <li><a href="#">Link2</a></li>
+                    <li><a href="#">Link3</a></li>
+                    <li><a href="#">Link4</a></li>
+                    <li><a href="#">Link5</a></li>
+                    <li><a href="#">Link6</a></li>
+                </ul>
+            </div>
+            <!-- end Links -->
+            <!-- rsanch: cambiando el icono por un prod destacado q puede venir de la bd. -->
+            <div class="large-4 columns center">
+                <h4 class="footer-header white">
+                    Producto Destacado</h4>
+                <div id="productoDestacado">
+                </div>
+            </div>
+            <!-- end prod -->
+            <!-- rsanch: Agrego fb likebox. -->
+            <div class="large-4 columns left">
+                <h4 class="footer-header white">
+                </h4>
+                <div class="fb-like-box" data-href="http://www.facebook.com/picassopintureria" data-colorscheme="light"
+                    data-show-faces="true" data-header="true" data-stream="false" data-show-border="true">
+                </div>
+            </div>
+            <!-- end face -->
+        </div>
+    </div>
     </div>
 </div>
 <div id="fb-root">
 </div>
 <!-- rsanch: scripts para fb likebox. -->
-<script type="text/jscript">    
-(function (d, s, id) {
+<script type="text/jscript">
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;

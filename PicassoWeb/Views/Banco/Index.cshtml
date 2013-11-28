@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 
-<h2>Index</h2>
+<h2>Bancos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table>
     <tr>
@@ -26,16 +26,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.Id })
         </td>
         <td>
 			@item.Nombre
         </td>
-        <td>
-			@item.Imagen
-        </td>
+         <td width="30%">
+                <div class="row">
+                    <div class="small-3 center">
+                        <a class="th [radius]" href="@item.Imagen">
+                            <img src="@item.Imagen" alt="@item.Id" />
+                        </a>
+                    </div>
+                </div>
+            </td>
         <td>
 			@(item.PromosBanco == null ? "None" : item.PromosBanco.Count.ToString())
         </td>

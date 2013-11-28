@@ -10,18 +10,24 @@ namespace PicassoWeb.Models
 {
     public class Sucursal
     {
+        public Sucursal() {
+            this.Foto = "/Images/noPhoto.jpg";
+            this.Activo = true;
+        }
         [Required]
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
-        public string nombre { get; set; }
-        public string dir { get; set; }
-        public string tel { get; set; }
-        public string mail { get; set; }
-        public string horarios { get; set; }
-        public string foto { get; set; }
+        public string Nombre { get; set; }
+        public string Direccion { get; set; }
+        public string Telefono { get; set; }
+        public string Mail { get; set; }
+        public string Horarios { get; set; }
+        public string Foto { get; set; }
 
-        public double lat { get; set; } //rsanch: lat y lon agregado para mostrar sucursal en el mapa
-        public double lon { get; set; }
+        public double Lat { get; set; } //rsanch: lat y lon agregado para mostrar sucursal en el mapa
+        public double Lon { get; set; }
+
+        public bool Activo { get; set; }
         
     }
 

@@ -4,26 +4,25 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <fieldset>
     <legend>Producto</legend>
 
     <div class="display-label">descripcion</div>
-    <div class="display-field">@Model.descripcion</div>
+    <div class="display-field">@Model.Nombre</div>
 
     <div class="display-label">imagen</div>
-    <div class="display-field">@Model.imagen</div>
+    <div class="display-field">@Model.Imagen</div>
 
-    <div class="display-label">atributos</div>
         @{
         var db = new PicassoWeb.Models.PicassoWebContext();
         }
         @Html.Partial("ListaAtributos", db.AtributosProducto.Where(a => a.ProductoID == 1))
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Volver", "Index")
 </p>
 
 

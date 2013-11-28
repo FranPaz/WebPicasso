@@ -4,14 +4,17 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 
-<h2>Index</h2>
+<h2>Promociones de Entidades Financieras</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table>
     <tr>
         <th></th>
+        <th>
+            Activo
+        </th>
         <th>
             Nombre
         </th>
@@ -38,9 +41,12 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.Id })
+        </td>
+         <td>
+			@Html.DisplayFor(_ => item.Activo)
         </td>
         <td>
 			@item.Nombre

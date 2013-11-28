@@ -2,25 +2,7 @@
 @{
     Layout = null;
 }
-<style>
-tbody tr:nth-child(odd) { background-color:#EEE; }
-tbody tr:hover td { background: #0E0; }
-</style>
-<div class="row">
-    <div class="small-4 columns">
-        @Html.LabelFor(model => model.atributo)
-        @Html.DropDownListFor(model => model.AtributoID, ((IEnumerable<PicassoWeb.Models.Atributo>)ViewBag.PossibleAtributo).Select(option => new SelectListItem {
-       Text = Html.DisplayTextFor(_ => option.nombre).ToString(),
-       Value = option.id.ToString(),
-       Selected = (Model != null) && (option.id == Model.AtributoID)
-   }), "Elegir")
-    </div>
-    <div class="small-8 columns">
-        @Html.LabelFor(model => model.valor)
-        @Html.TextAreaFor(model => model.valor)
-        <a href="#" class="button postfix" id="agregarButton">Agregar</a>
-    </div>
-</div>
+
 <div class="row">
     <div class="small-12 columns">
         @{
@@ -47,22 +29,22 @@ tbody tr:hover td { background: #0E0; }
                 @{
                     if (prod != null) {
                         int itemIndex = 0;
-                        foreach (var item in prod.atributos) {
+                        foreach (var item in prod.Atributos) {
                             string nameAtrib = "atribs[" + itemIndex + "].atributoID";
                             string idAtrib = "atribs_" + itemIndex + "__atributoID";
                             string nameProd = "atribs[" + itemIndex + "].productoID";
                             string idProd = "atribs_" + itemIndex + "__productoID";
-                            string nameVal = "atribs[" + itemIndex + "].valor";
-                            string idVal = "atribs_" + itemIndex + "__valor";
+                            string nameVal = "atribs[" + itemIndex + "].Valor";
+                            string idVal = "atribs_" + itemIndex + "__Valor";
                     <tr>
                         <td>
                             <input type="hidden" class="iHidden numberAttID" value="@item.AtributoID" name="@nameAtrib" id="@idAtrib"   />
                             <input class="numberProdID" type="hidden"  value="@item.ProductoID" name="@nameProd" id="@idProd"   />
-                            @item.atributo.nombre
+                            @item.Atributo.Nombre
                         </td>
                         <td>
-                            <input class="numberValID" type="hidden"  value="@item.valor" name="@nameVal" id="@idVal"   />
-                            @item.valor
+                            <input class="numberValID" type="hidden"  value="@item.Valor" name="@nameVal" id="@idVal"   />
+                            @item.Valor
                         </td>
                         <td>
                             <a href="#" class="tiny button">Borrar</a>
@@ -76,20 +58,36 @@ tbody tr:hover td { background: #0E0; }
         </table>
     </div>
 </div>
+<div class="row">
+    <div class="small-4 columns">
+        @Html.LabelFor(model => model.Atributo)
+        @Html.DropDownListFor(model => model.AtributoID, ((IEnumerable<PicassoWeb.Models.Atributo>)ViewBag.PossibleAtributo).Select(option => new SelectListItem {
+       Text = Html.DisplayTextFor(_ => option.Nombre).ToString(),
+       Value = option.Id.ToString(),
+       Selected = (Model != null) && (option.Id == Model.AtributoID)
+   }), "Elegir")
+    </div>
+    <div class="small-8 columns">
+        @Html.LabelFor(model => model.Valor)
+        @Html.TextAreaFor(model => model.Valor)
+        <a  class="button postfix" id="agregarButton">Agregar</a>
+    </div>
+</div>
+
 <script type="text/javascript">
 
 
     $('#agregarButton').click(function () {
         //save inputs as variables:
         var itemIndex = $("#atribsTbl input.iHidden").length;
-        var valor = $('#valor').val();
+        var Valor = $('#Valor').val();
         var atributo = $('#AtributoID  option:selected').text();
         var atributoID = $('#AtributoID').val();
         var prodID = $('#modelProductoID').val();
-        if (valor != "" && atributo != "Elegir") { //add a new list item for the atributo (and do it with spiffy animation)
-            $('#atribsTbl').append('<tr><td><input type="hidden" class="iHidden numberAttID" value="' + atributoID + '" name="atribs[' + itemIndex + '].atributoID" id="atribs_' + itemIndex + '__atributoID"   /><input class="numberProdID" type="hidden" value="' + prodID + '" name="atribs[' + itemIndex + '].productoID" id="atribs_' + itemIndex + '__productoID"   />' + atributo + '</td><td><input class="numberValID" type="hidden" value="' + valor + '" name="atribs[' + itemIndex + '].valor" id="atribs_' + itemIndex + '__valor"   />' + valor + '</td><td><a href="#" class="tiny button">Borrar</a></td></tr>');
+        if (Valor != "" && atributo != "Elegir") { //add a new list item for the atributo (and do it with spiffy animation)
+            $('#atribsTbl').append('<tr><td><input type="hidden" class="iHidden numberAttID" value="' + atributoID + '" name="atribs[' + itemIndex + '].atributoID" id="atribs_' + itemIndex + '__atributoID"   /><input class="numberProdID" type="hidden" value="' + prodID + '" name="atribs[' + itemIndex + '].productoID" id="atribs_' + itemIndex + '__productoID"   />' + atributo + '</td><td><input class="numberValID" type="hidden" value="' + Valor + '" name="atribs[' + itemIndex + '].Valor" id="atribs_' + itemIndex + '__Valor"   />' + Valor + '</td><td><a href="#" class="tiny button">Borrar</a></td></tr>');
         } else {
-            alert('Elegi y cargar el valor de un atributo.');
+            alert('Elegi y cargar el Valor de un atributo.');
         }
 
 
@@ -111,11 +109,11 @@ tbody tr:hover td { background: #0E0; }
                 $this.attr("id", "atribs_" + i + "__productoID");
                 $this.attr("name", "atribs[" + i + "].productoID");
             });
-            //renumerar valor
+            //renumerar Valor
             $('.numberValID').each(function (i) {
                 var $this = $(this);
-                $this.attr("id", "atribs_" + i + "__valor");
-                $this.attr("name", "atribs[" + i + "].valor");
+                $this.attr("id", "atribs_" + i + "__Valor");
+                $this.attr("name", "atribs[" + i + "].Valor");
             });
         }
     });

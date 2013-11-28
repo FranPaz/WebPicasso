@@ -1,17 +1,16 @@
 @model IEnumerable<PicassoWeb.Models.PromoIntersitio>
-
-
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    }
-
-<h2>Index</h2>
+}
+<h2>
+    Promo Intersitio (Popup)</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table>
     <tr>
-        <th></th>
+        <th>
+        </th>
         <th>
             Nombre
         </th>
@@ -19,35 +18,37 @@
             Descripcion
         </th>
         <th>
-            DirImagen
+            Imagen
         </th>
         <th>
             Activo
         </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-        <td>
-			@item.Nombre
-        </td>
-        <td>
-			@item.Descripcion
-        </td>
-        <td>
-			<img src="@item.DirImagen" alt="@item.Descripcion"/>
-        </td>
-        <td>
-			@item.Activo
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.Id })
+            </td>
+            <td>
+                @item.Nombre
+            </td>
+            <td>
+                @item.Descripcion
+            </td>
+            <td width="30%">
+                <div class="row">
+                    <div class="small-3 center">
+                        <a class="th [radius]" href="@item.Imagen">
+                            <img src="@item.Imagen" alt="@item.Id" />
+                        </a>
+                    </div>
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(_ => item.Activo)
+            </td>
+        </tr>
+    }
 </table>
-
-

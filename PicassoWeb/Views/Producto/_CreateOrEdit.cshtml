@@ -1,29 +1,132 @@
 @model PicassoWeb.Models.Producto
+@using PicassoWeb.Helpers
 @* This partial view defines form fields that will appear when creating and editing entities *@
 <div class="row">
     <div class="small-12 columns">
-        @Html.LabelFor(model => model.descripcion)
-        @Html.EditorFor(model => model.descripcion)
-        @Html.ValidationMessageFor(model => model.descripcion)
+        @Html.LabelFor(model => model.Categoria)
+        @Html.DropDownListFor(model => model.CategoriaID, ((IEnumerable<PicassoWeb.Models.Categoria>)ViewBag.PossibleCategoria).Select(option => new SelectListItem {
+       Text = Html.DisplayTextFor(_ => option.Nombre).ToString(),
+       Value = option.Id.ToString(),
+       Selected = (Model != null) && (option.Id == Model.CategoriaID)
+   }), "Elegir")
+        @Html.ValidationMessageFor(model => model.CategoriaID)
     </div>
 </div>
 <div class="row">
     <div class="small-12 columns">
-        @Html.LabelFor(model => model.imagen)
-        @Html.EditorFor(model => model.imagen)
-        @Html.ValidationMessageFor(model => model.imagen)
+        @Html.LabelFor(model => model.Marca)
+        @Html.DropDownListFor(model => model.MarcaID, ((IEnumerable<PicassoWeb.Models.Marca>)ViewBag.PossibleMarca).Select(option => new SelectListItem {
+       Text = Html.DisplayTextFor(_ => option.Nombre).ToString(),
+       Value = option.Id.ToString(),
+       Selected = (Model != null) && (option.Id == Model.MarcaID)
+   }), "Elegir")
+        @Html.ValidationMessageFor(model => model.MarcaID)
     </div>
 </div>
-
+<div class="row">
+    <div class="small-10 columns">
+        @Html.LabelFor(model => model.Nombre)
+        @Html.EditorFor(model => model.Nombre)
+        @Html.ValidationMessageFor(model => model.Nombre)
+    </div>
+    <div class="small-2 columns">
+        @Html.LabelFor(model => model.Activo)
+        @Html.EditorFor(model => model.Activo)
+        @Html.ValidationMessageFor(model => model.Activo)
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Descripcion)
+        @Html.TextAreaFor(model => model.Descripcion)
+        @Html.ValidationMessageFor(model => model.Descripcion)
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 columns left">
+        Video:
+        <div class="row collapse">
+            <div class="large-8 columns">
+                @Html.TextBoxFor(model => model.Video, new { @class = "input-xxlarge" })
+                @Html.ValidationMessageFor(model => model.Video)
+            </div>
+            <div class="large-3 end columns">
+                <a id="verVideo" class="button postfix">Ver</a>
+            </div>
+            <!-- Placeholder that tells Preview where to put the selector-->
+        </div>
+        <div class="row">
+            <div class="large-8 columns" id="youtube">
+            </div>
+        </div>
+    </div>
+    <div class="large-6 columns right">
+        <div class="row">
+            Imagen:
+            <input id="Imagen" name="Imagen" type="file" accept="image/gif, image/jpeg" />
+        </div>
+        <div class="row">
+            <div class="large-8 columns">
+                <a class="th radius" href="#">
+                    @Html.Image(Model.Imagen, "preview", "preview")
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 @{
-    var db = new PicassoWeb.Models.PicassoWebContext();    
+    var db = new PicassoWeb.Models.PicassoWebContext();
     var atributosProducto = new PicassoWeb.Models.AtributosProducto();
     ViewBag.PossibleProducto = db.Producto;
     ViewBag.PossibleAtributo = db.Atributo;
     if (Model != null) {
-        ViewBag.ProductoID = Model.id;
+        ViewBag.ProductoID = Model.Id;
     }
     
-    }
+}
 @Html.Partial("Atributos", atributosProducto)
 
+<script type="text/javascript">
+    $('input[type="file"]').change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+                if ($('#preview')[0].naturalHeight <= 200) {
+                    alert('El alto de la imagen tiene que ser mayor de 200px');
+                    reset_form_element($('#Imagen'));
+                    $('#preview').attr('src', '/Images/noPhoto.jpg');
+                }
+            }
+        }
+    });
+
+    function reset_form_element(e) {
+        e.wrap('<form>').parent('form').trigger('reset');
+        e.unwrap();
+    }
+
+$('#verVideo').click(function () {
+    var urlVideo = $('#Video').val();
+    if (urlVideo != "") {
+        var video_domain = urlVideo.split('v=')[0];
+        var video_id = urlVideo.split('v=')[1];
+        var ampersandPosition = video_id.indexOf('&');
+        if (ampersandPosition != -1) {
+            video_id = video_id.substring(0, ampersandPosition);
+        }
+        if ((video_domain.toLowerCase().indexOf("youtube.com") >= 0) && (video_id != "")) {
+            $('#youtube').append('<iframe  src="//www.youtube.com/embed/' + video_id + '" frameborder="0" allowfullscreen></iframe>');
+        }
+        else {
+            alert('url del video invalida.');
+            $('#Video').val('');
+        }
+    } 
+    else {
+        alert('Debe ingresar una url.');
+        $('#Video').val('');
+    }
+});
+ </script> 

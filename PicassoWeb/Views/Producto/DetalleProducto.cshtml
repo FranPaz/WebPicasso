@@ -1,0 +1,37 @@
+﻿@model PicassoWeb.Models.Producto
+@{
+    ViewBag.Title = "Detalles del Producto";
+    Layout = null;
+}
+<div class="row listadoProductos">
+    <div class="row">
+        <div class="large-8 columns left ">
+            <h2>
+                <span class="subtitulosDetalleProductos">Ficha Tecnica </span>
+            </h2>
+            <h3>@Model.Nombre</h3>
+            <h3>
+                <span class="subtitulosDetalleProductos">Descripción</span></h3>
+            <p>@Model.Descripcion</p>
+            <h3>
+                <span class="subtitulosDetalleProductos">Especificaciones Tecnicas </span>
+            </h3>
+            <div id="atributos">
+            </div>
+        </div>
+        <div class="large-4 columns">
+            <button title="Cerrar (Esc)" type="button" class="mfp-close">
+                ×</button>
+            <img src="@Model.Imagen" alt="@Model.Nombre">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    // fpaz: script que me recibe los datos del controlador y los muestra en los tags img y <p> del popup de promociones del intersitio
+    $.getJSON('@Url.Content("~/Producto/jsonAtributosProducto")', { prmId:@Model.Id }, function (data) {
+        $.each(data, function (i, marker) {
+            $("#atributos").append("<h5>" + marker.nombre + "</h5>")
+            $("#atributos").append("<p>" + marker.valor + "</p>")
+        });
+    });    
+</script>

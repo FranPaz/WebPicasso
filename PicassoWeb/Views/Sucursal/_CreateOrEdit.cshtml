@@ -1,52 +1,68 @@
 @model PicassoWeb.Models.Sucursal
+@using PicassoWeb.Helpers
 @* This partial view defines form fields that will appear when creating and editing entities *@
-<div class="editor-label">
-    @Html.LabelFor(model => model.nombre)
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Nombre)
+        @Html.EditorFor(model => model.Nombre) @Html.ValidationMessageFor(model => model.Nombre)
+    </div>
 </div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.nombre) @Html.ValidationMessageFor(model => model.nombre)
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Direccion)
+        @Html.EditorFor(model => model.Direccion) @Html.ValidationMessageFor(model => model.Direccion)
+    </div>
 </div>
-<div class="editor-label">
-    @Html.LabelFor(model => model.dir)
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Telefono)
+        @Html.EditorFor(model => model.Telefono) @Html.ValidationMessageFor(model => model.Telefono)
+    </div>
 </div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.dir) @Html.ValidationMessageFor(model => model.dir)
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Mail)
+        @Html.EditorFor(model => model.Mail) @Html.ValidationMessageFor(model => model.Mail)
+    </div>
 </div>
-<div class="editor-label">
-    @Html.LabelFor(model => model.tel)
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Horarios)
+        @Html.EditorFor(model => model.Horarios) @Html.ValidationMessageFor(model => model.Horarios)
+    </div>
 </div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.tel) @Html.ValidationMessageFor(model => model.tel)
+<div class="row">
+    <div class="large-6 columns right">
+        <div class="row">
+            Imagen:
+            <input id="Imagen" name="Imagen" type="file" accept="image/gif, image/jpeg" />
+        </div>
+        <div class="row">
+            <div class="large-8 columns">
+                <a class="th radius" href="#">
+                    @Html.Image(Model.Foto, "preview", "preview")
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="editor-label">
-    @Html.LabelFor(model => model.mail)
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Activo)
+        @Html.EditorFor(model => model.Activo) @Html.ValidationMessageFor(model => model.Activo)
+    </div>
 </div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.mail) @Html.ValidationMessageFor(model => model.mail)
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Lat)
+        @Html.EditorFor(model => model.Lat) @Html.ValidationMessageFor(model => model.Lat)
+    </div>
 </div>
-<div class="editor-label">
-    @Html.LabelFor(model => model.horarios)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.horarios) @Html.ValidationMessageFor(model => model.horarios)
-</div>
-<div class="editor-label">
-    @Html.LabelFor(model => model.foto)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.foto) @Html.ValidationMessageFor(model => model.foto)
-</div>
-<div class="editor-label">
-    @Html.LabelFor(model => model.lat)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.lat) @Html.ValidationMessageFor(model => model.lat)
-</div>
-<div class="editor-label">
-    @Html.LabelFor(model => model.lon)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.lon) @Html.ValidationMessageFor(model => model.lon)
+<div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Lon)
+        @Html.EditorFor(model => model.Lon) @Html.ValidationMessageFor(model => model.Lon)
+    </div>
 </div>
 <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
 <script type="text/javascript">
@@ -54,12 +70,8 @@
 
     function getMap() {
         map = new Microsoft.Maps.Map(document.getElementById('myMap'), { credentials: 'AvaJ6DR6XoP_iwtIaLxnAFhi4HdRQkM-D37FFbalJsOLE83qJI0Bkf23HmXXVK76' });
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(locateSuccess, locateFail);
-        }
-        else {
-            alert('Su browser no soporta GeoPosicionamiento.');
-        }
+        var startLocation = new Microsoft.Maps.Location(-27.7884, -64.2622);
+        map.setView({ center: startLocation, zoom: 17 });
     }
 
     function locateSuccess(loc) {
@@ -69,50 +81,56 @@
         map.setView({ center: userLocation, zoom: 40 });
     }
 
-    // Unsuccessful geolocation
-    function locateFail(geoPositionError) {
-        switch (geoPositionError.code) {
-            case 0: // UNKNOWN_ERROR
-                alert('Error desconocido.');
-                break;
-            case 1: // PERMISSION_DENIED
-                alert('Permiso para obtener posicion denegado.');
-                break;
-            case 2: // POSITION_UNAVAILABLE
-                alert('No se pudo encontrar su posicion');
-                var upaLocation = new Microsoft.Maps.Location(-27.7884, -64.2622);
-                var pin = new Microsoft.Maps.Pushpin(upaLocation, { text: 'CLINICA YUNES SRL', draggable: true });
-                // Add a handler to the pushpin drag
-                Microsoft.Maps.Events.addHandler(pin, 'mouseup', DisplayLoc);
 
-                map.entities.push(pin);
-                map.setView({ center: upaLocation, zoom: 17 });
-                break;
-            case 3: // TIMEOUT
-                alert('Tiempo agotado de espera.');
-                break;
-            default:
-        }
-    }
     function attachPushpinDragEndEvent() {
         var pushpinOptions = { draggable: true };
         var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), pushpinOptions);
         var pushpindragend = Microsoft.Maps.Events.addHandler(pushpin, 'dragend', endDragDetails);
         map.entities.push(pushpin);
-        //alert('stop dragging newly added pushpin to raise event');
+        //Setear los textbox con los valores del pin.
+        document.getElementById('Lat').value = pushpin._location.latitude.toFixed(5).replace(".", ",");
+        document.getElementById('Lon').value = pushpin._location.longitude.toFixed(5).replace(".", ",");
+        //deshabilitar boton.
+        $('#agregarPin').attr("disabled", true);
+        $('#mostrarMapa').attr("disabled", true);
     }
 
     endDragDetails = function (e) {
-        //alert("Event Info - start drag \n" + "Start Latitude/Longitude: " + e.entity.getLocation());
-        document.getElementById('lat').value = e.entity.getLocation().latitude.toFixed(5).replace(".", ",");
-        document.getElementById('lon').value = e.entity.getLocation().longitude.toFixed(5).replace(".", ",");
+        //Cambia los valores de los textbox cuando termina el drag
+        document.getElementById('Lat').value = e.entity.getLocation().latitude.toFixed(5).replace(".", ",");
+        document.getElementById('Lon').value = e.entity.getLocation().longitude.toFixed(5).replace(".", ",");
     }
       
 
 </script>
-<div id='myMap' style="position: relative; height: 300px;">
+<div class="row">
+    <div class="small-12 columns">
+        <div id='myMap' style="position: relative; height: 300px;">
+        </div>
+    </div>
+    <div class="small-8 columns right">
+        <input id="mostrarMapa" type="button" value="mostrar Mapa" onclick="getMap();" />
+        <input id="agregarPin" type="button" value="Agregar Pin" onclick="attachPushpinDragEndEvent();" />
+    </div>
 </div>
-<div>
-    <input type="button" value="mostrar Mapa" onclick="getMap();" />
-    <input type="button" value="Agregar Pin" onclick="attachPushpinDragEndEvent();" />
-</div>
+<script type="text/javascript">
+    $('input[type="file"]').change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+                if ($('#preview')[0].naturalHeight <= 400) {
+                    alert('El alto de la imagen tiene que ser mayor de 400px');
+                    reset_form_element($('#Imagen'));
+                    $('#preview').attr('src', '/Images/noPhoto.jpg');
+                }
+            }
+        }
+    });
+
+    function reset_form_element(e) {
+        e.wrap('<form>').parent('form').trigger('reset');
+        e.unwrap();
+    }
+ </script> 

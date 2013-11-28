@@ -1,17 +1,19 @@
 @model IEnumerable<PicassoWeb.Models.Producto>
-
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    }
-
-<h2>Index</h2>
-
+}
+<h2>
+    Productos</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table>
     <tr>
-        <th></th>
+        <th>
+        </th>
+        <th>
+            activo
+        </th>
         <th>
             descripcion
         </th>
@@ -22,26 +24,31 @@
             atributos
         </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-        <td>
-			@item.descripcion
-        </td>
-        <td>
-			@item.imagen
-        </td>
-        <td>
-			@(item.atributos == null ? "None" : item.atributos.Count.ToString())
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { Id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { Id = item.Id }) |
+                @Html.ActionLink("Borrar", "Delete", new { Id = item.Id })
+            </td>
+            <td>
+                @Html.DisplayFor(_ => item.Activo)
+            </td>
+            <td>
+                @item.Nombre
+            </td>
+            <td width="30%">
+                <div class="row">
+                    <div class="small-3 center">
+                        <a class="th [radius]" href="@item.Imagen">
+                            <img src="@item.Imagen" alt="@item.Id" />
+                        </a>
+                    </div>
+                </div>
+            </td>
+            <td>
+                @(item.Atributos == null ? "None" : item.Atributos.Count.ToString())
+            </td>
+        </tr>
+    }
 </table>
-
-

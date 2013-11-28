@@ -15,7 +15,7 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /PromoBanco/
-
+        [Authorize(Roles = "Admin")]
         public ViewResult Index()
         {
             return View(context.PromoBanco.Include(promobanco => promobanco.Banco).ToList());
@@ -24,12 +24,19 @@ namespace PicassoWeb.Controllers
         //fpaz: controlador para la pagina de principal de promociones de bancos
         public ViewResult PromocionesDeBancos()
         {
+            ViewBag.fondoBody = "/Images/fondopromociones.jpg";
+            ViewBag.imagenFooter = "/Images/imagenPromociones.jpg";    
             return View(context.PromoBanco.Include(promobanco => promobanco.Banco).ToList());
-        }                
+        }
 
+        public ViewResult DetallesPromo(int id)
+        {
+            PromoBanco promobanco = context.PromoBanco.Single(x => x.Id == id);
+            return View(promobanco);
+        }
         //
         // GET: /PromoBanco/Details/5
-
+        [Authorize(Roles = "Admin")]
         public ViewResult Details(int id)
         {
             PromoBanco promobanco = context.PromoBanco.Single(x => x.Id == id);
@@ -38,16 +45,16 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /PromoBanco/Create
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.PossibleBanco = context.Banco;
-            return View();
+            return View(new PromoBanco());
         } 
 
         //
         // POST: /PromoBanco/Create
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(PromoBanco promobanco)
         {
@@ -64,7 +71,7 @@ namespace PicassoWeb.Controllers
         
         //
         // GET: /PromoBanco/Edit/5
- 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             PromoBanco promobanco = context.PromoBanco.Single(x => x.Id == id);
@@ -74,7 +81,7 @@ namespace PicassoWeb.Controllers
 
         //
         // POST: /PromoBanco/Edit/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(PromoBanco promobanco)
         {
@@ -90,7 +97,7 @@ namespace PicassoWeb.Controllers
 
         //
         // GET: /PromoBanco/Delete/5
- 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             PromoBanco promobanco = context.PromoBanco.Single(x => x.Id == id);
@@ -99,7 +106,7 @@ namespace PicassoWeb.Controllers
 
         //
         // POST: /PromoBanco/Delete/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {

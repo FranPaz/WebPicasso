@@ -5,7 +5,7 @@
                 <div class="large-3 columns left">
                     <ul class="button-group right ">               
                         <!-- rsanch: cambio tamaño del logo 75 % por que en firefox se veia muy grande -->                                
-                        <li><img src="@Url.Content("~/Images/LogoPicasso.png")" style="width: 75%; height: 75%" alt="Picasso Pinturerias Logo"></li><!-- rsanch: cambio para usar url.content -->
+                        <li><img src="@Url.Content("~/Images/LogoPicasso.png")"  alt="Picasso Pinturerias Logo"></li><!-- rsanch: cambio para usar url.content -->
                     </ul>
                 </div>
 
@@ -19,6 +19,11 @@
                         <li><span><a href="#" class="social-network gplus"></a></span></li>
                     </ul>
                 </div>                              
+                <!--fpaz: parte de botones de redes sociales -->                
+                <div class="right ">     
+                    <br />                    
+                    <h2><span class="lema">LA SOLUCIÓN EN COLORES</span></h2>
+                </div>                                              
             </div> 
         <!-- End Header-->
 
@@ -29,7 +34,7 @@
 		                  <ul>
                             <li >@Html.ActionLink("Inicio", "Index", "Home")</li>
                             <li >@Html.ActionLink("La Empresa", "Empresa", "Home")</li>           
-                            <li >@Html.ActionLink("Productos", "Index", "Home")</li>  
+                            <li >@Html.ActionLink("Productos", "Catalogo", "Producto")</li>  
                             <li >@Html.ActionLink("Sucursales", "Sucursales", "Sucursal")</li>                        
                             <li >@Html.ActionLink("Promociones", "PromocionesDeBancos", "PromoBanco")</li>  
                             <li >@Html.ActionLink("Contacto", "Contacto", "Home")</li>                                             
@@ -40,3 +45,6 @@
             <!--Fin barra navegacion -->
 </header>
 <!-- End Header  -->
+
+
+    

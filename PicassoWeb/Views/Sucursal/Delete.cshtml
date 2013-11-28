@@ -4,34 +4,34 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 
-<h2>Delete</h2>
+<h2>Borrar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Seguro que desea borrar este registro?</h3>
 <fieldset>
     <legend>Sucursal</legend>
 
     <div class="display-label">nombre</div>
-    <div class="display-field">@Model.nombre</div>
+    <div class="display-field">@Model.Nombre</div>
 
     <div class="display-label">dir</div>
-    <div class="display-field">@Model.dir</div>
+    <div class="display-field">@Model.Direccion</div>
 
     <div class="display-label">tel</div>
-    <div class="display-field">@Model.tel</div>
+    <div class="display-field">@Model.Telefono</div>
 
     <div class="display-label">mail</div>
-    <div class="display-field">@Model.mail</div>
+    <div class="display-field">@Model.Mail</div>
 
     <div class="display-label">horarios</div>
-    <div class="display-field">@Model.horarios</div>
+    <div class="display-field">@Model.Horarios</div>
 
     <div class="display-label">foto</div>
-    <div class="display-field">@Model.foto</div>
+    <div class="display-field">@Model.Foto</div>
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Borrar" class="button" /> |
+        @Html.ActionLink("Volver", "Index")
     </p>
 }
 

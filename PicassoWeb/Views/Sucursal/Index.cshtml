@@ -1,65 +1,66 @@
 @model IEnumerable<PicassoWeb.Models.Sucursal>
-
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    }
-
-<h2>Index</h2>
-
+}
+<h2>
+    Sucursales</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table>
     <tr>
-        <th></th>
-        <th>
-            nombre
+        <th width="20%">
         </th>
-        <th>
-            dir
+        <th width="5%">
+            Activo
         </th>
-        <th>
-            tel
+        <th width="20%">
+            Nombre
         </th>
-        <th>
-            mail
+        <th width="15%">
+            Direccion
         </th>
-        <th>
-            horarios
+        <th width="10%">
+            Telefono
         </th>
-        <th>
-            foto
+        <th width="10%">
+            Mail
+        </th>
+        <th width="20%">
+            Foto
         </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-        <td>
-			@item.nombre
-        </td>
-        <td>
-			@item.dir
-        </td>
-        <td>
-			@item.tel
-        </td>
-        <td>
-			@item.mail
-        </td>
-        <td>
-			@item.horarios
-        </td>
-        <td>
-			@item.foto
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model) {
+        <tr>
+            <td width="20%">
+                @Html.ActionLink("Editar", "Edit", new { Id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { Id = item.Id }) |
+                @Html.ActionLink("Borrar", "Delete", new { Id = item.Id })
+            </td>
+            <td width="5%">
+               @Html.DisplayFor(_ => item.Activo)
+            </td>
+            <td width="20%">
+                @item.Nombre
+            </td>
+            <td width="15%">
+                @item.Direccion
+            </td>
+            <td width="10%">
+                @item.Telefono
+            </td>
+            <td width="10%">
+                @item.Mail
+            </td>
+            <td width="20%">
+                <div class="row">
+                    <div class="small-3 center">
+                        <a class="th [radius]" href="@item.Foto">
+                            <img src="@item.Foto" alt="@item.Id" />
+                        </a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
 </table>
-
-

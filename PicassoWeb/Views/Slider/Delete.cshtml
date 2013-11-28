@@ -1,0 +1,33 @@
+@model PicassoWeb.Models.Slider
+@using PicassoWeb.Helpers
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Borrar</h2>
+
+<h3>Seguro que desea borrar este registro?</h3>
+<div class="row">
+    <div class="small-12 columns">
+        <div class="display-label">
+            Nombre</div>
+        <div class="display-field">@Model.Nombre</div>
+    </div>
+</div>
+<div class="row">
+    <div class="row">
+        <div class="large-8 columns">
+            <a class="th radius" href="#">
+                @Html.Image(Model.Url, "preview", "preview")
+            </a>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Borrar" class="button"/> |
+        @Html.ActionLink("Volver", "Index")
+    </p>
+}
+
+

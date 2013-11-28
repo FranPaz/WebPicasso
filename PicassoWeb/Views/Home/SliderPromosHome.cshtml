@@ -1,24 +1,18 @@
-﻿
-
+﻿@model IEnumerable<PicassoWeb.Models.PromoBanco>
 
 <!--fpaz: dentro de este div se van a traer los datos del mapa del json de promociones de bancos --> 
 <ul class="bxslider" id="promos" >
+@foreach (var item in Model) { string linkDetalles =  "/PromoBanco/DetallesPromo/"+item.Id;
+     <li>
+        <a href="@linkDetalles" class="ajax-popup-link"> <img src="@item.Banco.Imagen" alt="@item.Banco.Id" /></a>
+        <p>@item.Descripcion</p><br/>
+     </li>
+}
 </ul>
 
 
 <link href="@Url.Content("~/Content/Slider/jquery.bxslider.css")" rel="stylesheet" />
 <script src="@Url.Content("~/Scripts/Slider/jquery.bxslider.js")"></script>
-
-
-<script type="text/javascript">
-
-    // fpaz: script que me recibe los datos del controlador y los muestra en los tags img y <p> de la barrita de promociones
-    $.getJSON('@Url.Content("~/Home/jsonPromo")', function (data) {
-            $.each(data, function (i, marker) {
-                $("#promos").append(" <li><a href='~/PromoBanco/Details/" + marker.id +"'><img src='" + marker.imagen + "' ' title='" + marker.descripcion + "' \/></a><\/li> ")                        
-            });
-        });
-</script>
 
 
 <script type="text/javascript">
@@ -38,5 +32,11 @@
     });
 </script>
 
-
+<link href="../../Content/popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<script src="../../Scripts/popup/popup.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $('.ajax-popup-link').magnificPopup({
+        type: 'ajax'
+    });    
+</script>
 

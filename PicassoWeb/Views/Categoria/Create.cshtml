@@ -1,0 +1,23 @@
+@model PicassoWeb.Models.Categoria
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+<h2>Nuevo</h2>
+
+@using (Html.BeginForm("Create", "Categoria",FormMethod.Post, new { @class = "custom" })) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Categoria</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+             <input type="submit" value="Crear" class ="button"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver", "Index")
+</div>

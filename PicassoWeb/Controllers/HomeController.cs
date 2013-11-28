@@ -13,6 +13,8 @@ namespace PicassoWeb.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.fondoBody = "/Images/fondoinicio.jpg";
+            //ViewBag.fondoBody = "/Images/bg-body.jpg";
             return View();
         }
 
@@ -34,23 +36,24 @@ namespace PicassoWeb.Controllers
         public ActionResult Empresa()
         {
             ViewBag.Message = "Informacion de la Empresa";
-
+            ViewBag.fondoBody = "/Images/fondoempresa.jpg";                        
             return View();
         }
 
         public ActionResult Contacto()
         {
             ViewBag.Message = "Informacion de contacto";
-
+            ViewBag.fondoBody = "/Images/fondocontacto.jpg";
+            ViewBag.imagenFooter = "/Images/imagenContacto.jpg";
             return View();
         }
         
         //rasanch: producto destacado en el HOME
         public ActionResult getProductoDestacado()
         {
-            int i = 0;
-            var p = context.Producto.Find(1);
-            object producto = new { imagen = p.imagen, nombre = p.descripcion};
+            //int i = 0;
+            var p = context.Producto.First();
+            object producto = new { imagen = p.Imagen, nombre = p.Nombre};
 
             return Json(producto, JsonRequestBehavior.AllowGet);
         }
@@ -84,7 +87,7 @@ namespace PicassoWeb.Controllers
             {
                 if (item.Activo == true)
                 {
-                    promoJson[i] = new { imagen = item.DirImagen, descripcion = item.Descripcion, id = item.Id };
+                    promoJson[i] = new { imagen = item.Imagen, descripcion = item.Descripcion, id = item.Id };
                     i++;    
                 }                
             }
@@ -94,6 +97,29 @@ namespace PicassoWeb.Controllers
         public ActionResult PopUpIntersitio()
         {            
             return PartialView();
+        }
+
+        //rsanch: action para la pagina de venta empresas
+        public ActionResult VentaEmpresas()
+        {
+            return View();
+        }
+
+        //ivan: se define el "metodo de accion" para traer las imagenes del slider del home
+        //
+        public ActionResult jsonGetSlider() {
+            int i = 0;
+            object[] sliderJson = new object[context.Slider.Count()]; //trae una lista de objetos
+            foreach (var item in context.Slider) {
+                sliderJson[i] = new { url = item.Url };
+                i++;
+            }
+
+            //OTRA FORMA DE HACER LO DE ARRIBA CON LINQ
+            //var sliderJson = from s in context.Slider
+            //                 select new { url = s.Url };
+
+            return Json(sliderJson, JsonRequestBehavior.AllowGet);
         }
     }
 }
