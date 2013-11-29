@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PicassoWeb.Models;
+using System.Net.Mail;
+using System.Net;
 
 namespace PicassoWeb.Controllers
 {
@@ -120,6 +122,37 @@ namespace PicassoWeb.Controllers
             //                 select new { url = s.Url };
 
             return Json(sliderJson, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Contacto(Contacto form)
+        {
+            //rasnch configuracion de salida smtp de picassopinturerias con user web. No cambiar la contraseña.
+            using (var client = new SmtpClient {
+                Host = "mail.picassopinturerias.com.ar",
+                Port = 587,
+                Credentials = new NetworkCredential("web@picassopinturerias.com.ar", "PicAss08p"), 
+                DeliveryMethod = SmtpDeliveryMethod.Network})
+            {
+                var mail = new MailMessage();
+                mail.To.Add("contacto@picassopinturerias.com.ar"); // email de contacto que van a manejar ellos
+                mail.From = new MailAddress(form.Email, form.Nombre);
+                mail.Subject = String.Format("Nuevo contacto de: {0}. Asunto: {1}", form.Nombre,form.Asunto);
+                mail.Body = String.Format("Nombre: {0} \n email: {1} \n telefono: {5} \n Localidad: {2} \n Asunto: {3} \n Comentarios: {4}", form.Nombre, form.Email, form.Localidad, form.Asunto, form.Comentario, form.Telefono);
+                mail.IsBodyHtml = false;
+                try
+                {            
+                    client.Send(mail);
+                    return Content("Su comentario fue enviado correctamente, nos contactaremos con usted a la brevedad. Muchas gracias.");
+                }
+                catch (Exception)
+                {
+                    return Content("Hubo un error, por favor intentelo de nuevo mas tarde.");
+                    throw;
+                }
+            }
         }
     }
 }
