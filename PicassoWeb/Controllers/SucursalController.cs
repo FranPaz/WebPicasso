@@ -25,7 +25,7 @@ namespace PicassoWeb.Controllers
         //fpaz: Agrego la accion sucursales que es la que voy a usar para mostrar el listado de sucursales al cliente
         public ViewResult Sucursales()
         {
-            ViewBag.fondoBody = "/Images/fondosucursales.jpg";            
+            ViewBag.fondoBody = "/Images/fondoSUCURSALES.jpg";
             ViewBag.imagenFooter = "/Images/imagenproductos.png";    
             return View(context.Sucursal.ToList());
         }

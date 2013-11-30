@@ -16,8 +16,22 @@ namespace PicassoWeb.Controllers
         public ActionResult Index()
         {
             ViewBag.MostrarFB = true;
-            ViewBag.fondoBody = "/Images/fondoinicio.jpg";
-            //ViewBag.fondoBody = "/Images/bg-body.jpg";
+            ViewBag.fondoBody = "/Images/fondoINICIO.jpg";            
+            return View();
+        }
+
+
+        public ActionResult IndexSlider() {
+            return View();
+        }  
+        
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
             return View();
         }
 
@@ -25,14 +39,14 @@ namespace PicassoWeb.Controllers
         {
             ViewBag.MostrarFB = true;
             ViewBag.Message = "Informacion de la Empresa";
-            ViewBag.fondoBody = "/Images/fondoempresa.jpg";                        
+            ViewBag.fondoBody = "/Images/fondoEMPRESA.jpg";                        
             return View();
         }
 
         public ActionResult Contacto()
         {
             ViewBag.Message = "Informacion de contacto";
-            ViewBag.fondoBody = "/Images/fondocontacto.jpg";
+            ViewBag.fondoBody = "/Images/fondoCONTACTO.jpg";
             ViewBag.imagenFooter = "/Images/imagenContacto.jpg";
             return View();
         }
@@ -89,7 +103,32 @@ namespace PicassoWeb.Controllers
             return Json(sliderJson, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Divisiones()
+        {
+            ViewBag.Message = "Divisiones";
+            ViewBag.fondoBody = "/Images/fondoEMPRESA.jpg";
+            return View();
+        }
 
+        public ActionResult DivisionHogar()
+        {
+            return View();
+        }
+
+        public ActionResult DivisionEmpresa()
+        {
+            return View();
+        }
+
+        public ActionResult DivisionMayorista()
+        {
+            return View();
+        }
+
+        public ActionResult DivisionProfesional()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Contacto(Contacto form)

@@ -4,7 +4,7 @@
 <ul class="bxslider" id="promos" >
 @foreach (var item in Model) { string linkDetalles =  "/PromoBanco/DetallesPromo/"+item.Id;
      <li>
-        <a href="@linkDetalles" class="ajax-popup-link"> <img src="@item.Banco.Imagen" alt="@item.Banco.Id" /></a>
+        <a href="@linkDetalles" class="ajax-popup-link"> <img src="@item.Banco.Imagen" alt="@item.Banco.Id" width="131px" height="100px" /></a>
         <p>@item.Descripcion</p><br/>
      </li>
 }
@@ -20,8 +20,8 @@
         $('.bxslider').bxSlider({
             auto: true,
             mode: 'vertical',
-            minSlides: 3,
-            maxSlides: 3,
+            minSlides: 2,
+            maxSlides: 2,
             slideMargin: 10,
             captions: true,
             pager:false,

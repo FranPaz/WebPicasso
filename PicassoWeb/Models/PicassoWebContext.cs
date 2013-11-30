@@ -74,8 +74,7 @@ namespace PicassoWeb.Models
                 new Categoria { Nombre = "MADERAS", Activo = true, Imagen = "/Images/noPhoto.jpg"  },
                 new Categoria { Nombre = "ESPECIALES", Activo = true, Imagen = "/Images/noPhoto.jpg"  },
                 new Categoria { Nombre = "ACCESORIOS LÁTEX", Activo = true, Imagen = "/Images/noPhoto.jpg"  },
-                new Categoria { Nombre = "ACCESORIOS", Activo = true, Imagen = "/Images/noPhoto.jpg"  },
-                new Categoria { Nombre = "INDULAC", Activo = true, Imagen = "/Images/noPhoto.jpg"  },
+                new Categoria { Nombre = "ACCESORIOS", Activo = true, Imagen = "/Images/noPhoto.jpg"  },                
                 new Categoria { Nombre = "SELLADORES", Activo = true, Imagen = "/Images/noPhoto.jpg"  },
                 new Categoria { Nombre = "AUTOMOTOR", Activo = true, Imagen = "/Images/noPhoto.jpg"  },
                 new Categoria { Nombre = "INDUSTRIA", Activo = true, Imagen = "/Images/noPhoto.jpg"  },
@@ -84,17 +83,17 @@ namespace PicassoWeb.Models
                 );
 
             context.Sucursal.AddRange(new List<Sucursal>{
+                new Sucursal { Nombre = "Casa Central", Direccion = "Av. Belgrano 669", Lat = -27.73764, Lon = -64.2462, Mail = "", Foto = "/Images/noPhoto.jpg" , Telefono = "", Horarios = "", Activo = true },
                 new Sucursal { Nombre = "Santiago 1", Direccion = "Aguirre esq Alsina", Lat = -27.80489, Lon = -64.27037, Mail = "", Foto = "/Images/noPhoto.jpg" , Telefono = "", Horarios = "", Activo = true },
-                new Sucursal { Nombre = "Santiago 2", Direccion = "Libertad 2511", Lat = -27.7971, Lon = -64.27597, Mail = "", Foto = "/Images/noPhoto.jpg" , Telefono = "", Horarios = "", Activo = true },
-                new Sucursal { Nombre = "La Banda 1", Direccion = "Belgrano 669", Lat = -27.73764, Lon = -64.2462, Mail = "", Foto = "/Images/noPhoto.jpg" , Telefono = "", Horarios = "", Activo = true },
+                new Sucursal { Nombre = "Santiago 2", Direccion = "Libertad 2511", Lat = -27.7971, Lon = -64.27597, Mail = "", Foto = "/Images/noPhoto.jpg" , Telefono = "", Horarios = "", Activo = true },                
                 new Sucursal { Nombre = "La Banda 2", Direccion = "Aristóbulo del Valle 221", Lat = -27.73283, Lon = -64.23623, Mail = "", Foto = "/Images/noPhoto.jpg" , Telefono = "", Horarios = "", Activo = true },
                 new Sucursal { Nombre = "Fernandez", Direccion = "Av San Martín 123", Lat = -27.92369, Lon = -63.89674, Mail = "", Foto = "/Images/noPhoto.jpg" , Telefono = "", Horarios = "", Activo = true }
             }
                 );
 
-            context.Banco.Add(
-                new Banco { Nombre = "Santander Rio", Imagen = "/Images/noPhoto.jpg" }
-                );
+            //context.Banco.Add(
+            //    new Banco { Nombre = "Santander Rio", Imagen = "/Images/noPhoto.jpg" }
+            //    );
             context.Marca.Add(
                 new Marca { Nombre = "Tersuave", Activo = true, Imagen = "/Images/noPhoto.jpg"  }
                 );

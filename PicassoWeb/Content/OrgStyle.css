@@ -35,9 +35,11 @@ margin-top: 10px;
 margin-bottom: 10px;
 }
 
+/* fpaz: modificado 25/11/2013 porque aumentaba el tamaño del header en las secciones "La Empresa" y "Divisiones"
 header {
 margin-top: 10px;
 }
+*/
 
 #main {
 margin: 0 auto;
@@ -125,9 +127,6 @@ text-decoration: underline;
 
 /* header */
 
-header {
-margin-top: 20px;
-}
 
 header h1 {
 margin-bottom:0px;
@@ -283,4 +282,3 @@ padding-right: 20px;
 .clearall {
 clear: both;
 }
-

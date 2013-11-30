@@ -193,16 +193,16 @@
     <Content Include="Content\foundation\default.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Images\bg-body.jpg" />
-    <Content Include="Images\fondocontacto.jpg" />
-    <Content Include="Images\fondoempresa.jpg" />
-    <Content Include="Images\fondoproductos.jpg" />
-    <Content Include="Images\fondopromociones.jpg" />
-    <Content Include="Images\fondosucursales.jpg" />
     <Content Include="Content\foundation\fonts\icomoon.svg" />
     <Content Include="Content\foundation\foundation.css" />
     <Content Include="Content\foundation\foundation.mvc.css" />
     <Content Include="Content\foundation\normalize.css" />
     <Content Include="Content\foundation\redesSociales.css" />
+    <Content Include="Images\fondoCONTACTO.jpg" />
+    <Content Include="Images\fondoEMPRESA.jpg" />
+    <Content Include="Images\fondoINICIO.jpg" />
+    <Content Include="Images\fondoPRODUCTOS.jpg" />
+    <Content Include="Images\fondoSUCURSALES.jpg" />
     <Content Include="Images\loader.gif" />
     <Content Include="Content\OrgStyle.css" />
     <Content Include="Content\popup\magnific-popup.css" />
@@ -272,7 +272,6 @@
     <Content Include="Images\bote pintura3.png" />
     <Content Include="Images\empresa.jpg" />
     <Content Include="Images\face.png" />
-    <Content Include="Images\fondoinicio.jpg" />
     <Content Include="Images\imagenContacto.jpg" />
     <Content Include="Images\imagenproductos.png" />
     <Content Include="Images\imagenPromociones.jpg" />
@@ -432,10 +431,19 @@
     <Content Include="Views\Slider\Index.cshtml" />
     <Content Include="Views\Slider\_CreateOrEdit.cshtml" />
     <Content Include="Views\PromoBanco\DetallesPromo.cshtml" />
+    <Content Include="Views\Home\DivisionEmpresa.cshtml" />
+    <Content Include="Views\Home\Divisiones.cshtml" />
+    <Content Include="Views\Home\DivisionHogar.cshtml" />
+    <Content Include="Views\Home\DivisionMayorista.cshtml" />
+    <Content Include="Views\Home\DivisionProfesional.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\" />
+    <Folder Include="Uploads\Bancos\" />
+    <Folder Include="Uploads\Productos\" />
+    <Folder Include="Uploads\PromoIntersitio\" />
+    <Folder Include="Uploads\Slider\" />
+    <Folder Include="Uploads\Sucursales\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -3,10 +3,11 @@
         <!-- Header--> 
             <div class="row">
                 <div class="large-3 columns left">
-                    <ul class="button-group right ">               
+                <img src="@Url.Content("~/Images/LogoPicasso.png")" style="width: 95%; height: 75%" alt="Picasso Pinturerias Logo">
+                    @*<ul class="button-group right ">               
                         <!-- rsanch: cambio tamaño del logo 75 % por que en firefox se veia muy grande -->                                
-                        <li><img src="@Url.Content("~/Images/LogoPicasso.png")"  alt="Picasso Pinturerias Logo"></li><!-- rsanch: cambio para usar url.content -->
-                    </ul>
+                       <li><img src="@Url.Content("~/Images/LogoPicasso.png")" style="width: 95%; height: 75%" alt="Picasso Pinturerias Logo"></li><!-- rsanch: cambio para usar url.content -->                       
+                    </ul>*@
                 </div>
 
                 <!--fpaz: parte de botones de redes sociales -->
@@ -32,8 +33,9 @@
                 <div class="main clearfix">
 	                <nav id="menu" class="nav">					
 		                  <ul>
-                            <li >@Html.ActionLink("Inicio", "Index", "Home")</li>
+                            @*<li >@Html.ActionLink("Inicio", "Index", "Home")</li>*@
                             <li >@Html.ActionLink("La Empresa", "Empresa", "Home")</li>           
+                            <li >@Html.ActionLink("Divisiones", "Divisiones", "Home")</li>
                             <li >@Html.ActionLink("Productos", "Catalogo", "Producto")</li>  
                             <li >@Html.ActionLink("Sucursales", "Sucursales", "Sucursal")</li>                        
                             <li >@Html.ActionLink("Promociones", "PromocionesDeBancos", "PromoBanco")</li>  
