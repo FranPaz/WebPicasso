@@ -38,17 +38,20 @@
             <!-- end prod -->
             <!-- rsanch: Agrego fb likebox. -->
             <div class="large-4 columns left">
+            @if (ViewBag.MostrarFB) {
                 <h4 class="footer-header white">
                 </h4>
                 <div class="fb-like-box" data-href="http://www.facebook.com/picassopintureria" data-colorscheme="light"
                     data-show-faces="true" data-header="true" data-stream="false" data-show-border="true">
                 </div>
+                }
             </div>
             <!-- end face -->
         </div>
     </div>
     </div>
 </div>
+@if (ViewBag.MostrarFB) {
 <div id="fb-root">
 </div>
 <!-- rsanch: scripts para fb likebox. -->
@@ -60,8 +63,5 @@
         js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=126094964099484";
         fjs.parentNode.insertBefore(js, fjs);
     } (document, 'script', 'facebook-jssdk'));
-
-    $.getJSON('@Url.Content("~/Home/getProductoDestacado")', function (data) {
-        $("#productoDestacado").append("<img src='" + data.imagen + "'\/> </img><p class='title'>" + data.nombre + "</p><p><a href='/Producto/Details/1' class='readmore'>ver mas</a></p>");
-    });
 </script>
+}

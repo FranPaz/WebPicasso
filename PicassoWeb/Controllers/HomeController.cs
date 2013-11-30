@@ -15,28 +15,15 @@ namespace PicassoWeb.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.MostrarFB = true;
             ViewBag.fondoBody = "/Images/fondoinicio.jpg";
             //ViewBag.fondoBody = "/Images/bg-body.jpg";
             return View();
         }
 
-
-        public ActionResult IndexSlider() {
-            return View();
-        }  
-        
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
         public ActionResult Empresa()
         {
+            ViewBag.MostrarFB = true;
             ViewBag.Message = "Informacion de la Empresa";
             ViewBag.fondoBody = "/Images/fondoempresa.jpg";                        
             return View();
@@ -50,28 +37,6 @@ namespace PicassoWeb.Controllers
             return View();
         }
         
-        //rasanch: producto destacado en el HOME
-        public ActionResult getProductoDestacado()
-        {
-            //int i = 0;
-            var p = context.Producto.First();
-            object producto = new { imagen = p.Imagen, nombre = p.Nombre};
-
-            return Json(producto, JsonRequestBehavior.AllowGet);
-        }
-        //fpaz: action method para mostrar los datos de las promo bancos en la barra de promos del home
-        public ActionResult jsonPromo()
-        {
-            int i = 0;
-            object[] promoJson = new object[context.PromoBanco.Count()];
-            foreach (var item in context.PromoBanco)
-            {
-                promoJson[i] = new { imagen = item.Banco.Imagen, descripcion = item.Descripcion, id = item.Id };
-                i++;
-            }
-
-            return Json(promoJson, JsonRequestBehavior.AllowGet);
-        }
 
         //fpaz: agrego el controlador para ir a la pagina del administrador
         [Authorize(Roles = "Admin")]
