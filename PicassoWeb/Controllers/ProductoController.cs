@@ -175,6 +175,7 @@ namespace PicassoWeb.Controllers
         //fpaz: action method para mostrar la pagina de catalogo de productos
         public ViewResult Catalogo() {
             ViewBag.fondoBody = "/Images/fondoPRODUCTOS.jpg";
+            ViewBag.imagenFooter = "/Images/imagenContacto.jpg";
             return View(context.Categoria.ToList());
         }
 

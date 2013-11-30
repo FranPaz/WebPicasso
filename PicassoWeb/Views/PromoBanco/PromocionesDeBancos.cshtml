@@ -13,7 +13,8 @@
   <span class="titulosInfoPagina">Nuestras Promociones</span>
 </h3> 
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <section>        
         <hr />
         <div class="row">
@@ -23,24 +24,17 @@
             <div class="large-9 columns centered descuento_descripcion">
                  @item.Descripcion
             </div>
-        </div>
-
-        <div class="row">
-            <div class="large-3 columns">                
-                <p> </p>
-            </div>
-            <div class="large-9 columns left descuento_descripcion">
-                <p>Hasta <span>@item.Cuotas</span> sin intereses @item.Dias</p>                        
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="large-3 columns">                
-                <p> </p>
-            </div>
+            <br />            
+            @*<div class="large-9 columns left descuento_descripcion">
+                    <p>Hasta <span>@item.Cuotas</span> sin intereses @item.Dias</p>                        
+            </div>*@
             <div class="large-9 columns left">
                 <p>@item.CondicionesLegales</p>
             </div>
+        </div>        
+
+        <div class="row">
+            
         </div>        
         
     </section>

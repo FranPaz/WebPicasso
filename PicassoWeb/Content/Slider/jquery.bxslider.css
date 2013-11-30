@@ -125,7 +125,7 @@ max-height: 75px;
 	width: 32px;
 	height: 32px;
 	text-indent: -9999px;
-	z-index: 9999;
+	z-index: 1000;/*rsanch: cambio para que no se superponga con el modal. */
 }
 
 .bx-wrapper .bx-controls-direction a.disabled {

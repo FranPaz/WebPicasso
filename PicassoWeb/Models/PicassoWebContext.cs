@@ -92,8 +92,9 @@ namespace PicassoWeb.Models
                 );
 
             //context.Banco.Add(
-            //    new Banco { Nombre = "Santander Rio", Imagen = "/Images/noPhoto.jpg" }
+            //    new Banco { Nombre = "Tarjeta Naranja", Imagen = "/Images/noPhoto.jpg" }
             //    );
+
             context.Marca.Add(
                 new Marca { Nombre = "Tersuave", Activo = true, Imagen = "/Images/noPhoto.jpg"  }
                 );

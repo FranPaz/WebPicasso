@@ -1,12 +1,24 @@
 ﻿@model IEnumerable<PicassoWeb.Models.Slider>
 <!--iafar: comienza el cuerpo de Slider -->
-<div class="large-10 large-centered columns">
-    <div class="orbit-container" data-orbit>
+<div class="large-12 large-centered columns">
+    <div data-orbit >
         <!-- Content Slider -->
+        @*<ul data-orbit >*@
         @foreach (var item in Model) {
-            if (item.Activo) { 
-            <img src='@item.Url' class='foto'  alt="@item.Id" />
+            if (item.Activo) {
+                if(item.Link!=""){
+                    @*<li>*@
+                    @*<a href="@item.Link" target="_blank" >*@
+                    <img src='@item.Url' class='foto'  alt="@item.Id" />
+                    @*</a>*@
+                    @*</li>*@
+                } else {
+                    @*<li>*@
+                    <img src='@item.Url' class='foto'  alt="@item.Id" />                    
+                    @*</li>*@
+                }
             }
         }
+        @*</ul>*@
     </div>
 </div>

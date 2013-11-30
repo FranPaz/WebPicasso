@@ -3397,7 +3397,7 @@ label.error {
 @media only screen and (min-width: 768px) {
   .reveal-modal {
     padding: 1.875em;
-    top: 6.25em; }
+    top: -150px; }/*rsanch modal mas arriba */
     .reveal-modal.tiny {
       margin-left: -15%;
       width: 30%; }

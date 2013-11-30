@@ -15,7 +15,7 @@ namespace PicassoWeb.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.MostrarFB = true;
+            ViewBag.esHome = true;
             ViewBag.fondoBody = "/Images/fondoINICIO.jpg";            
             return View();
         }
@@ -39,7 +39,8 @@ namespace PicassoWeb.Controllers
         {
             ViewBag.MostrarFB = true;
             ViewBag.Message = "Informacion de la Empresa";
-            ViewBag.fondoBody = "/Images/fondoEMPRESA.jpg";                        
+            ViewBag.fondoBody = "/Images/fondoEMPRESA.jpg";
+            ViewBag.imagenFooter = "/Images/imagenContacto.jpg";           
             return View();
         }
 
@@ -107,6 +108,7 @@ namespace PicassoWeb.Controllers
         {
             ViewBag.Message = "Divisiones";
             ViewBag.fondoBody = "/Images/fondoEMPRESA.jpg";
+            ViewBag.imagenFooter = "/Images/imagenContacto.jpg";
             return View();
         }
 
