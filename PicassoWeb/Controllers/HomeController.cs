@@ -107,7 +107,7 @@ namespace PicassoWeb.Controllers
         public ActionResult Divisiones()
         {
             ViewBag.Message = "Divisiones";
-            ViewBag.fondoBody = "/Images/fondoEMPRESA.jpg";
+            ViewBag.fondoBody = "/Images/fondodivisiones.jpg";
             ViewBag.imagenFooter = "/Images/imagenContacto.jpg";
             return View();
         }

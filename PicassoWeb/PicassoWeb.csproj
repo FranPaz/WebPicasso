@@ -205,9 +205,11 @@
     <Content Include="Content\foundation\normalize.css" />
     <Content Include="Content\foundation\redesSociales.css" />
     <Content Include="Images\fondoCONTACTO.jpg" />
+    <Content Include="Images\fondodivisiones.jpg" />
     <Content Include="Images\fondoEMPRESA.jpg" />
     <Content Include="Images\fondoINICIO.jpg" />
     <Content Include="Images\fondoPRODUCTOS.jpg" />
+    <Content Include="Images\fondopromociones.jpg" />
     <Content Include="Images\fondoSUCURSALES.jpg" />
     <Content Include="Images\how-to-hire-a-professional-house-painting-company-1024x682.jpg" />
     <Content Include="Images\loader.gif" />
@@ -285,6 +287,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\mapa.png" />
+    <Content Include="Images\marca_home.png" />
     <Content Include="Images\paint cans.jpg" />
     <Content Include="Images\PicasoQR.png" />
     <Content Include="Images\plugin_face.png" />
