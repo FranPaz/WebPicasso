@@ -9,6 +9,13 @@
     </div>
 </div>
 <div class="row">
+    <div class="small-12 columns">
+        @Html.LabelFor(model => model.Link)
+        @Html.EditorFor(model => model.Link)
+        @Html.ValidationMessageFor(model => model.Link)
+    </div>
+</div>
+<div class="row">
         <div class="row">
             Imagen:
             <input id="Imagen" name="Imagen" type="file" accept="image/gif, image/jpeg" />

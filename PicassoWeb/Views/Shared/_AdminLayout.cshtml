@@ -4,12 +4,14 @@
 <html class="no-js" lang="en">
 <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
+<meta charset="utf-8" />
     @*Set the viewport width to device width for mobile *@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title Administrador</title>
     <!--fpaz: puse el titulo "Picasso Pinturerias" -->
     <link href="~/picassoIcon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!--robot de busqueda, la pagina no se indexara y sus links internos no podran ser seguidos por buscadores-->
+    <meta name="robots" content="noindex,nofollow">
     <!--rsanch: Cambie el favicon -->
     @*@Styles.Render("~/Content/foundation/css")*@
     <link href="~/Content/foundation/foundation.css" rel="stylesheet" />
@@ -62,6 +64,7 @@
         </ul>
 
         <ul class="right">
+            <li><a href="http://picassopinturerias.com.ar:2084/" target="_blank"> WebMail</a></li>
             <li>@Html.ActionLink("Slider", "Index", "Slider")</li>
           <li>@Html.ActionLink("Sucursales", "Index", "Sucursal")</li>
           <li class="has-dropdown" >@Html.ActionLink("Promociones de Bancos", "Index", "PromoBanco")

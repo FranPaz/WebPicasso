@@ -95,4 +95,22 @@ namespace PicassoWeb.Models
         public string ProviderDisplayName { get; set; }
         public string ProviderUserId { get; set; }
     }
+
+
+    public class Contacto {
+        [Required]
+        public string Nombre { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
+        public string Telefono { get; set; }
+        
+        [Required]
+        public string Localidad { get; set; }
+        [Required]
+        public string Asunto { get; set; }
+        [Required]
+        public string Comentario { get; set; }
+    }
 }

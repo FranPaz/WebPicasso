@@ -1,58 +1,74 @@
-﻿@{
-    ViewBag.Title = "Contacto";
-    Layout = "~/Views/Shared/_Foundation.cshtml";
-}
+﻿@model PicassoWeb.Models.Contacto
+@{ ViewBag.Title = "Contacto"; Layout = "~/Views/Shared/_Foundation.cshtml"; }
 <div class="row" style="padding: 20px 0 0 0;">
     <!-- Form -->
-    <form id="contact-form" action="/" method="post">
-    <h3>
-        <img src="../../Images/Slider/gotas_picasso.png" class="alignleft" height="30" width="30" /> 
-        <span class="titulosInfoPagina">ESTAMOS EN CONTACTO</span>
-    </h3>    
-    <h4>
-        Complete los campos a continuacion, a la brevedad responderemos sus consultas y sugerencias</h4>
-    <div>
-        <label>
-            <span>Nombre: (requerido)</span>
-            <input placeholder="Ingrese su nombre y Apellido" type="text" tabindex="1" required=""
-                autofocus="">
-        </label>
-    </div>
-    <div>
-        <label>
-            <span>Email: (requerido)</span>
-            <input placeholder="Ingrese su direccion de correo electronico" type="email" tabindex="2" required="">
-        </label>
-    </div>
-    <div>
-        <label>
-            <span>Telefono:</span>
-            <input placeholder="Ingrese su numero telefonico" type="tel" tabindex="3" required="">
-        </label>
-    </div>
-    <div>
-        <label>
-            <span>Localidad: (requerido)</span>
-            <input placeholder="Ingrese su Provincia y localidad" type="url" tabindex="4" required="">
-        </label>
-    </div>
-    <div>
-        <label>
-            <span>Asunto: (requerido)</span>
-            <input placeholder="Cual es la razon de su eMail" type="url" tabindex="4" required="">
-        </label>
-    </div>
-    <div>
-        <label>
-            <span>Comentario: (required)</span>
-            <textarea placeholder="Complete con su comentario" tabindex="5" required=""></textarea>
-        </label>
-    </div>
-    <div>
-        <button name="submit" type="submit" id="contact-submit">
-            Enviar Mail</button>
-    </div>
-    </form>
+    @using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "target", HttpMethod = "POST", InsertionMode = InsertionMode.Replace, OnFailure = "ShowError()", OnSuccess = "ShowSuccess()" })) {
+        <div id="target">
+            <h3>
+                <img src="../../Images/Slider/gotas_picasso.png" class="alignleft" height="30" width="30" />
+                <span class="titulosInfoPagina">ESTAMOS EN CONTACTO</span>
+            </h3>
+            <h4>
+                Complete los campos a continuacion, a la brevedad responderemos sus consultas y
+                sugerencias</h4>
+            <div>
+                <label>
+                    <span>Nombre: (requerido)</span>
+                    @Html.EditorFor(x => x.Nombre)
+                    @Html.ValidationMessageFor(x => x.Nombre)
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span>Email: (requerido)</span>
+                    @Html.EditorFor(x => x.Email)
+                    @Html.ValidationMessageFor(x => x.Email)
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span>Telefono:</span>
+                    @Html.EditorFor(x => x.Telefono)
+                    @Html.ValidationMessageFor(x => x.Telefono)
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span>Localidad: (requerido)</span>
+                    @Html.EditorFor(x => x.Localidad)
+                    @Html.ValidationMessageFor(x => x.Localidad)
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span>Asunto: (requerido)</span>
+                    @Html.EditorFor(x => x.Asunto)
+                    @Html.ValidationMessageFor(x => x.Asunto)
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span>Comentario: (required)</span>
+                    @Html.TextAreaFor(x => x.Comentario)
+                    @Html.ValidationMessageFor(x => x.Comentario)
+                </label>
+            </div>
+            <div>
+                <button name="submit" type="submit" id="contact-submit">
+                    Enviar</button>
+            </div>
+        </div>
+    }
     <!-- /Form -->
 </div>
-         
+<script type="text/javascript">
+    function ShowError() {
+        $("#target").removeClass();
+        $("#target").addClass("alert-box warning round");
+    }
+
+    function ShowSuccess() {
+        $("#target").removeClass();
+        $("#target").addClass("alert-box success radius");
+    }
+</script>

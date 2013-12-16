@@ -71,6 +71,9 @@
     <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="MvcSiteMapProvider">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC4.Core.4.4.5\lib\net40\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -110,7 +113,7 @@
     </Reference>
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
@@ -141,6 +144,9 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.4\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
     </Reference>
@@ -193,16 +199,19 @@
     <Content Include="Content\foundation\default.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Images\bg-body.jpg" />
-    <Content Include="Images\fondocontacto.jpg" />
-    <Content Include="Images\fondoempresa.jpg" />
-    <Content Include="Images\fondoproductos.jpg" />
-    <Content Include="Images\fondopromociones.jpg" />
-    <Content Include="Images\fondosucursales.jpg" />
     <Content Include="Content\foundation\fonts\icomoon.svg" />
     <Content Include="Content\foundation\foundation.css" />
     <Content Include="Content\foundation\foundation.mvc.css" />
     <Content Include="Content\foundation\normalize.css" />
     <Content Include="Content\foundation\redesSociales.css" />
+    <Content Include="Images\fondoCONTACTO.jpg" />
+    <Content Include="Images\fondodivisiones.jpg" />
+    <Content Include="Images\fondoEMPRESA.jpg" />
+    <Content Include="Images\fondoINICIO.jpg" />
+    <Content Include="Images\fondoPRODUCTOS.jpg" />
+    <Content Include="Images\fondopromociones.jpg" />
+    <Content Include="Images\fondoSUCURSALES.jpg" />
+    <Content Include="Images\how-to-hire-a-professional-house-painting-company-1024x682.jpg" />
     <Content Include="Images\loader.gif" />
     <Content Include="Content\OrgStyle.css" />
     <Content Include="Content\popup\magnific-popup.css" />
@@ -265,19 +274,22 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="Foundation_readme.txt" />
     <Content Include="Global.asax" />
     <Content Include="Images\bote pintura.png" />
     <Content Include="Images\bote pintura2.png" />
     <Content Include="Images\bote pintura3.png" />
     <Content Include="Images\empresa.jpg" />
     <Content Include="Images\face.png" />
-    <Content Include="Images\fondoinicio.jpg" />
     <Content Include="Images\imagenContacto.jpg" />
     <Content Include="Images\imagenproductos.png" />
     <Content Include="Images\imagenPromociones.jpg" />
-    <Content Include="Images\LogoPicasso.png" />
+    <Content Include="Images\LogoPicasso.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\mapa.png" />
+    <Content Include="Images\marca_home.png" />
+    <Content Include="Images\paint cans.jpg" />
+    <Content Include="Images\PicasoQR.png" />
     <Content Include="Images\plugin_face.png" />
     <Content Include="Images\noPhoto.jpg" />
     <Content Include="Images\simulador.png" />
@@ -323,8 +335,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.1.0.debug.js" />
-    <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\popup\jquery.cookie.js" />
     <Content Include="Scripts\popup\popup.js" />
@@ -333,6 +343,10 @@
     <Content Include="Scripts\Slider\jquery.bxslider.js" />
     <Content Include="Scripts\Slider\jquery.event.move.js" />
     <Content Include="Scripts\Slider\responsive-slider.js" />
+    <Content Include="Mvc.sitemap" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\Sucursales\demo.json" />
     <Content Include="Scripts\Sucursales\jquery.ui.map.js" />
     <Content Include="Scripts\zepto.js" />
@@ -434,10 +448,26 @@
     <Content Include="Views\Slider\Index.cshtml" />
     <Content Include="Views\Slider\_CreateOrEdit.cshtml" />
     <Content Include="Views\PromoBanco\DetallesPromo.cshtml" />
+    <Content Include="Views\Home\DivisionEmpresa.cshtml" />
+    <Content Include="Views\Home\Divisiones.cshtml" />
+    <Content Include="Views\Home\DivisionHogar.cshtml" />
+    <Content Include="Views\Home\DivisionMayorista.cshtml" />
+    <Content Include="Views\Home\DivisionProfesional.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Uploads\" />
+    <Folder Include="Uploads\Bancos\" />
+    <Folder Include="Uploads\Productos\" />
+    <Folder Include="Uploads\PromoIntersitio\" />
+    <Folder Include="Uploads\Slider\" />
+    <Folder Include="Uploads\Sucursales\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -2,53 +2,61 @@
 <div class="row">
     <hr width="100%" />
 </div>
-<!-- rsanch: agrego row para alinearlo con el header. -->
-<div class="row footer" >
-<!-- rsanch: Imagen del footer movida una row mas arriba para que no se muevan los links y agrego opacity y una linea de division -->
-    <div class="large-12 columns">
+<!---------------------->
+<div id="footer-degrade">
     <div class="row">
         <div class="large-12 columns">
-            <div class="large-4 columns">
-            @if (ViewBag.imagenFooter != null) { <img src="@ViewBag.imagenFooter" alt="footer img" style="opacity:0.4;" /> }
+            <div class="large-5 columns">
+                <!-- rsanch: Agrego fb likebox. -->
+                @if (ViewBag.esHome == true)
+                {
+                    <div class="large-4 columns left">
+                        <h4 class="footer-header white">
+                        </h4>
+                        <div class="fb-like-box" data-href="http://www.facebook.com/picassopintureria" data-colorscheme="light"
+                            data-show-faces="true" data-header="true" data-stream="false" data-show-border="true">
+                        </div>
+                    </div>
+                } else {
+                    <img src="@ViewBag.imagenFooter" alt="footer img" style="opacity:0.4;" />
+                }
+                <!-- end face -->
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="large-4 columns rigth">
-                <h4 class="white">
-                    Links</h4>
-                <ul>
-                    <li><a href="#">Link1</a></li>
-                    <li><a href="#">Link2</a></li>
-                    <li><a href="#">Link3</a></li>
-                    <li><a href="#">Link4</a></li>
-                    <li><a href="#">Link5</a></li>
-                    <li><a href="#">Link6</a></li>
-                </ul>
-            </div>
-            <!-- end Links -->
-            <!-- rsanch: cambiando el icono por un prod destacado q puede venir de la bd. -->
-            <div class="large-4 columns center">
-                <h4 class="footer-header white">
-                    Producto Destacado</h4>
-                <div id="productoDestacado">
+            <div class="large-7 columns">
+                <div class="large-4 columns" id="fuentes-final">
+                    @Html.MvcSiteMap().SiteMap()
+                </div>
+                <div class="large-5 columns" id="fuentes-final">
+                    <ul>
+                        <li><a href="/Home/Divisiones#DivisionHogar">- Division Hogar</a></li>
+                        <li><a href="/Home/Divisiones#DivisionEmpresas">- Division Empresas</a></li>
+                        <li><a href="/Home/Divisiones#DivisionMayoristas">- Division Mayoristas</a></li>
+                        <li><a href="/Home/Divisiones#DivisionProfesional">- Division Profesional</a></li>
+                    </ul>
+                </div>
+                <div class="large-3 columns">
+                    <img src="../../Images/PicasoQR.png" width="200" height="200">
                 </div>
             </div>
-            <!-- end prod -->
-            <!-- rsanch: Agrego fb likebox. -->
-            <div class="large-4 columns left">
-                <h4 class="footer-header white">
-                </h4>
-                <div class="fb-like-box" data-href="http://www.facebook.com/picassopintureria" data-colorscheme="light"
-                    data-show-faces="true" data-header="true" data-stream="false" data-show-border="true">
-                </div>
-            </div>
-            <!-- end face -->
         </div>
-    </div>
     </div>
 </div>
+<!--linea Inferior-->
+<div class="large-12 columns" id="footer-final">
+    <div class="large-8 columns">
+        <p>
+            Desarrollado por: <a target="_blank" href="mailto:overcodesde@gmail.com">OverCode</a></p>
+        <!--iafar:Nuestra direccion de portfolio-->
+    </div>
+    <div class="large-4 columns">
+        <strong class="logo"><a href="#">Pintureria Picasso</a></strong><!--Iafar:se muestra logo Picasso-->
+        <p>
+            <!--iafar: Aqui se agregara codigoQR-->
+            Pintureria Picasso® es una marca de Argentina.<br />
+        </p>
+    </div>
+</div>
+<!--iafar:Esto solamente se debe mostrar en el Home-->
 <div id="fb-root">
 </div>
 <!-- rsanch: scripts para fb likebox. -->
@@ -60,8 +68,4 @@
         js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=126094964099484";
         fjs.parentNode.insertBefore(js, fjs);
     } (document, 'script', 'facebook-jssdk'));
-
-    $.getJSON('@Url.Content("~/Home/getProductoDestacado")', function (data) {
-        $("#productoDestacado").append("<img src='" + data.imagen + "'\/> </img><p class='title'>" + data.nombre + "</p><p><a href='/Producto/Details/1' class='readmore'>ver mas</a></p>");
-    });
 </script>

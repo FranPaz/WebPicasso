@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PicassoWeb.Models;
+using System.Net.Mail;
+using System.Net;
 
 namespace PicassoWeb.Controllers
 {
@@ -13,8 +15,8 @@ namespace PicassoWeb.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.fondoBody = "/Images/fondoinicio.jpg";
-            //ViewBag.fondoBody = "/Images/bg-body.jpg";
+            ViewBag.esHome = true;
+            ViewBag.fondoBody = "/Images/fondoINICIO.jpg";            
             return View();
         }
 
@@ -35,41 +37,21 @@ namespace PicassoWeb.Controllers
 
         public ActionResult Empresa()
         {
+            ViewBag.MostrarFB = true;
             ViewBag.Message = "Informacion de la Empresa";
-            ViewBag.fondoBody = "/Images/fondoempresa.jpg";                        
+            ViewBag.fondoBody = "/Images/fondoEMPRESA.jpg";
+            ViewBag.imagenFooter = "/Images/imagenContacto.jpg";           
             return View();
         }
 
         public ActionResult Contacto()
         {
             ViewBag.Message = "Informacion de contacto";
-            ViewBag.fondoBody = "/Images/fondocontacto.jpg";
+            ViewBag.fondoBody = "/Images/fondoCONTACTO.jpg";
             ViewBag.imagenFooter = "/Images/imagenContacto.jpg";
             return View();
         }
         
-        //rasanch: producto destacado en el HOME
-        public ActionResult getProductoDestacado()
-        {
-            //int i = 0;
-            var p = context.Producto.First();
-            object producto = new { imagen = p.Imagen, nombre = p.Nombre};
-
-            return Json(producto, JsonRequestBehavior.AllowGet);
-        }
-        //fpaz: action method para mostrar los datos de las promo bancos en la barra de promos del home
-        public ActionResult jsonPromo()
-        {
-            int i = 0;
-            object[] promoJson = new object[context.PromoBanco.Count()];
-            foreach (var item in context.PromoBanco)
-            {
-                promoJson[i] = new { imagen = item.Banco.Imagen, descripcion = item.Descripcion, id = item.Id };
-                i++;
-            }
-
-            return Json(promoJson, JsonRequestBehavior.AllowGet);
-        }
 
         //fpaz: agrego el controlador para ir a la pagina del administrador
         [Authorize(Roles = "Admin")]
@@ -120,6 +102,63 @@ namespace PicassoWeb.Controllers
             //                 select new { url = s.Url };
 
             return Json(sliderJson, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Divisiones()
+        {
+            ViewBag.Message = "Divisiones";
+            ViewBag.fondoBody = "/Images/fondodivisiones.jpg";
+            ViewBag.imagenFooter = "/Images/imagenContacto.jpg";
+            return View();
+        }
+
+        public ActionResult DivisionHogar()
+        {
+            return View();
+        }
+
+        public ActionResult DivisionEmpresa()
+        {
+            return View();
+        }
+
+        public ActionResult DivisionMayorista()
+        {
+            return View();
+        }
+
+        public ActionResult DivisionProfesional()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contacto(Contacto form)
+        {
+            //rasnch configuracion de salida smtp de picassopinturerias con user web. No cambiar la contraseña.
+            using (var client = new SmtpClient {
+                Host = "mail.picassopinturerias.com.ar",
+                Port = 587,
+                Credentials = new NetworkCredential("web@picassopinturerias.com.ar", "PicAss08p"), 
+                DeliveryMethod = SmtpDeliveryMethod.Network})
+            {
+                var mail = new MailMessage();
+                mail.To.Add("contacto@picassopinturerias.com.ar"); // email de contacto que van a manejar ellos
+                mail.From = new MailAddress(form.Email, form.Nombre);
+                mail.Subject = String.Format("Nuevo contacto de: {0}. Asunto: {1}", form.Nombre,form.Asunto);
+                mail.Body = String.Format("Nombre: {0} \n email: {1} \n telefono: {5} \n Localidad: {2} \n Asunto: {3} \n Comentarios: {4}", form.Nombre, form.Email, form.Localidad, form.Asunto, form.Comentario, form.Telefono);
+                mail.IsBodyHtml = false;
+                try
+                {            
+                    client.Send(mail);
+                    return Content("Su comentario fue enviado correctamente, nos contactaremos con usted a la brevedad. Muchas gracias.");
+                }
+                catch (Exception)
+                {
+                    return Content("Hubo un error, por favor intentelo de nuevo mas tarde.");
+                    throw;
+                }
+            }
         }
     }
 }

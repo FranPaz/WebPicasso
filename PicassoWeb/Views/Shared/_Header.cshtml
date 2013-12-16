@@ -3,10 +3,13 @@
         <!-- Header--> 
             <div class="row">
                 <div class="large-3 columns left">
-                    <ul class="button-group right ">               
+                <a href="/Home">
+                    <img src="@Url.Content("~/Images/LogoPicasso.png")" style="width: 95%; height: 75%" alt="Picasso Pinturerias Logo">
+                </a>
+                    @*<ul class="button-group right ">               
                         <!-- rsanch: cambio tamaño del logo 75 % por que en firefox se veia muy grande -->                                
-                        <li><img src="@Url.Content("~/Images/LogoPicasso.png")"  alt="Picasso Pinturerias Logo"></li><!-- rsanch: cambio para usar url.content -->
-                    </ul>
+                       <li><img src="@Url.Content("~/Images/LogoPicasso.png")" style="width: 95%; height: 75%" alt="Picasso Pinturerias Logo"></li><!-- rsanch: cambio para usar url.content -->                       
+                    </ul>*@
                 </div>
 
                 <!--fpaz: parte de botones de redes sociales -->
@@ -30,21 +33,11 @@
         <!--fpaz: Barra de  Navegacion -->        
             <div class="large-12 columns rigth">
                 <div class="main clearfix">
-	                <nav id="menu" class="nav">					
-		                  <ul>
-                            <li >@Html.ActionLink("Inicio", "Index", "Home")</li>
-                            <li >@Html.ActionLink("La Empresa", "Empresa", "Home")</li>           
-                            <li >@Html.ActionLink("Productos", "Catalogo", "Producto")</li>  
-                            <li >@Html.ActionLink("Sucursales", "Sucursales", "Sucursal")</li>                        
-                            <li >@Html.ActionLink("Promociones", "PromocionesDeBancos", "PromoBanco")</li>  
-                            <li >@Html.ActionLink("Contacto", "Contacto", "Home")</li>                                             
-                          </ul>
-	                </nav>
+                        <nav id="menu" class="nav">                                        
+                            @Html.MvcSiteMap().Menu(false)
+                        </nav>
                 </div>
             </div>
             <!--Fin barra navegacion -->
 </header>
 <!-- End Header  -->
-
-
-    

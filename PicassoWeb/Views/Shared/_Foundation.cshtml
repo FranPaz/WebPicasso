@@ -4,11 +4,18 @@
 <html class="no-js" lang="en">
 <!--<![endif]-->
 <head>
+    <!---------------------->
+    <!--Inicio de MetaTags-->
     <meta charset="utf-8" />
-    @*Set the viewport width to device width for mobile *@
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - Picasso Pinturerias</title>
+    <meta name="viewport" content="width=device-width" />@*Set the viewport width to device width for mobile *@
     <!--fpaz: puse el titulo "Picasso Pinturerias" -->
+    <title>@ViewBag.Title - Picasso Pinturerias</title>
+    <!--iafar: la descripcion que aparecera en el buscador -->
+    <meta name="Description" content="Cadena líder en la comercialización de todo tipo de pinturas y productos afines a la cosmética del hogar">
+    <meta name="robots" content="index,follow">
+    <!--robot de busqueda, la pagina se indexa y sus links internos pueden ser seguidos-->
+    <!------------------->
+    <!--Fin de MetaTags-->
     <link href="~/picassoIcon.ico" rel="shortcut icon" type="image/x-icon" />
     <!--rsanch: Cambie el favicon -->
     @*@Styles.Render("~/Content/foundation/css")*@
@@ -97,5 +104,19 @@
        
     </script>
     <!-- Fin -->
+
+    <!-- rsanch js de google analytics -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-45786263-1', 'picassopinturerias.com.ar');
+        ga('send', 'pageview');
+
+    </script>
 </body>
 </html>

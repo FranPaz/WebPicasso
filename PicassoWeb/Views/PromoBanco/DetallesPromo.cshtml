@@ -5,32 +5,15 @@
 }
 <div class="row listadoProductos">
 <div class="row">
-    <div class="large-3 columns">
-        <img src="@Model.Banco.Imagen" alt="Banco" />
-    </div>
-    <div class="large-9 columns centered descuento_descripcion">
-     <button title="Cerrar (Esc)" type="button" class="mfp-close">
-                ×</button>
-        @Model.Descripcion
-    </div>
-</div>
-<div class="row">
-    <div class="large-3 columns">
-        <p>
-        </p>
-    </div>
-    <div class="large-9 columns left descuento_descripcion">
-        <p>
-            Hasta <span>@Model.Cuotas</span> sin intereses @Model.Dias</p>
-    </div>
-</div>
-<div class="row">
-    <div class="large-3 columns">
-        <p>
-        </p>
-    </div>
-    <div class="large-9 columns left">
-        <p>@Model.CondicionesLegales</p>
-    </div>
-</div>
+            <div class="large-3 columns">
+                <img src="@Model.Banco.Imagen" alt="Banco" />
+            </div>
+            <div class="large-9 columns centered descuento_descripcion">
+                <button title="Cerrar (Esc)" type="button" class="mfp-close">×</button>
+                   @Model.Descripcion
+            </div>
+            <br />                        
+            <div class="large-9 columns left">
+                <p>@Model.CondicionesLegales</p>
+            </div>
 </div>

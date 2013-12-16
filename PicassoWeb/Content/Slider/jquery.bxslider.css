@@ -22,8 +22,9 @@
 }
 
 .bx-wrapper img {
-	max-width: 100%;
-	display: block;
+max-width: 131px; /*fpaz: cambie los 3 atributos asi todas las imagenes del slide de promo bancos sean del mismo tamaño*/
+display: block;
+max-height: 75px;
 }
 
 /** THEME
@@ -124,7 +125,7 @@
 	width: 32px;
 	height: 32px;
 	text-indent: -9999px;
-	z-index: 9999;
+	z-index: 1000;/*rsanch: cambio para que no se superponga con el modal. */
 }
 
 .bx-wrapper .bx-controls-direction a.disabled {

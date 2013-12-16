@@ -37,6 +37,49 @@
 	background-color: white;
 	}
 	
+ .subtitulosDetalleProductos {
+color: #008ECC;
+font-family: Calibri, Arial, "Arial Narrow", sans-serif;
+font-weight: bold;
+}
+#fondo
+{
+	/* fpaz: modificado 16/11/2013 para encajar la imagen de fondo completa de cada seccion*/    
+	/*background:url('/Images/fondoinicio.jpg');
+	background-size: 100% 100%;*/
+	/* fpaz: Fin*/
+    color: #333;
+    font-size: .85em;
+    font-family: "Calibri", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+}
+
+.foto{
+    height:350px;
+    width:500px;
+}
+
+/*fpaz: clases para el catalogo de productos*/
+.contenido
+{
+	border: none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 0px;
+	-webkit-box-shadow: 0px 0px 25px #505050;
+	-moz-box-shadow: 0px 0px 25px #505050;
+	background-color: white;
+	}
+
+.listadoProductos
+{
+	border: none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 0px;
+	-webkit-box-shadow: 0px 0px 25px #505050;	
+	-moz-box-shadow: 0px 0px 25px #505050;
+	background-color: white;
+	}
 	
  .subtitulosDetalleProductos {
 color: #008ECC;
@@ -61,3 +104,28 @@ color:White;
 font-family: Calibri, Arial, "Arial Narrow", sans-serif;
 font-weight: bold;
 }
+
+.logoHeader
+{
+	background: url(../Images/LogoPicasso.png);
+     display: block;
+     width: 75%;
+     height: 75%;
+    /* text-indent: -9999px; /* hides the link text */
+	}
+
+.logoSubtitulos
+{
+	margin:0;
+	display: inline;
+	float: left;
+	height:1%;
+	width:3%;
+	
+	}
+
+.textWrap
+{
+	float:right;
+	margin:10px;
+	}
